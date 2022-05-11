@@ -1,0 +1,10 @@
+title: Projects
+columns:
+  pages:
+    width: 1/2
+    sections:
+      projects:
+        type: pages
+        limit: 100000
+        template:
+          - project

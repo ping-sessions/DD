@@ -1,0 +1,9 @@
+title: Project
+fields:
+  text:
+    label: Text
+    type: textarea
+    size: large
+  files: 
+    label: Files
+    type: files

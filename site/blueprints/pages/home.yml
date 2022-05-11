@@ -1,0 +1,38 @@
+title: Home
+columns:
+  pages:
+    width: 1/2
+    sections:
+      pages:
+        type: pages
+        limit: 100000
+        template:
+          - projects
+  dd:
+    width: 1/2
+    sections:
+      fields:
+        type: fields
+        fields: 
+          words:
+            type: tags
+            label: Words
+          names:
+            type: structure
+            fields:
+              first_word:
+                label: First Word
+                type: select
+                options: query
+                query:
+                  fetch: page.words.split
+                  text: "{{ arrayItem.value }}"
+                  value: "{{ arrayItem.value }}"
+              last_word:
+                label: Last Word
+                type: select
+                options: query
+                query:
+                  fetch: page.words.split
+                  text: "{{ arrayItem.value }}"
+                  value: "{{ arrayItem.value }}"

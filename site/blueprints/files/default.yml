@@ -1,0 +1,16 @@
+title: File
+columns:
+  main:
+    width: 1/2
+    sections:
+      content:
+        type: fields
+        fields:
+          tags:
+            label: Tags
+            type: checkboxes
+            options: query
+            query:
+              fetch: site.find('home').words.split
+              text: "{{ arrayItem.value }}"
+              value: "{{ arrayItem.value }}"

@@ -1,0 +1,7 @@
+html,body {
+  background: yellow;
+}
+
+* > img {
+  width: 5px;
+}

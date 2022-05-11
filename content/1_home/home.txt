@@ -1,0 +1,22 @@
+Title: Home
+
+----
+
+Words: Durable, Discussions, Diasbura, Delights, Daily, Decisions, Drifting, Dialogues
+
+----
+
+Names:
+
+- 
+  first_word: Durable
+  last_word: Discussions
+- 
+  first_word: Diasbura
+  last_word: Delights
+- 
+  first_word: Daily
+  last_word: Decisions
+- 
+  first_word: Drifting
+  last_word: Dialogues
