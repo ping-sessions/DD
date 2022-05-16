@@ -1,11 +1,10 @@
 <?php
 
-foreach($files as $file) {
-
-  // $html .= snippet('result', ['result' => $file], true);
-  // need to do this
-  $html = '<div>test</div>';
+foreach($files as $fileObj) {
+  $html .= snippet('file', ['fileObj' => $fileObj], true);
 }
+
+$json['current_words'] = $current_words;
 $json['html'] = $html;
 $json['files'] = $files;
 
