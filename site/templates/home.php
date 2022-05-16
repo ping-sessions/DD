@@ -7,6 +7,8 @@
   <?php endforeach ?>
 </h1>
 
+<!-- <h2 class = 'count'><= $count ?></h2> -->
+
 <!-- get random content -->
 <div class = 'content'>
   <!-- $files variable is set in controller -->

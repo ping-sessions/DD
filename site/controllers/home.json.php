@@ -12,11 +12,18 @@ return function ($page) {
     $namesArr[] = $nameObj;
   }
   // generate random number for index of array
-  $random_index = rand(0, (count($namesArr) - 1));
+  // $random_index = rand(0, (count($namesArr) - 1));
+
+  
+  $count = 0;
+  $count++;
+  shuffle($namesArr);
+
+
   // push each word in array to a new flat array
   $current_words = [];
-  $current_words[] = $namesArr[$random_index]->first_word->value();
-  $current_words[] = $namesArr[$random_index]->last_word->value();
+  $current_words[] = $namesArr[$count]->first_word->value();
+  $current_words[] = $namesArr[$count]->last_word->value();
 
   // create object representation of each file + create array from them
   $filesArr = [];

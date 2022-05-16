@@ -1,27 +1,89 @@
-const title = document.querySelector('.title');
-const content = document.querySelector('.content');
-const button = document.querySelector('.load-more');
-// let page = parseInt(element.getAttribute('data-page'));
+const title = document.querySelector('.title')
+const content = document.querySelector('.content')
+const button = document.querySelector('.load-more')
 
-const fetchContent = async () => {
-  // let url = `${window.location.href}home.json/page:${page}`;
-  let url = `${window.location.href}home.json`;
+// reassign this variable with current data on each succesful request
+let currentData = {}
+// endpoint url 
+const url = `${window.location.href}home.json`
 
-  try {
-    const response = await fetch(url);
-    const { html, current_words } = await response.json();
-    title.innerHTML = ''
-    for (var i = 0; i < current_words.length; i++) {
-      title.innerHTML += current_words[i] + ' '
+
+
+// helper -- check if two array are the same
+var arraysMatch = function (arr1, arr2) {
+	if (arr1.length !== arr2.length) return false
+	for (var i = 0; i < arr1.length; i++) {
+		if (arr1[i] !== arr2[i]) return false
+	}
+	return true
+};
+
+
+// another option would be to store all words/name pairs in the endpoint to begin with
+// then increment through these 
+
+
+function getData(endpoint) {
+  $.ajax({
+    type: "GET",
+    url: endpoint,
+  })
+  .done(function(data) {
+    if (currentData.hasOwnProperty('current_words')) {
+      // if words from new request are not same words currently stored 
+      // handle the data (populate content)
+      if (!arraysMatch(data.current_words, currentData.current_words)) {
+        handleData(data)
+      }
+      // if they are the same, make request again until they are different
+      else {
+        getData(endpoint)
+      }
     }
-
-    // overwrite current content
-    content.innerHTML = html;
-    content
-  } catch (error) {
-    // throw error here
-    console.log('Fetch error: ', error);
-  }
+    else {
+      handleData(data)
+    }
+  })
+  .catch(function(err) {
+    console.log('error', err)
+  })
 }
 
-button.addEventListener('click', fetchContent);
+
+function handleData(data) {
+  content.innerHTML = data.html
+  title.innerHTML = ''
+  for (var i = 0; i < data.current_words.length; i++) {
+    title.innerHTML += data.current_words[i] + ' '
+  }
+  currentData = data
+}
+
+function handleClick() {
+  getData(url)
+}
+
+button.addEventListener('click', handleClick)
+
+
+// async option
+// const fetchContent = async () => {
+//   // let url = `${window.location.href}home.json/page:${page}`;
+//   let url = `${window.location.href}home.json`;
+  
+//   try {
+//     const response = await fetch(url);
+//     const { html, current_words } = await response.json();
+//     title.innerHTML = ''
+//     for (var i = 0; i < current_words.length; i++) {
+//       title.innerHTML += current_words[i] + ' '
+//     }
+//     // overwrite current content
+//     content.innerHTML = html;
+//   } catch (error) {
+//     // throw error here
+//     console.log('Fetch error: ', error);
+//   }
+// }
+
+// button.addEventListener('click', fetchContent);
