@@ -1,5 +1,6 @@
 // --- variables ---
 let currentData = {}
+let selectedFile = ''
 const url = `${window.location.href}home.json`
 
 
@@ -74,30 +75,50 @@ function initRoutes() {
     views: [{
       namespace: 'home',
       afterEnter(data) {
-        console.log('after enter home', data)
+        // console.log('after enter home', data)
       },
       afterLeave(data) {
-        console.log('after leave home', data)
+        // console.log('after leave home', data)
       },
       beforeEnter(data) {
-        console.log('before enter home', data)
+        // console.log('before enter home', data)
       },
       beforeLeave(data) {
-        console.log('before leave home', data)
+        // console.log('before leave home', data)
       }
     }, {
       namespace: 'project',
       afterEnter(data) {
-        console.log('after enter project', data)
+
+        $('.project-slider').on('init', function(event, slick) {
+          var selectedSlide = $('.project-slider').find('[data-url="' + selectedFile + '"]:not(.slick-cloned)');
+          var selectedSlideIndex = selectedSlide.data('slick-index')
+          // this is a bit messy; better to find the index 1st + initialize slider with initialSlide
+          // rather than sliding to it like this
+          setTimeout(function() {
+            $('.project-slider').slick('slickGoTo', selectedSlideIndex)
+          }, 250)
+        })
+
+        $('.project-slider').slick({
+          autoplay: false,
+        });
+
+
       },
       afterLeave(data) {
-        console.log('after leave project', data)
+        $('.index').removeClass('blurred')
+        // console.log('after leave project', data)
       },
       beforeEnter(data) {
-        console.log('before enter project', data)
+        // console.log('before enter project', data)
+        // update global variable of selected file based on url of link triggered
+        $('.index').addClass('blurred')
+        selectedFile = data.trigger.querySelector('img').getAttribute('src')
+        console.log('set selected file >', selectedFile)
       },
       beforeLeave(data) {
-        console.log('before leave project', data)
+        // console.log('before leave project', data)
       }
     }]
   })
