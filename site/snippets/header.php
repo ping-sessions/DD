@@ -12,4 +12,23 @@
   <?= css(['assets/css/main.css']) ?>
 </head>
 
-<body>
+<body data-barba="wrapper">
+  <h1 class = 'title'>
+    <!-- $current_words variable is set in controller -->
+    <?php foreach($current_words as $word) : ?>
+      <?= $word ?>
+    <?php endforeach ?>
+  </h1>
+
+  <!-- <h2 class = 'count'><= $count ?></h2> -->
+
+  <!-- get random content -->
+  <div class = 'content'>
+    <!-- $files variable is set in controller -->
+    <?php foreach ($files as $fileObj) : ?>
+      <?php snippet('file', ['fileObj' => $fileObj]) ?>
+    <?php endforeach ?>
+  </div>
+
+  <button class="load-more" accesskey="m">Load new result</button>
+  <main data-barba="container" data-barba-namespace="<?= $page->uid() ?>">

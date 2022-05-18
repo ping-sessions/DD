@@ -21,9 +21,8 @@ var arraysMatch = function (arr1, arr2) {
 
 // another option would be to store all words/name pairs in the endpoint to begin with
 // then increment through these 
-
-
 function getData(endpoint) {
+  console.log('get data')
   $.ajax({
     type: "GET",
     url: endpoint,
@@ -66,24 +65,19 @@ function handleClick() {
 button.addEventListener('click', handleClick)
 
 
-// async option
-// const fetchContent = async () => {
-//   // let url = `${window.location.href}home.json/page:${page}`;
-//   let url = `${window.location.href}home.json`;
-  
-//   try {
-//     const response = await fetch(url);
-//     const { html, current_words } = await response.json();
-//     title.innerHTML = ''
-//     for (var i = 0; i < current_words.length; i++) {
-//       title.innerHTML += current_words[i] + ' '
-//     }
-//     // overwrite current content
-//     content.innerHTML = html;
-//   } catch (error) {
-//     // throw error here
-//     console.log('Fetch error: ', error);
-//   }
-// }
-
-// button.addEventListener('click', fetchContent);
+// barba js
+barba.init({
+  views: [{
+    namespace: 'home',
+    beforeLeave(data) {
+      console.log('leave home')
+      // do something before leaving the current `index` namespace
+    }
+  }, {
+    namespace: 'project',
+    beforeEnter(data) {
+      console.log('enter project')
+      // do something before entering the `contact` namespace
+    }
+  }]
+})
