@@ -1,15 +1,12 @@
-const title = document.querySelector('.title')
-const content = document.querySelector('.content')
-const button = document.querySelector('.load-more')
 
-// reassign this variable with current data on each succesful request
+   
+// --- variables ---
 let currentData = {}
-// endpoint url 
+let selectedFile = ''
 const url = `${window.location.href}home.json`
 
 
-
-// helper -- check if two array are the same
+// --- helpers --- 
 var arraysMatch = function (arr1, arr2) {
 	if (arr1.length !== arr2.length) return false
 	for (var i = 0; i < arr1.length; i++) {
@@ -19,10 +16,7 @@ var arraysMatch = function (arr1, arr2) {
 };
 
 
-// another option would be to store all words/name pairs in the endpoint to begin with
-// then increment through these 
-
-
+// --- api ---
 function getData(endpoint) {
   $.ajax({
     type: "GET",
@@ -49,45 +43,113 @@ function getData(endpoint) {
   })
 }
 
-
 function handleData(data) {
+  const content = document.querySelector('.content')
+  const decision = document.querySelector('#decision')
   content.innerHTML = data.html
-  title.innerHTML = ''
+  decision.innerHTML = ''
   for (var i = 0; i < data.current_words.length; i++) {
-    title.innerHTML += data.current_words[i] + ' '
+    decision.innerHTML += data.current_words[i] + ' '
   }
   currentData = data
 }
 
-function handleClick() {
+function handleRandomClick() {
   getData(url)
 }
 
-button.addEventListener('click', handleClick)
+function handleSelectClick() {
+  getData(url)
+}
 
 
-// async option
-// const fetchContent = async () => {
-//   // let url = `${window.location.href}home.json/page:${page}`;
-//   let url = `${window.location.href}home.json`;
+// --- handlers --- 
+function initHandlers() {
+  const randomButton = document.querySelector('.dd-random')
+  randomButton.addEventListener('click', handleRandomClick)
+  const selectButton = document.querySelector('.dd-select')
+  selectButton.addEventListener('click', handleSelectClick)
+}
+
+function initRoutes() {
+
+  barba.use(barbaCss);
+  // barba js
+  barba.init({
+    views: [{
+      namespace: 'home',
+      afterEnter(data) {
+        // console.log('after enter home', data)
+      },
+      afterLeave(data) {
+        // console.log('after leave home', data)
+      },
+      beforeEnter(data) {
+        // console.log('before enter home', data)
+      },
+      beforeLeave(data) {
+        // console.log('before leave home', data)
+      }
+    }, {
+      namespace: 'project',
+      afterEnter(data) {
+
+        $('.project-slider').on('init', function(event, slick) {
+          var selectedSlide = $('.project-slider').find('[data-url="' + selectedFile + '"]:not(.slick-cloned)');
+          var selectedSlideIndex = selectedSlide.data('slick-index')
+          // this is a bit messy; better to find the index 1st + initialize slider with initialSlide
+          // rather than sliding to it like this
+          setTimeout(function() {
+            $('.project-slider').slick('slickGoTo', selectedSlideIndex)
+          }, 250)
+        })
+
+        $('.project-slider').slick({
+          autoplay: false
+        });
+
+
+      },
+      afterLeave(data) {
+        $('.index').removeClass('blurred')
+        // console.log('after leave project', data)
+      },
+      beforeEnter(data) {
+        // console.log('before enter project', data)
+        // update global variable of selected file based on url of link triggered
+        $('.index').addClass('blurred')
+        selectedFile = data.trigger.querySelector('img').getAttribute('src')
+        console.log('set selected file >', selectedFile)
+      },
+      beforeLeave(data) {
+        // console.log('before leave project', data)
+      }
+    }]
+  })
+}
+
+// --- init ---
+$(document).ready(function() {
+  initHandlers()
+  initRoutes()
+})
+
+const local_check = localStorage.getItem('typed_off');
+
+if (local_check !== 'true') {
+  const typed_text = document.querySelector('#typed');
+  typed_text.classList.add('active');
+
+  const typed = new Typed('#typed', {
+    stringsElement: '#typed-strings',
+    typeSpeed: 70,
+     cursorChar: 'D_D',
+  });
   
-//   try {
-//     const response = await fetch(url);
-//     const { html, current_words } = await response.json();
-//     title.innerHTML = ''
-//     for (var i = 0; i < current_words.length; i++) {
-//       title.innerHTML += current_words[i] + ' '
-//     }
-//     // overwrite current content
-//     content.innerHTML = html;
-//   } catch (error) {
-//     // throw error here
-//     console.log('Fetch error: ', error);
-//   }
-// }
-
-// button.addEventListener('click', fetchContent);
-
-
-
-
+  typed_text.addEventListener('click', typed_off);
+  
+  function typed_off() {
+    localStorage.setItem('typed_off', true);
+    typed_text.classList.remove('active');
+  }
+}
