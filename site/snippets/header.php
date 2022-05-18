@@ -12,15 +12,32 @@
   <?= css(['assets/css/main.css']) ?>
 </head>
 
-<body data-barba="wrapper">
-  <h1 class = 'title'>
-    <!-- $current_words variable is set in controller -->
-    <?php foreach($current_words as $word) : ?>
-      <?= $word ?>
-    <?php endforeach ?>
-  </h1>
 
-  <!-- <h2 class = 'count'><= $count ?></h2> -->
+<body data-barba="wrapper">
+
+  <!-- content that is always visible: tidy this up -->
+
+  <header class = 'header'>
+    <h1 class = 'title'>
+      <span>Decision of the Day</span>
+      <span id='decision'>
+        <!-- $current_words variable is set in controller -->
+        <?php foreach($current_words as $word) : ?>
+          <?= $word ?>
+        <?php endforeach ?>
+      </span>
+    </h1>
+    
+    <div class = 'buttons'>
+      <!-- accesskey is temp/need to figure out -->
+      <button class = 'dd-select' accesskey="o">
+        Decide DD
+      </button>
+      <button class = 'dd-random' accesskey="m">
+        Random DD
+      </button>
+    </div>
+  </header>
 
   <!-- get random content -->
   <div class = 'content'>
@@ -30,5 +47,5 @@
     <?php endforeach ?>
   </div>
 
-  <button class="load-more" accesskey="m">Load new result</button>
-  <main data-barba="container" data-barba-namespace="<?= $page->uid() ?>">
+  <!-- <button class="load-more" accesskey="m">Load new result</button> -->
+  <main data-barba="container" data-barba-namespace="<?= $page->template() ?>">

@@ -1,15 +1,9 @@
-const title = document.querySelector('.title')
-const content = document.querySelector('.content')
-const button = document.querySelector('.load-more')
-
-// reassign this variable with current data on each succesful request
+// --- variables ---
 let currentData = {}
-// endpoint url 
 const url = `${window.location.href}home.json`
 
 
-
-// helper -- check if two array are the same
+// --- helpers --- 
 var arraysMatch = function (arr1, arr2) {
 	if (arr1.length !== arr2.length) return false
 	for (var i = 0; i < arr1.length; i++) {
@@ -19,10 +13,8 @@ var arraysMatch = function (arr1, arr2) {
 };
 
 
-// another option would be to store all words/name pairs in the endpoint to begin with
-// then increment through these 
+// --- api ---
 function getData(endpoint) {
-  console.log('get data')
   $.ajax({
     type: "GET",
     url: endpoint,
@@ -48,36 +40,71 @@ function getData(endpoint) {
   })
 }
 
-
 function handleData(data) {
+  const content = document.querySelector('.content')
+  const decision = document.querySelector('#decision')
   content.innerHTML = data.html
-  title.innerHTML = ''
+  decision.innerHTML = ''
   for (var i = 0; i < data.current_words.length; i++) {
-    title.innerHTML += data.current_words[i] + ' '
+    decision.innerHTML += data.current_words[i] + ' '
   }
   currentData = data
 }
 
-function handleClick() {
+function handleRandomClick() {
   getData(url)
 }
 
-button.addEventListener('click', handleClick)
+function handleSelectClick() {
+  getData(url)
+}
 
 
-// barba js
-barba.init({
-  views: [{
-    namespace: 'home',
-    beforeLeave(data) {
-      console.log('leave home')
-      // do something before leaving the current `index` namespace
-    }
-  }, {
-    namespace: 'project',
-    beforeEnter(data) {
-      console.log('enter project')
-      // do something before entering the `contact` namespace
-    }
-  }]
+// --- handlers --- 
+function initHandlers() {
+  const randomButton = document.querySelector('.dd-random')
+  randomButton.addEventListener('click', handleRandomClick)
+  const selectButton = document.querySelector('.dd-select')
+  selectButton.addEventListener('click', handleSelectClick)
+}
+
+function initRoutes() {
+  // barba js
+  barba.init({
+    views: [{
+      namespace: 'home',
+      afterEnter(data) {
+        console.log('after enter home', data)
+      },
+      afterLeave(data) {
+        console.log('after leave home', data)
+      },
+      beforeEnter(data) {
+        console.log('before enter home', data)
+      },
+      beforeLeave(data) {
+        console.log('before leave home', data)
+      }
+    }, {
+      namespace: 'project',
+      afterEnter(data) {
+        console.log('after enter project', data)
+      },
+      afterLeave(data) {
+        console.log('after leave project', data)
+      },
+      beforeEnter(data) {
+        console.log('before enter project', data)
+      },
+      beforeLeave(data) {
+        console.log('before leave project', data)
+      }
+    }]
+  })
+}
+
+// --- init ---
+$(document).ready(function() {
+  initHandlers()
+  initRoutes()
 })
