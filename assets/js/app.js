@@ -87,3 +87,29 @@ button.addEventListener('click', handleClick)
 // }
 
 // button.addEventListener('click', fetchContent);
+
+
+
+//typed.js intro
+
+const local_check = localStorage.getItem('typed_off');
+
+if (local_check !== 'true') {
+  const typed_text = document.querySelector('#typed');
+  typed_text.classList.add('active');
+
+  const typed = new Typed('#typed', {
+    stringsElement: '#typed-strings',
+    typeSpeed: 70,
+     cursorChar: 'D_D',
+  });
+  
+  typed_text.addEventListener('click', typed_off);
+  
+  function typed_off() {
+    localStorage.setItem('typed_off', true);
+    typed_text.classList.remove('active');
+  }
+}
+
+

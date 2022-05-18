@@ -1,5 +1,7 @@
 <?php snippet('header') ?>
 
+<?php snippet('intro') ?>
+
 <h1 class = 'title'>
   <!-- $current_words variable is set in controller -->
   <?php foreach($current_words as $word) : ?>
