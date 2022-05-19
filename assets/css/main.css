@@ -1,7 +1,50 @@
+@font-face {
+  font-family: 'EB Garamond';
+  src: url("EBGaramond-Italic.woff2") format("woff2"), url("EBGaramond-Italic.woff") format("woff");
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'EB Garamond';
+  src: url("EBGaramond-Regular.woff2") format("woff2"), url("EBGaramond-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'EB Garamond';
+  src: url("EBGaramond-Regular.woff2") format("woff2"), url("EBGaramond-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'KTF Rublena Solid';
+  src: url("KTFRublena-Solid.woff2") format("woff2"), url("KTFRublena-Solid.woff") format("woff");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* buttons */
+button {
+  padding: 0.5rem;
+  font-size: 1.5rem;
+  font-family: 'EB Garamond';
+  background-color: #fff;
+  border: none;
+  border-radius: 2rem;
+}
+
 html, body {
   background: radial-gradient(50% 50% at 50% 50%, #268F56 64.75%, rgba(79, 79, 79, 0.66) 100%) fixed;
   margin: 0;
   padding: 0;
+  font-family: 'KTF Rublena Solid';
 }
 
 * > img {
@@ -13,6 +56,10 @@ html, body {
   transition: -webkit-filter .25s linear;
   transition: filter .25s linear;
   transition: filter .25s linear, -webkit-filter .25s linear;
+}
+
+h1, h2, h3, h4, h5 {
+  font-weight: normal;
 }
 
 .index.blurred {
@@ -29,18 +76,18 @@ html, body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  padding-top: 1rem;
+  padding-left: 1rem;
 }
 
 .header .buttons {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  padding-right: 2rem;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-flow: column;
@@ -48,6 +95,7 @@ html, body {
 }
 
 .header button {
+  margin-bottom: 1rem;
   cursor: pointer;
 }
 
@@ -55,6 +103,7 @@ html, body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  margin: 0;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-flow: column;
@@ -72,9 +121,18 @@ html, body {
           flex-flow: column;
 }
 
+.title {
+  line-height: 1;
+}
+
+.title #decision {
+  font-size: 3rem;
+}
+
 /* project */
 .project-overlay {
-  position: fixed;
+  position: absolute;
+  overflow-y: scroll;
   top: 0;
   left: 0;
   width: 100%;
@@ -149,5 +207,31 @@ html, body {
 .clip1 {
   -webkit-clip-path: url(#mclip1);
   clip-path: url(#clip1);
+}
+
+/* intro */
+.intro {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 10;
+  width: 100vw;
+  height: 100vh;
+  font-size: 4rem;
+  /*Fallback if gradeints don't work */
+  background: #9b59b6;
+  opacity: 0;
+  pointer-events: none;
+  -webkit-transition: all 0.7s ease-in-out;
+  transition: all 0.7s ease-in-out;
+  /*Linear gradient... */
+  background: radial-gradient(at center, #4F4F4F, #268F56);
+}
+
+.intro.active {
+  -webkit-transition: all 0s ease-in-out;
+  transition: all 0s ease-in-out;
+  opacity: 1;
+  pointer-events: inherit;
 }
 /*# sourceMappingURL=main.css.map */

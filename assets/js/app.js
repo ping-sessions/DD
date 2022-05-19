@@ -105,7 +105,10 @@ function initRoutes() {
         })
 
         $('.project-slider').slick({
-          autoplay: false
+          autoplay: false,
+          centerMode: true,
+  centerPadding: '25vw',
+  slidesToShow: 1
         });
 
 
@@ -137,7 +140,7 @@ $(document).ready(function() {
 const local_check = localStorage.getItem('typed_off');
 
 if (local_check !== 'true') {
-  const typed_text = document.querySelector('#typed');
+  const typed_text = document.querySelector('.intro');
   typed_text.classList.add('active');
 
   const typed = new Typed('#typed', {
