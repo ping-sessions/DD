@@ -44,7 +44,7 @@
     </header>
 
     <!-- get random content -->
-    <div class = 'content'>
+    <div class = 'content projects'>
       <!-- $files variable is set in controller -->
       <?php foreach ($files as $fileObj) : ?>
         <?php snippet('file', ['fileObj' => $fileObj]) ?>
