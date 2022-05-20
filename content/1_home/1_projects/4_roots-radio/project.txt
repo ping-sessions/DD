@@ -6,4 +6,11 @@ Text:
 
 ----
 
-Files: 
+Files:
+
+- >
+  6059d98a871328cb3bdf401f_joseph-medill-patterson-publication-design-2.jpeg
+- >
+  large_973205eda55e6c49d022c1c055cfe72a.jpg
+- >
+  large_5aeabcf472994a6691675c7a39212d10.jpg

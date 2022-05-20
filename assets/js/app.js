@@ -1,9 +1,7 @@
-
-   
 // --- variables ---
 let currentData = {}
 let selectedFile = ''
-const url = `${window.location.href}home.json`
+const apiUrl = `${window.location.href}home.json`
 
 
 // --- helpers --- 
@@ -15,27 +13,40 @@ var arraysMatch = function (arr1, arr2) {
 	return true
 };
 
+var contains = function (arr1, arr2) {
+  arr1.some(element => {
+    return arr2.indexOf(element) !== -1
+  })
+}
 
-// --- api ---
-function getData(endpoint) {
+
+// --- api stuf ---
+function getData(random, tags) {
   $.ajax({
     type: "GET",
-    url: endpoint,
+    url: apiUrl,
   })
   .done(function(data) {
-    if (currentData.hasOwnProperty('current_words')) {
-      // if words from new request are not same words currently stored 
-      // handle the data (populate content)
-      if (!arraysMatch(data.current_words, currentData.current_words)) {
-        handleData(data)
+    if (random) {
+      console.log('random')
+      if (currentData.hasOwnProperty('current_words')) {
+        // if words from new request are not same words currently stored 
+        // handle the data (populate content)
+        if (!arraysMatch(data.current_words, currentData.current_words)) {
+          handleData(data, false)
+        }
+        // if they are the same, make request again until they are different
+        else {
+          getData(true)
+        }
       }
-      // if they are the same, make request again until they are different
       else {
-        getData(endpoint)
+        handleData(data, false)
       }
     }
     else {
-      handleData(data)
+      console.log('not random')
+      handleData(data, tags)
     }
   })
   .catch(function(err) {
@@ -43,116 +54,182 @@ function getData(endpoint) {
   })
 }
 
-function handleData(data) {
+
+function handleData(data, tags) {
   const content = document.querySelector('.content')
   const decision = document.querySelector('#decision')
-  content.innerHTML = data.html
-  decision.innerHTML = ''
-  for (var i = 0; i < data.current_words.length; i++) {
-    decision.innerHTML += data.current_words[i] + ' '
+  // if random (no tags passed from event)
+  // probably not best way to do this
+  if (!tags.length) {
+    // update title (DD) with arr from api 
+    updateTitle(data.current_words)
+    renderData(data.tagged_files)
   }
+  else {
+    // update title (DD) with arr from event 
+    updateTitle(tags)
+
+    // find files (data) with matching tags passed originally from evt
+    let filteredData = data.all_files.filter((file) => {
+      var match = file.tags.some(function(v) { return tags.indexOf(v) != -1 })
+      if (match) {
+        return file
+      }
+    })
+    renderData(filteredData)
+  }
+  // reassign global var
+  // maybe just use current tags or w.e. instead of whole tree
   currentData = data
 }
 
-function handleRandomClick() {
-  getData(url)
+function updateTitle(arr) {
+  const decision = document.querySelector('#decision')
+  decision.innerHTML = ''
+  for (var i = 0; i < arr.length; i++) {
+    decision.innerHTML += arr[i] + ' '
+  }
 }
 
-function handleSelectClick() {
-  getData(url)
+
+// ...do view stuff here
+// ...will need to systemize this, how to position programatically etc.
+function renderData(content) {
+  // content will includes files, text etc. 
+  const container = $('.content')
+  // empty container
+  container.html('')
+  for (var i = 0; i < content.length; i++) {
+    let projectUrl = '/home/projects/' + content[i].project
+    let fileUrl = content[i].url 
+    let el = '<div class="projects__item clip1"><a href=' + projectUrl + '><img src =' + fileUrl + '></a></div>'
+    container.append(el)
+  }
 }
 
 
-// --- handlers --- 
+
+// --- event handlers --- 
 function initHandlers() {
   const randomButton = document.querySelector('.dd-random')
-  randomButton.addEventListener('click', handleRandomClick)
-  const selectButton = document.querySelector('.dd-select')
-  selectButton.addEventListener('click', handleSelectClick)
+  randomButton.addEventListener('click', function() {
+    getData(true, false)
+  })
+  
+
+  // open up dd selection
+  const selectButton = $('.dd-select')
+  selectButton.on('click', function(e) {
+    $('.selector').removeClass('hidden')
+  })
+
+
+  // temp 
+  const selectorName = $('.selector__name')
+  selectorName.on('click', function(e) {
+    $('.selector').addClass('hidden')
+    let dataTags = $(this).attr('data-tags')
+    let tagsArray = dataTags.split(", ")
+    getData(false, tagsArray)
+  })
+}
+
+
+
+// --- local storage stuff --
+function initIntro() {
+  const local_check = localStorage.getItem('typed_off')
+
+  if (local_check !== 'true') {
+    const typed_text = document.querySelector('.intro')
+    typed_text.classList.add('active')
+
+    const typed = new Typed('#typed', {
+      stringsElement: '#typed-strings',
+      typeSpeed: 70,
+      cursorChar: 'D_D',
+    });
+    
+    typed_text.addEventListener('click', typed_off)
+    
+    function typed_off() {
+      localStorage.setItem('typed_off', true)
+      typed_text.classList.remove('active')
+    }
+  }
+}
+
+
+
+// --- route fns ---
+function afterProjectEnter() {
+    $('.project-slider').on('init', function(event, slick) {
+    var selectedSlide = $('.project-slider').find('[data-url="' + selectedFile + '"]:not(.slick-cloned)');
+    var selectedSlideIndex = selectedSlide.data('slick-index')
+    // this is a bit messy; better to find the index 1st + initialize slider with initialSlide
+    // rather than sliding to it like this
+    setTimeout(function() {
+      $('.project-slider').slick('slickGoTo', selectedSlideIndex)
+    }, 250)
+  })
+  $('.project-slider').slick({
+    autoplay: false,
+    centerMode: true,
+    centerPadding: '25vw',
+    slidesToShow: 1
+  });
+}
+
+function afterProjectLeave() {
+  $('.index').removeClass('blurred')
+}
+
+function beforeProjectEnter() {
+  $('.index').addClass('blurred')
 }
 
 function initRoutes() {
-
-  barba.use(barbaCss);
+  barba.use(barbaCss)
   // barba js
   barba.init({
     views: [{
       namespace: 'home',
-      afterEnter(data) {
-        // console.log('after enter home', data)
-      },
-      afterLeave(data) {
-        // console.log('after leave home', data)
-      },
-      beforeEnter(data) {
-        // console.log('before enter home', data)
-      },
-      beforeLeave(data) {
-        // console.log('before leave home', data)
-      }
+        afterEnter(data) {
+          // console.log('after enter home', data)
+        },
+        afterLeave(data) {
+          // console.log('after leave home', data)
+        },
+        beforeEnter(data) {
+          // console.log('before enter home', data)
+        },
+        beforeLeave(data) {
+          // console.log('before leave home', data)
+        }
     }, {
       namespace: 'project',
-      afterEnter(data) {
-
-        $('.project-slider').on('init', function(event, slick) {
-          var selectedSlide = $('.project-slider').find('[data-url="' + selectedFile + '"]:not(.slick-cloned)');
-          var selectedSlideIndex = selectedSlide.data('slick-index')
-          // this is a bit messy; better to find the index 1st + initialize slider with initialSlide
-          // rather than sliding to it like this
-          setTimeout(function() {
-            $('.project-slider').slick('slickGoTo', selectedSlideIndex)
-          }, 250)
-        })
-
-        $('.project-slider').slick({
-          autoplay: false,
-          centerMode: true,
-  centerPadding: '25vw',
-  slidesToShow: 1
-        });
-
-
-      },
-      afterLeave(data) {
-        $('.index').removeClass('blurred')
-        // console.log('after leave project', data)
-      },
-      beforeEnter(data) {
-        // console.log('before enter project', data)
-        // update global variable of selected file based on url of link triggered
-        $('.index').addClass('blurred')
-        selectedFile = data.trigger.querySelector('img').getAttribute('src')
-        console.log('set selected file >', selectedFile)
-      },
-      beforeLeave(data) {
-        // console.log('before leave project', data)
-      }
+        afterEnter(data) {
+          afterProjectEnter()
+        },
+        afterLeave(data) {
+          afterProjectLeave()
+        },
+        beforeEnter(data) {
+          beforeProjectEnter()
+        },
+        beforeLeave(data) {
+          // console.log('before leave project', data)
+        }
     }]
   })
 }
 
 // --- init ---
 $(document).ready(function() {
+  initIntro()
   initHandlers()
   initRoutes()
 })
 
-const local_check = localStorage.getItem('typed_off');
 
-if (local_check !== 'true') {
-  const typed_text = document.querySelector('.intro');
-  typed_text.classList.add('active');
 
-  const typed = new Typed('#typed', {
-    stringsElement: '#typed-strings',
-    typeSpeed: 70,
-     cursorChar: 'D_D',
-  });
-  
-  typed_text.addEventListener('click', typed_off);
-  
-  function typed_off() {
-    localStorage.setItem('typed_off', true);
-    typed_text.classList.remove('active');
-  }
-}

@@ -3,3 +3,10 @@ Title: Kites
 ----
 
 Text: Text for Kites
+
+----
+
+Files:
+
+- lines.jpg
+- type.png

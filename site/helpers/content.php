@@ -1,7 +1,7 @@
 <?php
   class Content {
     public $current_words = [];
-    public function returnWords($names) {
+    public function return_words($names) {
       $namesArr = [];
       foreach ($names as $name) {
         // each item in array is object
@@ -16,9 +16,9 @@
       $this->current_words[] = $namesArr[$random_index]->last_word->value();
       return $this->current_words; 
     }
-    public function returnFiles($files) {
+    public function return_tagged_files($files) {
       // create object representation of each file + create array from them
-      $filesArr = [];
+      $tagged_files_arr = [];
       foreach ($files as $file) {
         // if the file contains tags (array intersects) with the current_words array 
         // include this in the data 
@@ -30,9 +30,23 @@
           $fileObj->project = $file->page()->slug();
           $fileObj->url = $file->url();
           $fileObj->tags = $file->tags()->split(',');
-          $filesArr[] = $fileObj;
+          $tagged_files_arr[] = $fileObj;
         }
       }
-      return $filesArr;
+      return $tagged_files_arr;
+    }
+    public function return_all_files($files) {
+      // create object representation of each file + create array from them
+      $files_arr = [];
+      foreach ($files as $file) {
+        $fileObj = new stdClass();
+        $fileObj->id = $file->id();
+        $fileObj->type = $file->type();
+        $fileObj->project = $file->page()->slug();
+        $fileObj->url = $file->url();
+        $fileObj->tags = $file->tags()->split(',');
+        $files_arr[] = $fileObj;
+      }
+      return $files_arr;
     }
   }

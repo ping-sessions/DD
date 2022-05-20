@@ -3,3 +3,9 @@ Title: Disabura Radio
 ----
 
 Text: Text for disabura radio
+
+----
+
+Files:
+
+- gretchen-bender.jpeg

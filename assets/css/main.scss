@@ -220,3 +220,25 @@ html,body {
 
     
 }
+
+
+.selector {
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  z-index: 2;
+  background: orange;
+  opacity: .8;
+  &.hidden {
+    display: none;
+  }
+}
+
+
+.selector__name {
+  cursor: pointer;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}

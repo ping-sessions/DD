@@ -43,15 +43,17 @@
       </div>
     </header>
 
+    <!-- DD selector overlay -->
+    <?php snippet('selector') ?>
+
     <!-- get random content -->
     <div class = 'content projects'>
-      <!-- $files variable is set in controller -->
-      <?php foreach ($files as $fileObj) : ?>
+      <!-- $tagged_files variable is set in controller -->
+      <?php foreach ($tagged_files as $fileObj) : ?>
         <?php snippet('file', ['fileObj' => $fileObj]) ?>
       <?php endforeach ?>
     </div>
   
   </div>
 
-  <!-- <button class="load-more" accesskey="m">Load new result</button> -->
   <main data-barba="container" data-barba-namespace="<?= $page->template() ?>">
