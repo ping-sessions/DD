@@ -192,7 +192,11 @@ function initIntro() {
     function typed_off() {
       localStorage.setItem('typed_off', true)
       typed_text.classList.remove('active')
+      document.querySelector('.index').classList.add('active')
     }
+  }
+  else {
+    document.querySelector('.index').classList.add('active')
   }
 }
 

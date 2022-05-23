@@ -66,11 +66,16 @@ html,body {
   }
   
   .index {
+      opacity: 0;
     transition: filter .25s linear;
     display: flex;
     float: none;
     flex-direction: column;
     width: 100vw;
+
+    &.active {
+        opacity: 1;
+    }
   }
 
   .fix {
@@ -386,14 +391,12 @@ img {
     height: 100vh;
     font-size: 4rem;
       /*Fallback if gradeints don't work */
-  background: #9b59b6;
+  background: transparent;
   opacity: 0;
+  color:#fff;
   pointer-events: none;
   transition: all 0.7s ease-in-out;
   /*Linear gradient... */
-  background: 
-    radial-gradient(
-     at center, #4F4F4F, #268F56);
 
      &.active {
         transition: all 0s ease-in-out;

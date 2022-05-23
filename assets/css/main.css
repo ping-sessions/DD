@@ -55,6 +55,7 @@ html, body {
 }
 
 .index {
+  opacity: 0;
   -webkit-transition: -webkit-filter .25s linear;
   transition: -webkit-filter .25s linear;
   transition: filter .25s linear;
@@ -68,6 +69,10 @@ html, body {
       -ms-flex-direction: column;
           flex-direction: column;
   width: 100vw;
+}
+
+.index.active {
+  opacity: 1;
 }
 
 .fix {
@@ -427,13 +432,13 @@ h1, h2, h3, h4, h5 {
   height: 100vh;
   font-size: 4rem;
   /*Fallback if gradeints don't work */
-  background: #9b59b6;
+  background: transparent;
   opacity: 0;
+  color: #fff;
   pointer-events: none;
   -webkit-transition: all 0.7s ease-in-out;
   transition: all 0.7s ease-in-out;
   /*Linear gradient... */
-  background: radial-gradient(at center, #4F4F4F, #268F56);
 }
 
 .intro.active {
