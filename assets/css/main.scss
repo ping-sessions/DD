@@ -52,6 +52,7 @@ button {
 
 
 html,body {
+    cursor: none;
     background: radial-gradient(50% 50% at 50% 50%, #268F56 64.75%, rgba(79, 79, 79, 0.66) 100%) fixed;
     margin: 0;
     padding: 0;
@@ -228,6 +229,41 @@ img {
     }
   }
 
+  .cursor {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 100%;
+    transition: all 200ms ease-out;
+    position: fixed;
+    z-index: 10;
+    pointer-events: none;
+    left: 0;
+    top: 0;
+    transform: translate(calc(-50% + 15px), -50%);
+  
+  
+  }
+
+  .cursor2 {
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    z-index: 10;
+    background-color: black;
+    opacity: 0 !important;
+    position: fixed;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    transition: width .3s, height .3s, opacity .3s;
+  }
+
+
+  .cursor img {
+    width: 3rem;
+    height: 3rem;
+    margin-top: -1.5rem;
+    transition: width 0.3s height 0.3s;
+  }
   
   
   .barba-leave-active,

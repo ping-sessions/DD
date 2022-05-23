@@ -22,6 +22,8 @@
   <div class="fix"></div>
 
 
+
+
   <!-- content that is always visible: tidy this up -->
 
   <div class = 'index'>
@@ -61,4 +63,5 @@
   
   </div>
   <?php snippet('shapes') ?>
+  
   <main data-barba="container" data-barba-namespace="<?= $page->template() ?>">

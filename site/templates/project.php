@@ -6,7 +6,7 @@
   <?= $page->title() ?>
 </div>
 
-<button class="close-project">Discontinue</button>
+<a href="<?= $site->url()?>" class="close-project">Discontinue</a>
 
   <div class = 'project-slider'>
     <?php foreach ($page->files() as $file) : ?>

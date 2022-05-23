@@ -117,10 +117,18 @@ function initHandlers() {
   })
   
 
+  function customcursor(e) {
+    var cursor = document.querySelector('.cursor');
+    var x = e.clientX;
+    var y = e.clientY;
+    cursor.style.transform = `translate3d(calc(${e.clientX}px - 50%), calc(${e.clientY}px - 50%), 0)`
+  }
+
   // open up dd selection
   const selectButton = $('.dd-select')
   selectButton.on('click', function(e) {
     $('.selector').removeClass('hidden')
+    document.addEventListener("mousemove", customcursor);
   })
 
 
@@ -130,7 +138,8 @@ function initHandlers() {
     $('.selector').addClass('hidden')
     let dataTags = $(this).attr('data-tags')
     let tagsArray = dataTags.split(", ")
-    getData(false, tagsArray)
+    getData(false, tagsArray);
+    document.removeEventListener("mousemove", customcursor);
   })
 }
 
@@ -155,6 +164,10 @@ $(document).mousemove(function(event) {
 	$(document).mousemove(function (e) {
 			$(".pointer").css({ left: e.pageX, top: e.pageY });
 		});
+
+
+
+
 
 
 
@@ -267,6 +280,8 @@ $(document).ready(function() {
   initHandlers()
   initRoutes()
 })
+
+
 
 
 

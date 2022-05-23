@@ -1,4 +1,6 @@
 <div class = 'selector hidden'>
+<div class="cursor"><img  src="https://saschakrischock.com/kiev/dd_sticker.svg"></div>
+<div class="cursor2"></div>
 <div class="show-title"></div>
 <div class="instructions">Decide DD</div>
 <div class="grid">
