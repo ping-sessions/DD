@@ -97,6 +97,7 @@ html,body {
   .header {
     position: fixed;
     top: 0;
+    z-index: 1;
     width: 100%;
     mix-blend-mode: lighten;
     display: flex;
@@ -183,7 +184,22 @@ html,body {
   }
 
   .slick-slide {
-    margin: 0 5vw;
+    display: none;
+    flex-direction: column;
+    float: left;
+    position: relative;
+    display: flex !important;
+    height: 80vh;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 1px;
+    margin: 0 1vw;
+    color: #fff;
+
+    audio {
+        margin-bottom: 0.5rem;
+    }
 
     img {
         height: 70vh;
@@ -256,16 +272,46 @@ img {
     mix-blend-mode: overlay;
     width: 45vw;
     height: 40rem;
-    overflow: hidden;
     float: left;
     position: relative;
     transition: opacity 1s ease-in-out;
 
-    a,img {
+    &:hover {
+        .projects__item__title {
+            opacity: 1;
+        }
+    }
+
+    &__title {
+        color: #fff;
+        font-size: 2rem;
+        opacity: 0;
+        transition: all 0.3s ease-in-out;
+        text-align: center;
+        left: 50%;
+        font-family: 'EB Garamond';
+        top: 50%;
+        position: absolute;
+        transform: translate(-50%);
+    }
+
+    a {
+        position: absolute;
+        justify-content: center;
+        display: flex;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        text-decoration: none;
+    }
+
+    img {
+        text-decoration: none;
         mix-blend-mode: normal;
         filter: grayscale(2);
-        width: 100%;
-        max-width: none;
+        width: auto;
+        margin: 0 auto;
+        max-width: 40vw;
         object-fit: cover;
         height: 100%;
         mix-blend-mode: lighten;
@@ -331,7 +377,7 @@ img {
   position: fixed;
   z-index: 2;
   background: radial-gradient(circle, rgba(255,255,255,1) 62%, rgba(174,126,202,1) 100%);
-  opacity: .8;
+  opacity: .9;
   &.hidden {
     display: none;
   }
@@ -370,10 +416,10 @@ border: 1px solid;
   .instructions {
     position: fixed;
      top: 1rem;
-    left: 50%;
+     color: #fff;
+    left: 1rem;
           font-family: 'KTF Rublena Solid';
-       transform: translateX(-50%);
-    font-size: 2rem;
+    font-size: 3rem;
   }
 
 

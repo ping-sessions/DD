@@ -1,6 +1,6 @@
 <div class = 'selector hidden'>
 <div class="show-title"></div>
-<div class="instructions">Choose DD</div>
+<div class="instructions">Decide DD</div>
 <div class="grid">
   <?php $names = $page->names()->toStructure()->shuffle(); ?>
   <?php foreach ($names as $name) : ?>

@@ -96,6 +96,7 @@ h1, h2, h3, h4, h5 {
 .header {
   position: fixed;
   top: 0;
+  z-index: 1;
   width: 100%;
   mix-blend-mode: lighten;
   display: -webkit-box;
@@ -201,7 +202,31 @@ h1, h2, h3, h4, h5 {
 }
 
 .slick-slide {
-  margin: 0 5vw;
+  display: none;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  float: left;
+  position: relative;
+  display: -webkit-box !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+  height: 80vh;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  min-height: 1px;
+  margin: 0 1vw;
+  color: #fff;
+}
+
+.slick-slide audio {
+  margin-bottom: 0.5rem;
 }
 
 .slick-slide img {
@@ -280,19 +305,55 @@ h1, h2, h3, h4, h5 {
   mix-blend-mode: overlay;
   width: 45vw;
   height: 40rem;
-  overflow: hidden;
   float: left;
   position: relative;
   -webkit-transition: opacity 1s ease-in-out;
   transition: opacity 1s ease-in-out;
 }
 
-.projects__item a, .projects__item img {
+.projects__item:hover .projects__item__title {
+  opacity: 1;
+}
+
+.projects__item__title {
+  color: #fff;
+  font-size: 2rem;
+  opacity: 0;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  text-align: center;
+  left: 50%;
+  font-family: 'EB Garamond';
+  top: 50%;
+  position: absolute;
+  -webkit-transform: translate(-50%);
+          transform: translate(-50%);
+}
+
+.projects__item a {
+  position: absolute;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+}
+
+.projects__item img {
+  text-decoration: none;
   mix-blend-mode: normal;
   -webkit-filter: grayscale(2);
           filter: grayscale(2);
-  width: 100%;
-  max-width: none;
+  width: auto;
+  margin: 0 auto;
+  max-width: 40vw;
   -o-object-fit: cover;
      object-fit: cover;
   height: 100%;
@@ -351,7 +412,7 @@ h1, h2, h3, h4, h5 {
   position: fixed;
   z-index: 2;
   background: radial-gradient(circle, white 62%, #ae7eca 100%);
-  opacity: .8;
+  opacity: .9;
 }
 
 .selector.hidden {
@@ -392,11 +453,10 @@ h1, h2, h3, h4, h5 {
 .instructions {
   position: fixed;
   top: 1rem;
-  left: 50%;
+  color: #fff;
+  left: 1rem;
   font-family: 'KTF Rublena Solid';
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
-  font-size: 2rem;
+  font-size: 3rem;
 }
 
 .selector__name {

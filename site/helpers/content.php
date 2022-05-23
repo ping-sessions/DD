@@ -27,6 +27,7 @@
           $fileObj = new stdClass();
           $fileObj->id = $file->id();
           $fileObj->type = $file->type();
+          $fileObj->project_title = $file->page()->title();
           $fileObj->project = $file->page()->slug();
           $fileObj->url = $file->url();
           $fileObj->tags = $file->tags()->split(',');
@@ -42,6 +43,7 @@
         $fileObj = new stdClass();
         $fileObj->id = $file->id();
         $fileObj->type = $file->type();
+        $fileObj->project_title = $file->page()->title();
         $fileObj->project = $file->page()->slug();
         $fileObj->url = $file->url();
         $fileObj->tags = $file->tags()->split(',');

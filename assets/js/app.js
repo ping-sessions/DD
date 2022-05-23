@@ -209,7 +209,7 @@ function beforeProjectEnter() {
   $('.project-slider').slick({
     autoplay: false,
     centerMode: true,
-    centerPadding: '10vw',
+    centerPadding: '5vw',
     slidesToShow: 1
   });
 }
