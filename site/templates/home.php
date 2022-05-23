@@ -4,8 +4,8 @@
 <?php snippet('intro') ?>
 
 <!-- svg clip paths (for css) -->
-<?php snippet('shapes') ?>
 
+<div class = 'project-overlay'></div>
 
 <style>
 * > img {

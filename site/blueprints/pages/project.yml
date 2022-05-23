@@ -1,9 +1,16 @@
 title: Project
 fields:
+  year:
+    type: text
+  media:
+    type: text
   text:
-    label: Text
+    label: Description
     type: textarea
     size: large
+  participants:
+    type: text
+    size: medium
   files: 
     label: Files
     type: files

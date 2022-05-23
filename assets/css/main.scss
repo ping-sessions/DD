@@ -55,6 +55,8 @@ html,body {
     background: radial-gradient(50% 50% at 50% 50%, #268F56 64.75%, rgba(79, 79, 79, 0.66) 100%) fixed;
     margin: 0;
     padding: 0;
+    width: 100vw;
+    overflow-x: hidden;
     font-family: 'KTF Rublena Solid';
   }
   
@@ -64,6 +66,21 @@ html,body {
   
   .index {
     transition: filter .25s linear;
+    display: flex;
+    float: none;
+    flex-direction: column;
+    width: 100vw;
+  }
+
+  .fix {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    z-index: 0;
+    left: 0;
+  background: rgb(255,255,255);
+  background: linear-gradient(180deg, rgba(255,255,255,0.5032606792717087) 0%, rgba(174,126,202,1) 19%, rgba(255,255,255,1) 36%, rgba(174,126,202,1) 71%, rgba(174,126,202,1) 100%, rgba(174,126,202,1) 100%);
   }
 
   h1,h2,h3,h4,h5 {
@@ -72,13 +89,16 @@ html,body {
   
   .index.blurred {
     filter: blur(5px);
+    height: 100vh;
+    overflow: hidden;
   }
   
   /* global */
   .header {
-    position: sticky;
+    position: fixed;
     top: 0;
     width: 100%;
+    mix-blend-mode: lighten;
     display: flex;
     justify-content: space-between;
     padding-top: 1rem;
@@ -92,7 +112,7 @@ html,body {
   }
   
   .header button {
-      margin-bottom: 1rem;
+      margin-bottom: 0.5rem;
     cursor: pointer;
   }
   
@@ -118,7 +138,7 @@ html,body {
   
   /* project */
   .project-overlay {
-    position: absolute;
+    position: fixed;
     overflow-y: scroll;
     top: 0;
     left: 0;
@@ -127,10 +147,71 @@ html,body {
     background: rgba(255, 255, 255, 0.5);
     z-index: 2;
   }
+
+  .close-project {
+      position: fixed;
+      right: 1rem;
+      mix-blend-mode: lighten;
+      top: 1rem;
+      cursor: pointer;
+      z-index: 10;
+  }
+
+  .project-title {
+      position: fixed;
+      top: 1rem;
+      left: 1rem;
+      z-index: 10;
+      color: #fff;
+      font-size: 3rem;
+  }
+
+  .project-info {
+      max-width: 70vw;
+      font-size: 1.5rem;
+      line-height: 1.2;
+      font-family: 'EB Garamond';
+      margin: 5rem auto;
+  }
   
   .project-overlay .project-info {
     color: white;
   }
+
+  .slick-prev, .slick-next {
+      display: none !important;
+  }
+
+  .slick-slide {
+    margin: 0 5vw;
+
+    img {
+        height: 70vh;
+        object-fit: contain;
+    }
+  }
+
+  .slick-slider {
+      opacity: 0;
+      pointer-events: none;
+    margin-top: 5rem;
+    transition: all 0.3s ease-in-out;
+
+    img {
+        opacity: 0;
+    }
+
+    &.slick-initialized {
+opacity: 1;
+pointer-events: inherit;
+
+img {
+    opacity: 1;
+}
+
+    }
+  }
+
   
   
   .barba-leave-active,
@@ -148,14 +229,31 @@ html,body {
     opacity: 0;
   }
 
+  .project-page {
+      .project-overlay {
+          opacity: 1;
+          pointer-events: inherit;
+      }
+  }
+
+  .project-overlay {
+      opacity: 0;
+      background: linear-gradient(180deg, #ae7ecade 0%, white 100%);
+      pointer-events: none;
+      transition-delay: 0.7s;
+      transition: all 0.7s ease-in-out;
+  }
+
     
   .projects {
     display: flex;
+    margin-top: 12vw;
     margin-bottom: 4rem;
     flex-direction: column;
 
     &__item {
     height: 100%;
+    mix-blend-mode: overlay;
     width: 45vw;
     height: 40rem;
     overflow: hidden;
@@ -164,22 +262,25 @@ html,body {
     transition: opacity 1s ease-in-out;
 
     a,img {
-        width: 80%;
+        mix-blend-mode: normal;
+        filter: grayscale(2);
+        width: 100%;
         max-width: none;
         object-fit: cover;
-        height: 80%;
+        height: 100%;
         mix-blend-mode: lighten;
     }
 
     &:nth-child(even) {
-        margin-top: -20rem;
+        margin-top: -20vw;
+        margin-left: 3vw;
  
     }
 
         &:nth-child(odd) {
-            margin-top: 0;
-            width: 40vw;
-            margin-right: 0;
+            margin-top: -10vw;
+            width: 48vw;
+            margin-right: 3vw;
             margin-left: auto;
         }
     }
@@ -229,12 +330,51 @@ html,body {
   width: 100%;
   position: fixed;
   z-index: 2;
-  background: orange;
+  background: radial-gradient(circle, rgba(255,255,255,1) 62%, rgba(174,126,202,1) 100%);
   opacity: .8;
   &.hidden {
     display: none;
   }
 }
+
+.grid {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  }
+  
+  .grid div {
+    height: 14.5vh;font-size: 0;
+border: 1px solid;
+    
+  }
+  
+  
+  .show-title {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    background: -webkit-linear-gradient(#ddd, #dfa6ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: #cf7aff0d;
+        font-family: 'KTF Rublena Solid';
+      transform: translateY(-50%) translateX(-50%);
+    font-size: 6rem;
+    text-align: center;
+    z-index: 1000;
+    pointer-events: none;
+    width: 100vw;
+  }
+  
+  
+  .instructions {
+    position: fixed;
+     top: 1rem;
+    left: 50%;
+          font-family: 'KTF Rublena Solid';
+       transform: translateX(-50%);
+    font-size: 2rem;
+  }
 
 
 .selector__name {

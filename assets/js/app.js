@@ -134,6 +134,30 @@ function initHandlers() {
   })
 }
 
+for (const cell of document.querySelectorAll(".grid div")) {
+  cell.addEventListener('mouseover', function(event) {
+  var thiscell = cell.textContent;
+    document.querySelector('.show-title').text = '';
+    document.querySelector('.show-title').innerText = thiscell;
+ })
+};
+
+$(document).mousemove(function(event) {
+  windowWidth = $(window).width();
+  windowHeight = $(window).height();
+  
+  mouseXpercentage = Math.round(event.pageX / windowWidth * 100);
+  mouseYpercentage = Math.round(event.pageY / windowHeight * 100);
+  
+  $('.fix').css('background', 'radial-gradient(at ' + mouseXpercentage + '% ' + mouseYpercentage + '%, #ae7eca, #fff)');
+});
+
+	$(document).mousemove(function (e) {
+			$(".pointer").css({ left: e.pageX, top: e.pageY });
+		});
+
+
+
 
 
 // --- local storage stuff --
@@ -163,7 +187,17 @@ function initIntro() {
 
 // --- route fns ---
 function afterProjectEnter() {
-    $('.project-slider').on('init', function(event, slick) {
+  
+}
+
+function afterProjectLeave() {
+  $('.index').removeClass('blurred')
+}
+
+function beforeProjectEnter() {
+  $('.index').addClass('blurred')
+
+  $('.project-slider').on('init', function(event, slick) {
     var selectedSlide = $('.project-slider').find('[data-url="' + selectedFile + '"]:not(.slick-cloned)');
     var selectedSlideIndex = selectedSlide.data('slick-index')
     // this is a bit messy; better to find the index 1st + initialize slider with initialSlide
@@ -175,17 +209,9 @@ function afterProjectEnter() {
   $('.project-slider').slick({
     autoplay: false,
     centerMode: true,
-    centerPadding: '25vw',
+    centerPadding: '10vw',
     slidesToShow: 1
   });
-}
-
-function afterProjectLeave() {
-  $('.index').removeClass('blurred')
-}
-
-function beforeProjectEnter() {
-  $('.index').addClass('blurred')
 }
 
 function initRoutes() {
@@ -222,6 +248,17 @@ function initRoutes() {
         }
     }]
   })
+
+
+  barba.hooks.beforeEnter((data) => {
+    console.log('yes');
+    // Set <body> classes for "next" page
+    var nextHtml = data.next.html;
+    var response = nextHtml.replace(/(<\/?)body( .+?)?>/gi, '$1notbody$2>', nextHtml);
+    var bodyClasses = $(response).filter('notbody').attr('class');
+    $("body").attr("class", bodyClasses);
+
+});
 }
 
 // --- init ---

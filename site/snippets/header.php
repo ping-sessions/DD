@@ -15,7 +15,12 @@
 
 
 
-<body data-barba="wrapper">
+
+
+<body class=" <?php if ($page->template() == 'project'):?> project-page <?php endif?> <?= $page->slug() ?>-page" data-barba="wrapper">
+
+  <div class="fix"></div>
+
 
   <!-- content that is always visible: tidy this up -->
 
@@ -38,7 +43,7 @@
           Decide DD
         </button>
         <button class = 'dd-random' accesskey="m">
-          Random DD
+          Do DD
         </button>
       </div>
     </header>
@@ -55,5 +60,5 @@
     </div>
   
   </div>
-
+  <?php snippet('shapes') ?>
   <main data-barba="container" data-barba-namespace="<?= $page->template() ?>">
