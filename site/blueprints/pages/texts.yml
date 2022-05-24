@@ -1,0 +1,10 @@
+title: Texts
+columns:
+  pages:
+    width: 1/2
+    sections:
+      texts:
+        type: pages
+        limit: 100000
+        template:
+          - text

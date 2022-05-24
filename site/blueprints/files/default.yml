@@ -1,7 +1,7 @@
 title: File
 columns:
   main:
-    width: 1/2
+    width: 1/1
     sections:
       content:
         type: fields
@@ -9,8 +9,14 @@ columns:
           tags:
             label: Tags
             type: checkboxes
+            width: 1/2
             options: query
             query:
               fetch: site.find('home').words.split
               text: "{{ arrayItem.value }}"
               value: "{{ arrayItem.value }}"
+          text:
+            label: Text
+            width: 1/2
+            type: textarea
+            size: medium

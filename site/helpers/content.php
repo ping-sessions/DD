@@ -16,6 +16,21 @@
       $this->current_words[] = $namesArr[$random_index]->last_word->value();
       return $this->current_words; 
     }
+    // public function return_text_snippets($pages) {
+      // $snippetsArr = [];
+      // foreach ($pages as $page) {
+      //   // each item in array is object
+      //   $nameObj = new stdClass();
+      //   $nameObj->first_word = $name->first_word();
+      //   $nameObj->last_word = $name->last_word();
+      //   $namesArr[] = $nameObj;
+      // }
+      // // generate random number for index of array
+      // $random_index = rand(0, (count($namesArr) - 1));
+      // $this->current_words[] = $namesArr[$random_index]->first_word->value();
+      // $this->current_words[] = $namesArr[$random_index]->last_word->value();
+      // return $this->current_words; 
+    // }
     public function return_tagged_files($files) {
       // create object representation of each file + create array from them
       $tagged_files_arr = [];
@@ -27,7 +42,7 @@
           $fileObj = new stdClass();
           $fileObj->id = $file->id();
           $fileObj->type = $file->type();
-          $fileObj->project_title = $file->page()->title();
+          $fileObj->project_title = $file->page()->title()->value();
           $fileObj->project = $file->page()->slug();
           $fileObj->url = $file->url();
           $fileObj->position = $file->indexOf();
@@ -45,7 +60,7 @@
         $fileObj = new stdClass();
         $fileObj->id = $file->id();
         $fileObj->type = $file->type();
-        $fileObj->project_title = $file->page()->title();
+        $fileObj->project_title = $file->page()->title()->value();
         $fileObj->project = $file->page()->slug();
         $fileObj->url = $file->url();
         $fileObj->position = $file->indexOf();
