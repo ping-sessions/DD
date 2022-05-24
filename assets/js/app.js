@@ -289,8 +289,18 @@ function initRoutes() {
 
 
   barba.hooks.beforeEnter((data) => {
+
+
+    var nextHtml = data.next.html
+    var response = nextHtml.replace(/(<\/?)body( .+?)?>/gi, '$1notbody$2>', nextHtml);
+    var bodyClasses = $(response).filter('notbody').attr('class');
+    $("body").attr("class", bodyClasses);
+
+
+
     if (document.querySelector('.swiper') != null) {
     const position = data.trigger.getAttribute('data-position');
+
 
     const swiper = new Swiper('.swiper', {
       // Optional parameters
@@ -321,11 +331,7 @@ function initRoutes() {
       },
     });
   }
-    // Set <body> classes for "next" page
-    var nextHtml = data.next.html;
-    var response = nextHtml.replace(/(<\/?)body( .+?)?>/gi, '$1notbody$2>', nextHtml);
-    var bodyClasses = $(response).filter('notbody').attr('class');
-    $("body").attr("class", bodyClasses);
+
   });
 }
 
