@@ -30,6 +30,8 @@
           $fileObj->project_title = $file->page()->title();
           $fileObj->project = $file->page()->slug();
           $fileObj->url = $file->url();
+          $fileObj->position = $file->indexOf();
+          $fileObj->resize = $file->resize(1200);
           $fileObj->tags = $file->tags()->split(',');
           $tagged_files_arr[] = $fileObj;
         }
@@ -46,6 +48,8 @@
         $fileObj->project_title = $file->page()->title();
         $fileObj->project = $file->page()->slug();
         $fileObj->url = $file->url();
+        $fileObj->position = $file->indexOf();
+        $fileObj->resize = $file->resize(1200);
         $fileObj->tags = $file->tags()->split(',');
         $files_arr[] = $fileObj;
       }

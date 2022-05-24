@@ -201,6 +201,36 @@ function initIntro() {
 }
 
 
+if (document.querySelector('.swiper') != null) {
+const swiper = new Swiper('.swiper', {
+  // Optional parameters
+  loop: false,
+
+  slidesPerView: 1.5,
+  centeredSlides: true,
+
+  // If we need pagination
+  pagination: {
+    el: ".swiper-pagination",
+    clickable: true,
+    renderBullet: function (index, className) {
+      return '<span class="' + className + '">'+'('+ (index + 1) + ')' + "</span>";
+    },
+  },
+
+  // Navigation arrows
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  },
+
+  // And if we need scrollbar
+  scrollbar: {
+    el: '.swiper-scrollbar',
+  },
+});
+}
+
 
 // --- route fns ---
 function afterProjectEnter() {
@@ -214,21 +244,6 @@ function afterProjectLeave() {
 function beforeProjectEnter() {
   $('.index').addClass('blurred')
 
-  $('.project-slider').on('init', function(event, slick) {
-    var selectedSlide = $('.project-slider').find('[data-url="' + selectedFile + '"]:not(.slick-cloned)');
-    var selectedSlideIndex = selectedSlide.data('slick-index')
-    // this is a bit messy; better to find the index 1st + initialize slider with initialSlide
-    // rather than sliding to it like this
-    setTimeout(function() {
-      $('.project-slider').slick('slickGoTo', selectedSlideIndex)
-    }, 250)
-  })
-  $('.project-slider').slick({
-    autoplay: false,
-    centerMode: true,
-    centerPadding: '5vw',
-    slidesToShow: 1
-  });
 }
 
 function initRoutes() {
@@ -268,7 +283,38 @@ function initRoutes() {
 
 
   barba.hooks.beforeEnter((data) => {
-    console.log('yes');
+    if (document.querySelector('.swiper') != null) {
+    const position = data.trigger.getAttribute('data-position');
+
+    const swiper = new Swiper('.swiper', {
+      // Optional parameters
+      loop: false,
+  
+      slidesPerView: 1.5,
+      centeredSlides: true,
+      initialSlide: position,
+    
+      // If we need pagination
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+        renderBullet: function (index, className) {
+          return '<span class="' + className + '">'+'('+ (index + 1) + ')' + "</span>";
+        },
+      },
+    
+      // Navigation arrows
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+    
+      // And if we need scrollbar
+      scrollbar: {
+        el: '.swiper-scrollbar',
+      },
+    });
+  }
     // Set <body> classes for "next" page
     var nextHtml = data.next.html;
     var response = nextHtml.replace(/(<\/?)body( .+?)?>/gi, '$1notbody$2>', nextHtml);
