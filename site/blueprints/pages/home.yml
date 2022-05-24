@@ -5,9 +5,10 @@ columns:
     sections:
       pages:
         type: pages
-        limit: 100000
+        limit: 2
         template:
           - projects
+          - texts
   dd:
     width: 1/2
     sections:

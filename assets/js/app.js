@@ -102,7 +102,14 @@ function renderData(content) {
   for (var i = 0; i < content.length; i++) {
     let projectUrl = '/home/projects/' + content[i].project
     let fileUrl = content[i].url 
-    let el = '<div class="projects__item clip1"><a href=' + projectUrl + '><img src =' + fileUrl + '></a></div>'
+    let el 
+    // markup must match file.php snippet
+    if (content[i].type == 'image') {
+      el = '<div class="projects__item clip1"><a href=' + projectUrl + '><img src =' + fileUrl + '><div class="projects__item__title">' + content[i].project_title + '</div></a></div>'
+    }
+    else if (content[i].type == 'audio') {
+      el = '<div class="projects__item clip1"><a href=' + projectUrl + '><audio controls><source src =' + fileUrl + ' type="audio/mpeg"></audio><div class="projects__item__title">' + content[i].project_title + '</div></a></a></div>'
+    }
     container.append(el)
   }
 }
@@ -117,58 +124,57 @@ function initHandlers() {
   })
   
 
-  function customcursor(e) {
+  function cursorSelect(e) {
     var cursor = document.querySelector('.cursor');
     var x = e.clientX;
     var y = e.clientY;
     cursor.style.transform = `translate3d(calc(${e.clientX}px - 50%), calc(${e.clientY}px - 50%), 0)`
   }
 
-  // open up dd selection
+  function initSelectionGrid() {
+    for (const cell of document.querySelectorAll(".grid div")) {
+      cell.addEventListener('mouseover', function(event) {
+        var thiscell = cell.textContent;
+        document.querySelector('.show-title').text = '';
+        document.querySelector('.show-title').innerText = thiscell;
+      })
+    }
+  }
+
+  // init
+  initSelectionGrid()
+
+  // open selector (grid) + bind mouse event
   const selectButton = $('.dd-select')
   selectButton.on('click', function(e) {
     $('.selector').removeClass('hidden')
-    document.addEventListener("mousemove", customcursor);
+    document.addEventListener('mousemove', cursorSelect)
   })
 
 
-  // temp 
+  // make selection + remove mouse event when made
   const selectorName = $('.selector__name')
   selectorName.on('click', function(e) {
     $('.selector').addClass('hidden')
     let dataTags = $(this).attr('data-tags')
     let tagsArray = dataTags.split(", ")
-    getData(false, tagsArray);
-    document.removeEventListener("mousemove", customcursor);
+    getData(false, tagsArray)
+    document.removeEventListener('mousemove', cursorSelect);
   })
+
+  $(document).mousemove(function(event) {
+    windowWidth = $(window).width()
+    windowHeight = $(window).height()
+    mouseXpercentage = Math.round(event.pageX / windowWidth * 100)
+    mouseYpercentage = Math.round(event.pageY / windowHeight * 100)
+    $('.fix').css('background', 'radial-gradient(at ' + mouseXpercentage + '% ' + mouseYpercentage + '%, #ae7eca, #fff)')
+  });
+
+  $(document).mousemove(function (e) {
+    $(".pointer").css({ left: e.pageX, top: e.pageY });
+  });
+
 }
-
-for (const cell of document.querySelectorAll(".grid div")) {
-  cell.addEventListener('mouseover', function(event) {
-  var thiscell = cell.textContent;
-    document.querySelector('.show-title').text = '';
-    document.querySelector('.show-title').innerText = thiscell;
- })
-};
-
-$(document).mousemove(function(event) {
-  windowWidth = $(window).width();
-  windowHeight = $(window).height();
-  
-  mouseXpercentage = Math.round(event.pageX / windowWidth * 100);
-  mouseYpercentage = Math.round(event.pageY / windowHeight * 100);
-  
-  $('.fix').css('background', 'radial-gradient(at ' + mouseXpercentage + '% ' + mouseYpercentage + '%, #ae7eca, #fff)');
-});
-
-	$(document).mousemove(function (e) {
-			$(".pointer").css({ left: e.pageX, top: e.pageY });
-		});
-
-
-
-
-
 
 
 
@@ -274,8 +280,7 @@ function initRoutes() {
     var response = nextHtml.replace(/(<\/?)body( .+?)?>/gi, '$1notbody$2>', nextHtml);
     var bodyClasses = $(response).filter('notbody').attr('class');
     $("body").attr("class", bodyClasses);
-
-});
+  });
 }
 
 // --- init ---

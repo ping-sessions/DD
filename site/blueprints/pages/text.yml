@@ -1,0 +1,11 @@
+title: Text
+fields:
+  year:
+    type: text
+  text:
+    label: Description
+    type: textarea
+    size: large
+  participants:
+    type: text
+    size: medium
