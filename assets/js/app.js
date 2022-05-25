@@ -20,6 +20,8 @@ var contains = function (arr1, arr2) {
 }
 
 
+
+
 // --- api stuf ---
 function getData(random, tags) {
   $.ajax({
@@ -175,6 +177,29 @@ function initHandlers() {
   });
 
 }
+
+
+var mX, mY, distance,
+$distance = $('#distance span'),
+$element  = $('.projects__item');
+
+function calculateDistance(elem, mouseX, mouseY) {
+return Math.floor(Math.sqrt(Math.pow(mouseX - (elem.offset().left+(elem.width()/2)), 2) + Math.pow(mouseY - (elem.offset().top+(elem.height()/2)), 2)));
+}
+
+$(document).mousemove(function(e) {  
+mX = e.pageX;
+mY = e.pageY;
+$( ".projects__item" ).each(function() {
+  distance = calculateDistance($(this), -mX/4, -mY/4);
+$distance.text(distance);
+console.log(distance);
+$(this).css('transform', 'scale('+ (distance/2000) +') translateX(' +(-distance/800) +'px)');
+});
+
+});
+
+
 
 
 

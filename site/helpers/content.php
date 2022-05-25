@@ -45,6 +45,7 @@
           $fileObj->project_title = $file->page()->title()->value();
           $fileObj->project = $file->page()->slug();
           $fileObj->url = $file->url();
+          $fileObj->text = $file->text();
           $fileObj->position = $file->indexOf();
           $fileObj->resize = $file->resize(1200);
           $fileObj->tags = $file->tags()->split(',');
@@ -63,6 +64,7 @@
         $fileObj->project_title = $file->page()->title()->value();
         $fileObj->project = $file->page()->slug();
         $fileObj->url = $file->url();
+        $fileObj->text = $file->text();
         $fileObj->position = $file->indexOf();
         $fileObj->resize = $file->resize(1200);
         $fileObj->tags = $file->tags()->split(',');

@@ -360,9 +360,13 @@ h1, h2, h3, h4, h5 {
           flex-direction: column;
 }
 
+.projects__text {
+  font-size: 2rem;
+}
+
 .projects__item {
   height: 100%;
-  mix-blend-mode: overlay;
+  mix-blend-mode: darken;
   width: 45vw;
   height: 40rem;
   float: left;
@@ -409,8 +413,8 @@ h1, h2, h3, h4, h5 {
 .projects__item img {
   text-decoration: none;
   mix-blend-mode: normal;
-  -webkit-filter: grayscale(2);
-          filter: grayscale(2);
+  -webkit-filter: grayscale(2) contrast(2);
+          filter: grayscale(2) contrast(2);
   width: auto;
   margin: 0 auto;
   max-width: 40vw;

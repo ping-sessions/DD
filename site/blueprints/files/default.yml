@@ -16,7 +16,11 @@ columns:
               text: "{{ arrayItem.value }}"
               value: "{{ arrayItem.value }}"
           text:
-            label: Text
+            label: Caption/Text Snippet
             width: 1/2
             type: textarea
             size: medium
+          author:
+            width: 1/2
+            type: text
+            size: small

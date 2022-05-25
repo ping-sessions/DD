@@ -1,4 +1,12 @@
-Title: The Closest Thing to Home is the Supermarket
+Title: The Closest Thing to Home is the Supermarket 2
+
+----
+
+Year: 
+
+----
+
+Media: 
 
 ----
 
@@ -6,4 +14,10 @@ Text:
 
 ----
 
-Files: 
+Participants: 
+
+----
+
+Files:
+
+- closest-thing-1.rtf
