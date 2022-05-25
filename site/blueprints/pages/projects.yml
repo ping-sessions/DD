@@ -1,4 +1,11 @@
 title: Projects
+options:
+  changeStatus: false
+  changeTitle: false
+  changeSlug: false 
+  delete: false 
+  duplicate: false 
+  changeTemplate: false
 columns:
   pages:
     width: 1/2

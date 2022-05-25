@@ -1,12 +1,16 @@
-Title: The Closest Thing to Home is the Supermarket 2
+Title: The Closest Thing to Home is the Supermarket
 
 ----
 
-Year: 
+Text-toggle: true
 
 ----
 
-Media: 
+Year: 2021
+
+----
+
+Participants: Sarah El Saleh
 
 ----
 
@@ -14,10 +18,73 @@ Text:
 
 ----
 
-Participants: 
+Toggle: true
+
+----
+
+Media: 
 
 ----
 
 Files:
 
-- closest-thing-1.rtf
+- 
+  id: >
+    home/projects/the-closest-thing-to-home-is-the-supermarket/closest-thing-3.rtf
+  image:
+    back: pattern
+    color: blue-400
+    cover: false
+    icon: file-word
+    ratio: 3/2
+  info: ""
+  link: >
+    /pages/home+projects+the-closest-thing-to-home-is-the-supermarket/files/closest-thing-3.rtf
+  sortable: true
+  text: closest-thing-3.rtf
+  filename: closest-thing-3.rtf
+  dragText: '(file: closest-thing-3.rtf)'
+  type: document
+  url: >
+    http://localhost:8888/media/pages/home/projects/the-closest-thing-to-home-is-the-supermarket/f0d7461371-1653490316/closest-thing-3.rtf
+  uuid: closest-thing-3.rtf
+- 
+  id: >
+    home/projects/the-closest-thing-to-home-is-the-supermarket/closest-thing-1.rtf
+  image:
+    back: pattern
+    color: blue-400
+    cover: false
+    icon: file-word
+    ratio: 3/2
+  info: ""
+  link: >
+    /pages/home+projects+the-closest-thing-to-home-is-the-supermarket/files/closest-thing-1.rtf
+  sortable: true
+  text: closest-thing-1.rtf
+  filename: closest-thing-1.rtf
+  dragText: '(file: closest-thing-1.rtf)'
+  type: document
+  url: >
+    http://localhost:8888/media/pages/home/projects/the-closest-thing-to-home-is-the-supermarket/aba10778ce-1653490316/closest-thing-1.rtf
+  uuid: closest-thing-1.rtf
+- 
+  id: >
+    home/projects/the-closest-thing-to-home-is-the-supermarket/closest-thing-2.rtf
+  image:
+    back: pattern
+    color: blue-400
+    cover: false
+    icon: file-word
+    ratio: 3/2
+  info: ""
+  link: >
+    /pages/home+projects+the-closest-thing-to-home-is-the-supermarket/files/closest-thing-2.rtf
+  sortable: true
+  text: closest-thing-2.rtf
+  filename: closest-thing-2.rtf
+  dragText: '(file: closest-thing-2.rtf)'
+  type: document
+  url: >
+    http://localhost:8888/media/pages/home/projects/the-closest-thing-to-home-is-the-supermarket/bd1caea101-1653490316/closest-thing-2.rtf
+  uuid: closest-thing-2.rtf

@@ -1,16 +1,37 @@
 title: Project
-fields:
-  year:
-    type: text
-  media:
-    type: text
-  text:
-    label: Description
-    type: textarea
-    size: large
-  participants:
-    type: text
-    size: medium
+columns:
   files: 
-    label: Files
-    type: files
+    width: 1/2
+    sections:
+      files:
+        label: Files
+        type: files
+  fields:
+    width: 1/2
+    type: fields
+    fields:
+      text_toggle:
+        label: Text Page
+        type: toggle
+        default: false
+        text: 
+          - "No"
+          - "Yes"
+      year:
+        type: text
+      participants:
+        # type: text
+        # size: medium
+        label: Participants
+        type: checkboxes
+        options: query
+        query:
+          fetch: site.find('home').participants.split
+          text: "{{ arrayItem.value }}"
+          value: "{{ arrayItem.value }}"
+      # media:
+      #   type: text
+      text:
+        label: Description
+        type: textarea
+        size: large

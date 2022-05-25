@@ -1,2 +1,4 @@
 preset: pages
 unlisted: false
+unlisted: false
+drafts: false

@@ -30,7 +30,6 @@ function getData(random, tags) {
   })
   .done(function(data) {
     if (random) {
-      console.log('random')
       if (currentData.hasOwnProperty('current_words')) {
         // if words from new request are not same words currently stored 
         // handle the data (populate content)
@@ -47,7 +46,6 @@ function getData(random, tags) {
       }
     }
     else {
-      console.log('not random')
       handleData(data, tags)
     }
   })
@@ -112,10 +110,12 @@ function renderData(content) {
     else if (content[i].type == 'audio') {
       el = '<div class="projects__item clip1"><a href=' + projectUrl + '><audio controls><source src =' + fileUrl + ' type="audio/mpeg"></audio><div class="projects__item__title">' + content[i].project_title + '</div></a></a></div>'
     }
+    else if (content[i].type == 'document') {
+      el = '<div class="projects__item"><a href=' + projectUrl + '><div class="projects__text">' + content[i].text + '</div></a></div>'
+    }
     container.append(el)
   }
 }
-
 
 
 // --- event handlers --- 
@@ -184,19 +184,18 @@ $distance = $('#distance span'),
 $element  = $('.projects__item');
 
 function calculateDistance(elem, mouseX, mouseY) {
-return Math.floor(Math.sqrt(Math.pow(mouseX - (elem.offset().left+(elem.width()/2)), 2) + Math.pow(mouseY - (elem.offset().top+(elem.height()/2)), 2)));
+  return Math.floor(Math.sqrt(Math.pow(mouseX - (elem.offset().left+(elem.width()/2)), 2) + Math.pow(mouseY - (elem.offset().top+(elem.height()/2)), 2)));
 }
 
 $(document).mousemove(function(e) {  
-mX = e.pageX;
-mY = e.pageY;
-$( ".projects__item" ).each(function() {
-  distance = calculateDistance($(this), -mX/4, -mY/4);
-$distance.text(distance);
-console.log(distance);
-$(this).css('transform', 'scale('+ (distance/2000) +') translateX(' +(-distance/800) +'px)');
-});
-
+  mX = e.pageX;
+  mY = e.pageY;
+  $( ".projects__item" ).each(function() {
+    distance = calculateDistance($(this), -mX/4, -mY/4);
+  $distance.text(distance);
+  // console.log(distance);
+  $(this).css('transform', 'scale('+ (distance/2000) +') translateX(' +(-distance/800) +'px)');
+  });
 });
 
 
@@ -314,48 +313,44 @@ function initRoutes() {
 
 
   barba.hooks.beforeEnter((data) => {
-
+    console.log('before enter')
 
     var nextHtml = data.next.html
     var response = nextHtml.replace(/(<\/?)body( .+?)?>/gi, '$1notbody$2>', nextHtml);
     var bodyClasses = $(response).filter('notbody').attr('class');
     $("body").attr("class", bodyClasses);
 
-
-
     if (document.querySelector('.swiper') != null) {
-    const position = data.trigger.getAttribute('data-position');
+      const position = data.trigger.getAttribute('data-position');
 
-
-    const swiper = new Swiper('.swiper', {
-      // Optional parameters
-      loop: false,
-  
-      slidesPerView: 1.5,
-      centeredSlides: true,
-      initialSlide: position,
+      const swiper = new Swiper('.swiper', {
+        // Optional parameters
+        loop: false,
+        slidesPerView: 1.5,
+        centeredSlides: true,
+        initialSlide: position,
     
-      // If we need pagination
-      pagination: {
-        el: ".swiper-pagination",
-        clickable: true,
-        renderBullet: function (index, className) {
-          return '<span class="' + className + '">'+'('+ (index + 1) + ')' + "</span>";
+        // If we need pagination
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+          renderBullet: function (index, className) {
+            return '<span class="' + className + '">'+'('+ (index + 1) + ')' + "</span>";
+          },
         },
-      },
-    
-      // Navigation arrows
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
-    
-      // And if we need scrollbar
-      scrollbar: {
-        el: '.swiper-scrollbar',
-      },
-    });
-  }
+      
+        // Navigation arrows
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+      
+        // And if we need scrollbar
+        scrollbar: {
+          el: '.swiper-scrollbar',
+        },
+      });
+    }
 
   });
 }

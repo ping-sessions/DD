@@ -1,14 +1,20 @@
 title: Home
+options:
+  changeStatus: false
+  changeTitle: false
+  changeSlug: false 
+  delete: false 
+  duplicate: false 
+  changeTemplate: false
 columns:
   pages:
     width: 1/2
     sections:
       pages:
         type: pages
-        limit: 2
+        max: 1
         template:
           - projects
-          - texts
   dd:
     width: 1/2
     sections:
@@ -37,3 +43,7 @@ columns:
                   fetch: page.words.split
                   text: "{{ arrayItem.value }}"
                   value: "{{ arrayItem.value }}"
+          participants:
+            label: Participants
+            type: tags
+            size: large

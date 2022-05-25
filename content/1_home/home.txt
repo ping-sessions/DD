@@ -20,3 +20,7 @@ Names:
 - 
   first_word: Drifting
   last_word: Dialogues
+
+----
+
+Participants: Yara van Teeffelen, Sarah El Saleh
