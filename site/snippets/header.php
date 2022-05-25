@@ -62,6 +62,9 @@
     </div>
   
   </div>
+  <div class="fixed__title"><span class="fixed__title__inner"></span></div>
+  <div class="fixed__meta">Displays in 12 DDs<br>
+Digests 8 Projects</div>
   <?php snippet('shapes') ?>
   
   <main data-barba="container" data-barba-namespace="<?= $page->template() ?>">

@@ -43,11 +43,11 @@
 
 button {
     padding: 0.5rem;
-    font-size: 1.5rem;
+    font-size: 2rem;
     font-family: 'EB Garamond';
     color: #000;
     border: none;
-    border-radius: 2rem;
+    border-radius: 1rem;
 }
 
 
@@ -125,6 +125,10 @@ html,body {
   .header .title {
     display: flex;
     margin: 0;
+    position: fixed;
+    left: 50%;
+    text-align: center;
+    transform: translateX(-50%);
     flex-flow: column;
     color: white;
   }
@@ -161,10 +165,18 @@ html,body {
     top: 1rem;
     cursor: pointer;
     text-decoration: none;
-    font-size: 1.5rem;
+    font-size: 2rem;
     font-family: 'EB Garamond';
     z-index: 10;
+    padding: 0.5rem;
+    border-radius: 1rem;
+    mix-blend-mode: lighten;
+    background-color: #fff;
     color: #000;
+  }
+
+  audio {
+    transform: scale(2.5);
   }
 
 
@@ -323,6 +335,15 @@ img {
     margin-top: 12vw;
     margin-bottom: 4rem;
     flex-direction: column;
+    transition: opacity 0.3s ease-in-out;
+
+    &.load-out {
+      opacity: 0;
+    }
+
+    &.load-in {
+      opacity: 1;
+    }
 
     &__text {
       font-size: 2rem;
@@ -336,7 +357,11 @@ img {
     height: 40rem;
     float: left;
     position: relative;
-    transition: opacity 1s ease-in-out;
+    transition: all 0.3s ease-in-out;
+
+    &.blured {
+      filter: blur(2px) !important;
+    }
 
     &:hover {
         .projects__item__title {
@@ -442,6 +467,7 @@ img {
   height: 100%;
   width: 100%;
   position: fixed;
+  cursor: none;
   z-index: 2;
   background: radial-gradient(circle, rgba(255,255,255,1) 62%, rgba(174,126,202,1) 100%);
   opacity: .9;
@@ -458,7 +484,6 @@ img {
   
   .grid div {
     height: 14.5vh;font-size: 0;
-border: 1px solid;
     
   }
   
@@ -482,16 +507,48 @@ border: 1px solid;
   
   .instructions {
     position: fixed;
-     top: 1rem;
-     color: #fff;
-    left: 1rem;
-          font-family: 'KTF Rublena Solid';
-    font-size: 3rem;
+    top: 1rem;
+    color: #c89fdf;
+    transform: translateX(-50%);
+    left: 50%;
+    font-family: 'KTF Rublena Solid';
+    font-size: 2rem;
   }
 
 
 .selector__name {
-  cursor: pointer;
+  cursor: none;
   font-size: 2rem;
   margin-bottom: 1rem;
+}
+
+.fixed__title {
+  position: fixed;
+    bottom: 1rem;
+    font-size: 2rem;
+    font-family: 'EB Garamond';
+    text-align: center;
+    width: auto;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #000;
+    border-radius: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: #fff;
+    mix-blend-mode: lighten;
+}
+
+.fixed__meta {
+  position: fixed;
+    bottom: 1rem;
+    font-size: 1rem;
+    font-family: 'EB Garamond';
+    text-align: left;
+    width: auto;
+    left: 1rem;
+   color: #000;
+    border-radius: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: #fff;
+    mix-blend-mode: lighten;
 }

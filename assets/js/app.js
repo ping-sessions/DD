@@ -122,7 +122,14 @@ function renderData(content) {
 function initHandlers() {
   const randomButton = document.querySelector('.dd-random')
   randomButton.addEventListener('click', function() {
-    getData(true, false)
+    document.querySelector('.projects').classList.add('load-out');
+    setTimeout(function(){
+      getData(true, false)
+    },700);
+
+    setTimeout(function(){
+      document.querySelector('.projects').classList.remove('load-out');
+    },1500);
   })
   
 
@@ -164,21 +171,26 @@ function initHandlers() {
     document.removeEventListener('mousemove', cursorSelect);
   })
 
+  
   $(document).mousemove(function(event) {
     windowWidth = $(window).width()
     windowHeight = $(window).height()
     mouseXpercentage = Math.round(event.pageX / windowWidth * 100)
     mouseYpercentage = Math.round(event.pageY / windowHeight * 100)
-    $('.fix').css('background', 'radial-gradient(at ' + mouseXpercentage + '% ' + mouseYpercentage + '%, #ae7eca, #fff)')
+    $('.fix').css('background', 'repeating-conic-gradient(#fff ' + mouseXpercentage +'%, #ae7eca ' +mouseYpercentage+'%, #fff ' + 0 +'%, #ae7eca ' + 0 +'%) ' + mouseXpercentage +'% ' + mouseYpercentage +'% / 100% 100% repeat')
   });
+
 
   $(document).mousemove(function (e) {
     $(".pointer").css({ left: e.pageX, top: e.pageY });
   });
+/*
+  document.querySelector(".fix").onmousemove=e=>{const x=e.pageX-e.target.offsetLeft;const y=e.pageY-e.target.offsetTop;e.target.style.setProperty("--x",`${x}px`);e.target.style.setProperty("--y",`${y}px`);};
+  */
 
 }
 
-
+/*
 var mX, mY, distance,
 $distance = $('#distance span'),
 $element  = $('.projects__item');
@@ -196,10 +208,29 @@ $(document).mousemove(function(e) {
   // console.log(distance);
   $(this).css('transform', 'scale('+ (distance/2000) +') translateX(' +(-distance/800) +'px)');
   });
+});*/
+
+
+
+const project_items = document.querySelectorAll('.projects__item');
+Array.from(project_items).forEach(function (item) {
+  item.addEventListener("mouseenter", function (event) {
+    document.querySelectorAll('.projects__item').forEach(element => element.classList.add('blured'));
+      item.classList.remove('blured');
+    document.querySelector('body').style.backgroundColor = item.getAttribute('data-bg');
+
+    document.querySelector('.fixed__title__inner').textContent = item.getAttribute('data-title');
+    document.querySelector('.fixed__title__inner').classList.add('active');
+  });
+  item.addEventListener("mouseleave", function (event) {
+
+    document.querySelector('body').style.backgroundColor = '#000';
+
+    document.querySelectorAll('.projects__item').forEach(element => element.classList.remove('blured'));
+    document.querySelector('.fixed__title__inner').classList.remove('active');
+  });
+
 });
-
-
-
 
 
 

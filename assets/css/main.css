@@ -33,11 +33,11 @@
 /* buttons */
 button {
   padding: 0.5rem;
-  font-size: 1.5rem;
+  font-size: 2rem;
   font-family: 'EB Garamond';
   color: #000;
   border: none;
-  border-radius: 2rem;
+  border-radius: 1rem;
 }
 
 html, body {
@@ -135,6 +135,11 @@ h1, h2, h3, h4, h5 {
   display: -ms-flexbox;
   display: flex;
   margin: 0;
+  position: fixed;
+  left: 50%;
+  text-align: center;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-flow: column;
@@ -179,10 +184,19 @@ h1, h2, h3, h4, h5 {
   top: 1rem;
   cursor: pointer;
   text-decoration: none;
-  font-size: 1.5rem;
+  font-size: 2rem;
   font-family: 'EB Garamond';
   z-index: 10;
+  padding: 0.5rem;
+  border-radius: 1rem;
+  mix-blend-mode: lighten;
+  background-color: #fff;
   color: #000;
+}
+
+audio {
+  -webkit-transform: scale(2.5);
+          transform: scale(2.5);
 }
 
 .project-title {
@@ -358,6 +372,16 @@ h1, h2, h3, h4, h5 {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  -webkit-transition: opacity 0.3s ease-in-out;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.projects.load-out {
+  opacity: 0;
+}
+
+.projects.load-in {
+  opacity: 1;
 }
 
 .projects__text {
@@ -371,8 +395,13 @@ h1, h2, h3, h4, h5 {
   height: 40rem;
   float: left;
   position: relative;
-  -webkit-transition: opacity 1s ease-in-out;
-  transition: opacity 1s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.projects__item.blured {
+  -webkit-filter: blur(2px) !important;
+          filter: blur(2px) !important;
 }
 
 .projects__item:hover .projects__item__title {
@@ -474,6 +503,7 @@ h1, h2, h3, h4, h5 {
   height: 100%;
   width: 100%;
   position: fixed;
+  cursor: none;
   z-index: 2;
   background: radial-gradient(circle, white 62%, #ae7eca 100%);
   opacity: .9;
@@ -494,7 +524,6 @@ h1, h2, h3, h4, h5 {
 .grid div {
   height: 14.5vh;
   font-size: 0;
-  border: 1px solid;
 }
 
 .show-title {
@@ -517,15 +546,49 @@ h1, h2, h3, h4, h5 {
 .instructions {
   position: fixed;
   top: 1rem;
-  color: #fff;
-  left: 1rem;
+  color: #c89fdf;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  left: 50%;
   font-family: 'KTF Rublena Solid';
-  font-size: 3rem;
+  font-size: 2rem;
 }
 
 .selector__name {
-  cursor: pointer;
+  cursor: none;
   font-size: 2rem;
   margin-bottom: 1rem;
+}
+
+.fixed__title {
+  position: fixed;
+  bottom: 1rem;
+  font-size: 2rem;
+  font-family: 'EB Garamond';
+  text-align: center;
+  width: auto;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  color: #000;
+  border-radius: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: #fff;
+  mix-blend-mode: lighten;
+}
+
+.fixed__meta {
+  position: fixed;
+  bottom: 1rem;
+  font-size: 1rem;
+  font-family: 'EB Garamond';
+  text-align: left;
+  width: auto;
+  left: 1rem;
+  color: #000;
+  border-radius: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: #fff;
+  mix-blend-mode: lighten;
 }
 /*# sourceMappingURL=main.css.map */
