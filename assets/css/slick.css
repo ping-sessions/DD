@@ -335,7 +335,7 @@
 .swiper-pagination-bullets.swiper-pagination-horizontal,
 .swiper-pagination-custom,
 .swiper-pagination-fraction {
-  bottom: 1.5rem;
+  bottom: 1rem;
   left: 0;
   width: 100%;
 }
@@ -826,15 +826,21 @@ button.swiper-pagination-bullet {
           align-items: center;
 }
 
-.swiper-slide img {
-  height: 70vh;
-  max-width: 60vw;
-  max-height: 60vh;
-  border-radius: 2rem;
+.swiper-slide-inner {
   width: 100%;
+  text-align: center;
+}
+
+.swiper-slide img {
+  width: 100%;
+  height: 100%;
+  max-width: 40vw;
+  max-height: 60vh;
+  border-radius: 1rem;
   -o-object-fit: contain;
-     object-fit: contain;
-  max-width: none;
+  object-fit: contain;
+  /* max-width: none; */
+  position: relative;
 }
 
 .active-slide {

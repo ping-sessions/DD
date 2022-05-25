@@ -126,6 +126,7 @@ h1, h2, h3, h4, h5 {
 }
 
 .header button {
+  background-color: #fff;
   margin-bottom: 0.5rem;
   cursor: pointer;
 }
@@ -151,6 +152,7 @@ h1, h2, h3, h4, h5 {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  letter-spacing: 0.1rem;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-flow: column;
@@ -385,7 +387,14 @@ audio {
 }
 
 .projects__text {
-  font-size: 2rem;
+  color: #000000;
+  line-height: 1.8rem;
+  font-size: 1.5rem;
+  font-family: 'EB Garamond';
+  letter-spacing: 0.1rem;
+  /* stroke-width: 1px; */
+  /* -webkit-text-stroke-color: #fff; */
+  /* -webkit-text-stroke-width: 1px;*/
 }
 
 .projects__item {

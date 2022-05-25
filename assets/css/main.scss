@@ -118,6 +118,7 @@ html,body {
   }
   
   .header button {
+    background-color: #fff;
       margin-bottom: 0.5rem;
     cursor: pointer;
   }
@@ -135,6 +136,7 @@ html,body {
   
   .title span {
     display: flex;
+    letter-spacing: 0.1rem;
     flex-flow: column;
   }
 
@@ -346,7 +348,14 @@ img {
     }
 
     &__text {
-      font-size: 2rem;
+      color: #000000;
+      line-height: 1.8rem;
+      font-size: 1.5rem;
+      font-family: 'EB Garamond';
+      letter-spacing: 0.1rem;
+      /* stroke-width: 1px; */
+      /* -webkit-text-stroke-color: #fff; */
+      /* -webkit-text-stroke-width: 1px;*/
     }
 
 

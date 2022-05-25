@@ -43,7 +43,7 @@
     <?php foreach ($page->files() as $file) : ?>
       <!-- todo: ensure pdf does not show here -->
       <?php if ($file->type() == 'image'):?>
-      <div data-url='<?= $file->url() ?>' class='project-slider_slide swiper-slide'><img src = "<?= $file->url() ?>" /></div>
+      <div data-url='<?= $file->url() ?>' class='project-slider_slide swiper-slide'><div class="swiper-slide-inner"><img src = "<?= $file->url() ?>" /></div></div>
       <?php endif ?>
       <?php if ($file->type() == 'audio'):?>
       <div data-url='<?= $file->url() ?>' class='project-slider_slide swiper-slide'>
