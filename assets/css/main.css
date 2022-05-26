@@ -40,6 +40,21 @@ button {
   border-radius: 1rem;
 }
 
+.about__link {
+  position: fixed;
+  z-index: 1;
+  right: 1rem;
+  bottom: 1rem;
+  padding: 0.5rem;
+  text-decoration: none;
+  background-color: #fff;
+  color: #000;
+  font-size: 1rem;
+  font-family: 'EB Garamond';
+  border-radius: 1rem;
+  mix-blend-mode: lighten;
+}
+
 html, body {
   background: radial-gradient(50% 50% at 50% 50%, #268F56 64.75%, rgba(79, 79, 79, 0.66) 100%) fixed;
   margin: 0;
@@ -201,6 +216,42 @@ audio {
           transform: scale(2.5);
 }
 
+.text__snippets {
+  margin-top: 5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin-bottom: 5rem;
+  min-height: 90vh;
+  max-width: 60rem;
+  margin-left: auto;
+}
+
+.text__snippets__pdf-button {
+  color: #000;
+  font-family: 'EB Garamond';
+  padding: 0.5rem;
+  border-radius: 1rem;
+  background-color: #fff;
+  font-size: 2rem;
+  margin-left: auto;
+  mix-blend-mode: lighten;
+  text-decoration: none;
+}
+
+.text__snippet {
+  font-family: 'EB Garamond';
+  font-size: 2rem;
+  margin-bottom: 3rem;
+}
+
+.text__snippet__number {
+  font-family: 'KTF Rublena Solid';
+  margin-right: 0.5rem;
+  font-size: 1.5rem;
+  margin-right: 6rem;
+  display: inline-block;
+}
+
 .project-title {
   position: fixed;
   top: 1rem;
@@ -355,8 +406,8 @@ audio {
 
 .project-overlay {
   opacity: 0;
-  background: -webkit-gradient(linear, left top, left bottom, from(#ae7ecade), to(white));
-  background: linear-gradient(180deg, #ae7ecade 0%, white 100%);
+  background: -webkit-gradient(linear, left top, left bottom, from(#ae7ecade), color-stop(30%, white), to(#ae7ecade));
+  background: linear-gradient(180deg, #ae7ecade 0%, white 30%, #ae7ecade 100%);
   pointer-events: none;
   -webkit-transition-delay: 0.7s;
           transition-delay: 0.7s;

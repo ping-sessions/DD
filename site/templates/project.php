@@ -29,12 +29,15 @@
     }
   ?>
 
+<div class="text__snippets">
   <?php foreach($text_files as $text_file) : ?>
-    <div style = 'display: block; margin-bottom: 2rem;'><?= parse_rtf($text_file) ?></div>
+    <div class="text__snippet"><span class="text__snippet__number"><?= $text_file->indexOf() + 1?></span><?= parse_rtf($text_file) ?></div>
   <?php endforeach ?>
+  <a class="text__snippets__pdf-button" href = '<?= $pdf_file ?>' target='_blank'>(Display PDF)</a>
+  </div>
 
   <!-- $page->files() ?> -->
-  <a href = '<?= $pdf_file ?>' target='_blank'>View PDF</a>
+
 <?php else : ?>
   <div class="swiper">
   <!-- Additional required wrapper -->
