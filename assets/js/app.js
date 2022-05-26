@@ -92,8 +92,7 @@ function updateTitle(arr) {
 }
 
 
-// ...do view stuff here
-// ...will need to systemize this, how to position programatically etc.
+
 function renderData(content) {
   // content will includes files, text etc. 
   const container = $('.content')
@@ -102,20 +101,27 @@ function renderData(content) {
   for (var i = 0; i < content.length; i++) {
     let projectUrl = '/home/projects/' + content[i].project
     let fileUrl = content[i].url 
+    console.log('content', content[i].project_title)
     let el 
     // markup must match file.php snippet
     if (content[i].type == 'image') {
-      el = '<div class="projects__item clip1"><a href=' + projectUrl + '><img src =' + fileUrl + '><div class="projects__item__title">' + content[i].project_title + '</div></a></div>'
+      // json stringy seems to work (keep eye on this)
+      let dataTitle = '(' + parseInt(content[i].position + 1) + ')' + ' ' + content[i].project_title
+      el = '<div class="projects__item clip1" data-title=' + JSON.stringify(dataTitle) + '><a href=' + projectUrl + '><img src =' + fileUrl + '></a></div>'
     }
     else if (content[i].type == 'audio') {
-      el = '<div class="projects__item clip1"><a href=' + projectUrl + '><audio controls><source src =' + fileUrl + ' type="audio/mpeg"></audio><div class="projects__item__title">' + content[i].project_title + '</div></a></a></div>'
+      let dataTitle = '(' + parseInt(content[i].position + 1) + ')' + ' ' + content[i].project_title
+      el = '<div class="projects__item" data-title=' + JSON.stringify(dataTitle) + '><a href=' + projectUrl + '><audio controls><source src =' + fileUrl + ' type="audio/mpeg"></audio></a></div>'
     }
     else if (content[i].type == 'document') {
-      el = '<div class="projects__item"><a href=' + projectUrl + '><div class="projects__text">' + content[i].text + '</div></a></div>'
+      let dataTitle = '(' + parseInt(content[i].position + 1) + ')' + ' ' + content[i].project_title
+      el = '<div class="projects__item" data-title=' + JSON.stringify(dataTitle) + '><a href=' + projectUrl + '><div class="projects__text">' + content[i].text + '</div></a></div>'
     }
     container.append(el)
   }
+  initThumbHover()
 }
+
 
 
 // --- event handlers --- 
@@ -186,13 +192,7 @@ function initHandlers() {
     $(".pointer").css({ left: e.pageX, top: e.pageY });
   });
 
-
-
-  
-/*
-  document.querySelector(".fix").onmousemove=e=>{const x=e.pageX-e.target.offsetLeft;const y=e.pageY-e.target.offsetTop;e.target.style.setProperty("--x",`${x}px`);e.target.style.setProperty("--y",`${y}px`);};
-  */
-
+  initThumbHover()
 }
 
 /*
@@ -216,26 +216,24 @@ $(document).mousemove(function(e) {
 });*/
 
 
+function initThumbHover() {
+  const project_items = document.querySelectorAll('.projects__item');
+  Array.from(project_items).forEach(function (item) {
+    item.addEventListener("mouseenter", function (event) {
+      document.querySelectorAll('.projects__item').forEach(element => element.classList.add('blured'));
+        item.classList.remove('blured');
+      document.querySelector('body').style.backgroundColor = item.getAttribute('data-bg');
 
-const project_items = document.querySelectorAll('.projects__item');
-Array.from(project_items).forEach(function (item) {
-  item.addEventListener("mouseenter", function (event) {
-    document.querySelectorAll('.projects__item').forEach(element => element.classList.add('blured'));
-      item.classList.remove('blured');
-    document.querySelector('body').style.backgroundColor = item.getAttribute('data-bg');
-
-    document.querySelector('.fixed__title__inner').textContent = item.getAttribute('data-title');
-    document.querySelector('.fixed__title__inner').classList.add('active');
+      document.querySelector('.fixed__title__inner').textContent = item.getAttribute('data-title');
+      document.querySelector('.fixed__title__inner').classList.add('active');
+    });
+    item.addEventListener("mouseleave", function (event) {
+      document.querySelector('body').style.backgroundColor = '#000';
+      document.querySelectorAll('.projects__item').forEach(element => element.classList.remove('blured'));
+      document.querySelector('.fixed__title__inner').classList.remove('active');
+    });
   });
-  item.addEventListener("mouseleave", function (event) {
-
-    document.querySelector('body').style.backgroundColor = '#000';
-
-    document.querySelectorAll('.projects__item').forEach(element => element.classList.remove('blured'));
-    document.querySelector('.fixed__title__inner').classList.remove('active');
-  });
-
-});
+}
 
 
 
