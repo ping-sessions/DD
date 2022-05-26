@@ -20,7 +20,7 @@
 <body class=" <?php if ($page->template() == 'project'):?> project-page <?php endif?> <?= $page->slug() ?>-page" data-barba="wrapper">
 
   <div class="fix"></div>
-
+  <canvas id="c"></canvas>
 
 
 

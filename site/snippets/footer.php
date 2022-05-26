@@ -6,6 +6,7 @@
   <script src="https://unpkg.com/@barba/core"></script>
   <script src="https://unpkg.com/@barba/css"></script>
   <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/two.js@latest/build/two.js"></script>
   <?= js(['assets/js/app.js']) ?>
   
 </html>

@@ -177,13 +177,18 @@ function initHandlers() {
     windowHeight = $(window).height()
     mouseXpercentage = Math.round(event.pageX / windowWidth * 100)
     mouseYpercentage = Math.round(event.pageY / windowHeight * 100)
-    $('.fix').css('background', 'repeating-conic-gradient(#fff ' + mouseXpercentage +'%, #ae7eca ' +mouseYpercentage+'%, #fff ' + 0 +'%, #ae7eca ' + 0 +'%) ' + mouseXpercentage +'% ' + mouseYpercentage +'% / 100% 100% repeat')
+    $('.fix').css('background', 'radial-gradient(at ' + mouseXpercentage + '% ' + mouseYpercentage + '%, #ae7eca, #fff)')
+   // $('.fix').css('background', 'repeating-conic-gradient(#fff ' + mouseYpercentage/5.5 +'%, #ae7eca ' +100+'%, #fff ' + 0 +'%, #ae7eca ' + mouseXpercentage +'%) ' +  mouseXpercentage +'% ' + 50 +'% / 100% 100% repeat')
   });
 
 
   $(document).mousemove(function (e) {
     $(".pointer").css({ left: e.pageX, top: e.pageY });
   });
+
+
+
+  
 /*
   document.querySelector(".fix").onmousemove=e=>{const x=e.pageX-e.target.offsetLeft;const y=e.pageY-e.target.offsetTop;e.target.style.setProperty("--x",`${x}px`);e.target.style.setProperty("--y",`${y}px`);};
   */

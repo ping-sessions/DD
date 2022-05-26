@@ -89,6 +89,10 @@ html, body {
   opacity: 1;
 }
 
+#c {
+  position: fixed;
+}
+
 .fix {
   position: fixed;
   width: 100vw;

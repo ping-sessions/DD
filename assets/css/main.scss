@@ -92,6 +92,10 @@ html,body {
     }
   }
 
+  #c {
+    position: fixed;
+  }
+
   .fix {
     position: fixed;
     width: 100vw;
@@ -415,7 +419,7 @@ img {
       /* -webkit-text-stroke-width: 1px;*/
     }
 
-    
+
 
     &__item {
     height: 100%;
