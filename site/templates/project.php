@@ -29,6 +29,8 @@
     }
   ?>
 
+  
+
 <div class="text__snippets">
   <?php foreach($text_files as $text_file) : ?>
     <div class="text__snippet"><span class="text__snippet__number"><?= $text_file->indexOf() + 1?></span><?= parse_rtf($text_file) ?></div>
