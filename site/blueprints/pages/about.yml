@@ -1,0 +1,16 @@
+title: About
+options:
+  changeStatus: false
+  changeTitle: false
+  changeSlug: false 
+  delete: false 
+  duplicate: false 
+  changeTemplate: false
+columns:
+  fields:
+    type: fields
+    fields:
+      about_text:
+        label: About Text
+        type: textarea
+        size: large

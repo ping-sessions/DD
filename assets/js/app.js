@@ -342,8 +342,23 @@ function initRoutes() {
         beforeLeave(data) {
           // console.log('before leave project', data)
         }
-    }]
-  })
+    }, {
+      namespace: 'about',
+        afterEnter(data) {
+          console.log('after enter about')
+        },
+        afterLeave(data) {
+          console.log('after leave about')
+        },
+        beforeEnter(data) {
+          console.log('befoe enter about')
+        },
+        beforeLeave(data) {
+          console.log('before leave avout')
+        } 
+    }
+  ]
+})
 
 
   barba.hooks.beforeEnter((data) => {

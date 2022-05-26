@@ -16,11 +16,23 @@ columns:
               text: "{{ arrayItem.value }}"
               value: "{{ arrayItem.value }}"
           text:
-            label: Caption/Text Snippet
+            label: Caption
             width: 1/2
             type: textarea
             size: medium
-          author:
+          authors:
+            # type: text
+            # size: medium
+            label: Authors
+            width: 1/2
+            type: checkboxes
+            options: query
+            query:
+              fetch: site.find('home').participants.split
+              text: "{{ arrayItem.value }}"
+              value: "{{ arrayItem.value }}"
+          vimeo_id:
+            label: Vimeo ID (for screenshots only)
             width: 1/2
             type: text
-            size: small
+            size: medium
