@@ -224,6 +224,7 @@ Array.from(project_items).forEach(function (item) {
       item.classList.remove('blured');
     document.querySelector('body').style.backgroundColor = item.getAttribute('data-bg');
 
+    document.querySelector('.fixed__title__inner__number').textContent = item.getAttribute('data-number');
     document.querySelector('.fixed__title__inner').textContent = item.getAttribute('data-title');
     document.querySelector('.fixed__title__inner').classList.add('active');
   });

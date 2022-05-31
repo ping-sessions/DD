@@ -41,10 +41,10 @@
       
       <div class = 'buttons'>
         <!-- accesskey is temp/need to figure out -->
-        <button class = 'dd-select' accesskey="o">
+        <button class = 'dd-select hide-mobile' accesskey="o">
           (Decide DD)
         </button>
-        <button class = 'dd-random' accesskey="m">
+        <button class = 'dd-random hide-desktop' accesskey="m">
           (Do DD)
         </button>
       </div>
@@ -62,7 +62,7 @@
     </div>
   
   </div>
-  <div class="fixed__title"><span class="fixed__title__inner"></span></div>
+  <div class="fixed__title"><span class="fixed__title__inner__number"></span><span class="fixed__title__inner"></span></div>
   <div class="fixed__meta">Displays in 12 DDs<br>
 Digests 8 Projects</div>
 

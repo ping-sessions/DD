@@ -30,10 +30,24 @@
   font-display: swap;
 }
 
+@media only screen and (max-width: 768px) {
+  .hide-mobile {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 769px) {
+  .hide-desktop {
+    display: none;
+  }
+}
+
 /* buttons */
 button {
   padding: 0.5rem;
   font-size: 2rem;
+  -webkit-font-variant-ligatures: discretionary-ligatures;
+          font-variant-ligatures: discretionary-ligatures;
   font-family: 'EB Garamond';
   color: #000;
   border: none;
@@ -50,6 +64,8 @@ button {
   background-color: #fff;
   color: #000;
   font-size: 1rem;
+  -webkit-font-variant-ligatures: discretionary-ligatures;
+          font-variant-ligatures: discretionary-ligatures;
   font-family: 'EB Garamond';
   border-radius: 1rem;
   mix-blend-mode: lighten;
@@ -137,11 +153,14 @@ h1, h2, h3, h4, h5 {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  padding-right: 2rem;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
       -ms-flex-flow: row;
           flex-flow: row;
+  position: fixed;
+  display: flex;
+  right: 1rem;
+  padding-right: 0rem;
 }
 
 .header button {
@@ -206,6 +225,8 @@ h1, h2, h3, h4, h5 {
   cursor: pointer;
   text-decoration: none;
   font-size: 2rem;
+  -webkit-font-variant-ligatures: discretionary-ligatures;
+          font-variant-ligatures: discretionary-ligatures;
   font-family: 'EB Garamond';
   z-index: 10;
   padding: 0.5rem;
@@ -234,6 +255,8 @@ audio {
   color: #000;
   font-family: 'EB Garamond';
   padding: 0.5rem;
+  -webkit-font-variant-ligatures: discretionary-ligatures;
+          font-variant-ligatures: discretionary-ligatures;
   border-radius: 1rem;
   background-color: #fff;
   font-size: 2rem;
@@ -245,6 +268,8 @@ audio {
 .text__snippet {
   font-family: 'EB Garamond';
   font-size: 2rem;
+  -webkit-font-variant-ligatures: discretionary-ligatures;
+          font-variant-ligatures: discretionary-ligatures;
   margin-bottom: 3rem;
 }
 
@@ -261,7 +286,14 @@ audio {
   top: 1rem;
   left: 1rem;
   z-index: 10;
-  color: #fff;
+  position: fixed;
+  top: 1rem;
+  left: 50%;
+  text-align: center;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  z-index: 10;
+  color: #000;
   font-size: 3rem;
 }
 
@@ -270,12 +302,13 @@ audio {
   font-size: 1.5rem;
   line-height: 1.2;
   font-family: 'EB Garamond';
+  -webkit-font-variant-ligatures: discretionary-ligatures;
+          font-variant-ligatures: discretionary-ligatures;
   max-width: 100vw;
   font-size: 1.5rem;
   background: -webkit-gradient(linear, left top, left bottom, from(#ae7ecade), to(white));
   background: linear-gradient(180deg, #ae7ecade 0%, white 100%);
   line-height: 1.2;
-  font-family: 'EB Garamond';
   padding: 1rem 1rem;
 }
 
@@ -446,6 +479,8 @@ audio {
   line-height: 1.8rem;
   font-size: 1.5rem;
   font-family: 'EB Garamond';
+  -webkit-font-variant-ligatures: discretionary-ligatures;
+          font-variant-ligatures: discretionary-ligatures;
   letter-spacing: 0.1rem;
   /* stroke-width: 1px; */
   /* -webkit-text-stroke-color: #fff; */
@@ -481,6 +516,8 @@ audio {
   text-align: center;
   left: 50%;
   font-family: 'EB Garamond';
+  -webkit-font-variant-ligatures: discretionary-ligatures;
+          font-variant-ligatures: discretionary-ligatures;
   top: 50%;
   position: absolute;
   -webkit-transform: translate(-50%);
@@ -629,8 +666,16 @@ audio {
   bottom: 1rem;
   font-size: 2rem;
   font-family: 'EB Garamond';
+  -webkit-font-variant-ligatures: discretionary-ligatures;
+          font-variant-ligatures: discretionary-ligatures;
   text-align: center;
   width: auto;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   left: 50%;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
@@ -641,11 +686,22 @@ audio {
   mix-blend-mode: lighten;
 }
 
+.fixed__title__inner__number {
+  font-size: 1.5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-variant-numeric: oldstyle-nums;
+  margin-right: 0.2rem;
+}
+
 .fixed__meta {
   position: fixed;
   bottom: 1rem;
   font-size: 1rem;
   font-family: 'EB Garamond';
+  -webkit-font-variant-ligatures: discretionary-ligatures;
+          font-variant-ligatures: discretionary-ligatures;
   text-align: left;
   width: auto;
   left: 1rem;
