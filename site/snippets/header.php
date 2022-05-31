@@ -63,8 +63,8 @@
   
   </div>
   <div class="fixed__title"><span class="fixed__title__inner__number"></span><span class="fixed__title__inner"></span></div>
-  <div class="fixed__meta">Displays in 12 DDs<br>
-Digests 8 Projects</div>
+  <div class="fixed__meta">Displays in 48 DDs<br>
+Digests 26 Dispositions</div>
 
 
 <a href="<?= $site->url()?>/home/about" class="about__link">(About & Contact)</a>

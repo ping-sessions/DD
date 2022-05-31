@@ -178,6 +178,7 @@ html,body {
     display: flex;
     letter-spacing: 0.1rem;
     flex-flow: column;
+    font-size: 1.5rem;
   }
 
   .title {
@@ -268,19 +269,32 @@ html,body {
     }
   }
 
+  .project {
+    &__meta {
+      position: fixed;
+      z-index: 2;
+      font-size: 1.5rem;
+      left: 1rem;
+      top: 1rem;
+      letter-spacing: 0.05rem;
+      line-height: 1;
+      color: #fff;
+    }
+  }
+
 
   .project-title {
       position: fixed;
       top: 1rem;
       left: 1rem;
       z-index: 10;
+      letter-spacing: 0.1rem;
       position: fixed;
-      top: 1rem;
       left: 50%;
       text-align: center;
       transform: translateX(-50%);
-      z-index: 10;
-      color: #000;
+      z-index: 3;
+      color: #fff;
       font-size: 3rem;
   }
 
@@ -291,6 +305,8 @@ html,body {
       font-family: 'EB Garamond';
       font-variant-ligatures: discretionary-ligatures;
       max-width: 100vw;
+      position: relative;
+      z-index: 4;
       font-size: 1.5rem;
       background: linear-gradient(180deg, #ae7ecade 0%, white 100%);
       line-height: 1.2;
@@ -478,6 +494,10 @@ img {
         .projects__item__title {
             opacity: 1;
         }
+
+        img {
+          filter: grayscale(0) contrast(2);
+        }
     }
 
     &__title {
@@ -521,6 +541,7 @@ img {
         object-fit: cover;
         height: 100%;
         mix-blend-mode: lighten;
+        transition: all 0.3s ease-in-out;
     }
 
     &:nth-child(even) {
@@ -583,8 +604,11 @@ img {
   z-index: 2;
   background: radial-gradient(circle, rgba(255,255,255,1) 62%, rgba(174,126,202,1) 100%);
   opacity: .9;
+  transition: opacity 0.3s ease-in-out;
+  transition-delay: 0.3s;
   &.hidden {
-    display: none;
+    opacity: 0;
+    pointer-events: none;
   }
 }
 
@@ -646,7 +670,6 @@ img {
     display: flex;
     left: 50%;
     transform: translateX(-50%);
-    color: #000;
     border-radius: 1rem;
     padding: 0.5rem 1rem;
     background-color: #fff;

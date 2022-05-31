@@ -279,6 +279,8 @@
 .swiper-pagination {
 	position: absolute;
 	text-align: center;
+//	top: 1rem;
+//	bottom: inherit !important;
 	transition: .3s opacity;
 	transform: translate3d(0, 0, 0);
 	z-index: 10
@@ -337,7 +339,8 @@
 	opacity: var(--swiper-pagination-bullet-inactive-opacity, .5);
 	font-family: 'EB Garamond';
 	font-variant-numeric: oldstyle-nums;
-	font-size: 1.5rem;
+	font-size: 2em;
+	color: #ae7eca;
 	margin: 0 0.2rem !important;
 }
 
@@ -711,7 +714,7 @@ button.swiper-pagination-bullet {
 }
 
 .swiper-slide {
-	background: radial-gradient(at 50% 50%, #ae7eca, white);
+    background: radial-gradient(at 50% 0%, #ae7eca, white);
 	height: 100vh;
 	flex-direction: column;
 	justify-content: center;
