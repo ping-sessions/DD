@@ -101,24 +101,28 @@ function renderData(content) {
   for (var i = 0; i < content.length; i++) {
     let projectUrl = '/home/projects/' + content[i].project
     let fileUrl = content[i].url 
-    console.log('content', content[i].project_title)
+    console.log('content', content[i])
     let el 
     // markup must match file.php snippet
     if (content[i].type == 'image') {
       // json stringy seems to work (keep eye on this)
       let dataTitle = '(' + parseInt(content[i].position + 1) + ')' + ' ' + content[i].project_title
-      el = '<div class="projects__item clip1" data-title=' + JSON.stringify(dataTitle) + '><a href=' + projectUrl + '><img src =' + fileUrl + '></a></div>'
+      el = '<div class="projects__item clip1" data-title=' + JSON.stringify(dataTitle) + '><a href=' + projectUrl + ' data-position=' + content[i].position +'><img src =' + fileUrl + '></a></div>'
     }
     else if (content[i].type == 'audio') {
       let dataTitle = '(' + parseInt(content[i].position + 1) + ')' + ' ' + content[i].project_title
-      el = '<div class="projects__item" data-title=' + JSON.stringify(dataTitle) + '><a href=' + projectUrl + '><audio controls><source src =' + fileUrl + ' type="audio/mpeg"></audio></a></div>'
+      el = '<div class="projects__item" data-title=' + JSON.stringify(dataTitle) + '><a href=' + projectUrl + ' data-position=' + content[i].position +'><audio controls><source src =' + fileUrl + ' type="audio/mpeg"></audio></a></div>'
     }
     else if (content[i].type == 'document') {
       let dataTitle = '(' + parseInt(content[i].position + 1) + ')' + ' ' + content[i].project_title
-      el = '<div class="projects__item" data-title=' + JSON.stringify(dataTitle) + '><a href=' + projectUrl + '><div class="projects__text">' + content[i].text + '</div></a></div>'
+      el = '<div class="projects__item" data-title=' + JSON.stringify(dataTitle) + '><a href=' + projectUrl + ' data-position=' + content[i].position +'><div class="projects__text">' + content[i].text + '</div></a></div>'
     }
     container.append(el)
   }
+  // scroll back to top when selection made
+  // may want to animate this 
+  $(document).scrollTop(0);
+  // ...
   initThumbHover()
 }
 
@@ -163,6 +167,7 @@ function initHandlers() {
   const selectButton = $('.dd-select')
   selectButton.on('click', function(e) {
     $('.selector').removeClass('hidden')
+    lockIndex()
     document.addEventListener('mousemove', cursorSelect)
   })
 
@@ -174,6 +179,7 @@ function initHandlers() {
     let dataTags = $(this).attr('data-tags')
     let tagsArray = dataTags.split(", ")
     getData(false, tagsArray)
+    unlockIndex()
     document.removeEventListener('mousemove', cursorSelect);
   })
 
@@ -195,33 +201,13 @@ function initHandlers() {
   initThumbHover()
 }
 
-/*
-var mX, mY, distance,
-$distance = $('#distance span'),
-$element  = $('.projects__item');
-
-function calculateDistance(elem, mouseX, mouseY) {
-  return Math.floor(Math.sqrt(Math.pow(mouseX - (elem.offset().left+(elem.width()/2)), 2) + Math.pow(mouseY - (elem.offset().top+(elem.height()/2)), 2)));
-}
-
-$(document).mousemove(function(e) {  
-  mX = e.pageX;
-  mY = e.pageY;
-  $( ".projects__item" ).each(function() {
-    distance = calculateDistance($(this), -mX/4, -mY/4);
-  $distance.text(distance);
-  // console.log(distance);
-  $(this).css('transform', 'scale('+ (distance/2000) +') translateX(' +(-distance/800) +'px)');
-  });
-});*/
-
 
 function initThumbHover() {
   const project_items = document.querySelectorAll('.projects__item');
   Array.from(project_items).forEach(function (item) {
     item.addEventListener("mouseenter", function (event) {
       document.querySelectorAll('.projects__item').forEach(element => element.classList.add('blured'));
-        item.classList.remove('blured');
+      item.classList.remove('blured');
       document.querySelector('body').style.backgroundColor = item.getAttribute('data-bg');
 
       document.querySelector('.fixed__title__inner__number').textContent = item.getAttribute('data-number');
@@ -267,48 +253,54 @@ function initIntro() {
 
 
 if (document.querySelector('.swiper') != null) {
-const swiper = new Swiper('.swiper', {
-  // Optional parameters
-  loop: false,
+  const swiper = new Swiper('.swiper', {
+    // Optional parameters
+    loop: false,
 
-  slidesPerView: "1.5",
-  centeredSlides: true,
+    slidesPerView: "1.5",
+    centeredSlides: true,
 
-  // If we need pagination
-  pagination: {
-    el: ".swiper-pagination",
-    clickable: true,
-    renderBullet: function (index, className) {
-      return '<span class="' + className + '">'+'('+ (index + 1) + ')' + "</span>";
+    // If we need pagination
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+      renderBullet: function (index, className) {
+        return '<span class="' + className + '">'+'('+ (index + 1) + ')' + "</span>";
+      },
     },
-  },
 
-  // Navigation arrows
-  navigation: {
-    nextEl: '.swiper-button-next',
-    prevEl: '.swiper-button-prev',
-  },
+    // Navigation arrows
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
 
-  // And if we need scrollbar
-  scrollbar: {
-    el: '.swiper-scrollbar',
-  },
-});
+    // And if we need scrollbar
+    scrollbar: {
+      el: '.swiper-scrollbar',
+    },
+  });
 }
 
 
-// --- route fns ---
-function afterProjectEnter() {
-  
+
+
+
+
+function blurIndex() {
+  $('.index').addClass('blurred')
 }
 
-function afterProjectLeave() {
+function focusIndex() {
   $('.index').removeClass('blurred')
 }
 
-function beforeProjectEnter() {
-  $('.index').addClass('blurred')
+function lockIndex() {
+  scrollLock.disablePageScroll();
+}
 
+function unlockIndex() {
+  scrollLock.enablePageScroll();
 }
 
 function initRoutes() {
@@ -318,92 +310,106 @@ function initRoutes() {
     views: [{
       namespace: 'home',
         afterEnter(data) {
-          // console.log('after enter home', data)
+          // ...
         },
         afterLeave(data) {
-          // console.log('after leave home', data)
+          // ...
         },
         beforeEnter(data) {
-          // console.log('before enter home', data)
+          unlockIndex()
         },
         beforeLeave(data) {
-          // console.log('before leave home', data)
+          blurIndex()
+          // ...
         }
     }, {
       namespace: 'project',
         afterEnter(data) {
-          afterProjectEnter()
+          // ...
         },
         afterLeave(data) {
-          afterProjectLeave()
+          // ...
         },
         beforeEnter(data) {
-          beforeProjectEnter()
+          lockIndex()
+          // ...
         },
         beforeLeave(data) {
-          // console.log('before leave project', data)
+          focusIndex()
         }
     }, {
       namespace: 'about',
         afterEnter(data) {
-          console.log('after enter about')
+          // ...
         },
         afterLeave(data) {
-          console.log('after leave about')
+          // ...
         },
         beforeEnter(data) {
-          console.log('befoe enter about')
+          lockIndex()
+          // ...
         },
         beforeLeave(data) {
-          console.log('before leave avout')
+          focusIndex()
         } 
-    }
-  ]
-})
+      }
+    ]
+  })
+  // ...init hooks
+  initHooks()
+}
 
+function initProjectSwiper(data) {
+  // i.e. if not a text project
+  if (document.querySelector('.swiper') != null) {
+    var position = data.trigger.getAttribute('data-position');
+    console.log('position >', position)
+    var swiper = new Swiper('.swiper', {
+      // Optional parameters
+      loop: false,
+      slidesPerView: 1.5,
+      centeredSlides: true,
+      initialSlide: parseInt(position),
+  
+      // If we need pagination
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+        renderBullet: function (index, className) {
+          return '<span class="' + className + '">'+'('+ (index + 1) + ')' + "</span>";
+        },
+      },
+    
+      // Navigation arrows
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+    
+      // And if we need scrollbar
+      scrollbar: {
+        el: '.swiper-scrollbar',
+      },
+    });
+  }
+}
 
+function initHooks() {
   barba.hooks.beforeEnter((data) => {
-    console.log('before enter')
-
+    console.log('before enter hook...')
     var nextHtml = data.next.html
     var response = nextHtml.replace(/(<\/?)body( .+?)?>/gi, '$1notbody$2>', nextHtml);
     var bodyClasses = $(response).filter('notbody').attr('class');
     $("body").attr("class", bodyClasses);
-
-    if (document.querySelector('.swiper') != null) {
-      const position = data.trigger.getAttribute('data-position');
-
-      const swiper = new Swiper('.swiper', {
-        // Optional parameters
-        loop: false,
-        slidesPerView: 1.5,
-        centeredSlides: true,
-        initialSlide: position,
-    
-        // If we need pagination
-        pagination: {
-          el: ".swiper-pagination",
-          clickable: true,
-          renderBullet: function (index, className) {
-            return '<span class="' + className + '">'+'('+ (index + 1) + ')' + "</span>";
-          },
-        },
-      
-        // Navigation arrows
-        navigation: {
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev',
-        },
-      
-        // And if we need scrollbar
-        scrollbar: {
-          el: '.swiper-scrollbar',
-        },
-      });
-    }
-
+    // ...
+    initProjectSwiper(data)
   });
 }
+
+
+
+
+
 
 // --- init ---
 $(document).ready(function() {

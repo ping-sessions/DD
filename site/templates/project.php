@@ -1,14 +1,7 @@
 <?php snippet('header') ?>
-<?php 
-
-  // require_once('./../helpers/rtf-html-php.php');
-  require_once $kirby->root('site') . '/helpers/parse-rtf.php';
-?>
-
+<?php require_once $kirby->root('site') . '/helpers/parse-rtf.php'; ?>
 
 <div class = 'project-overlay'>
-
-
 
 <div class="project__meta">
 <div class="project__meta__year"><?= $page->year() ?></div>

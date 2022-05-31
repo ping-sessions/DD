@@ -1,0 +1,25 @@
+Title: TypeLab
+
+----
+
+Text-toggle: false
+
+----
+
+Year: 2021-2022
+
+----
+
+Participants: Farah Fayyad, Mohamed Gaber
+
+----
+
+Text:
+
+TypeLab is a typography-focused alternative learning and experimentation platform at Sandberg Instituut.
+
+TypeLab aims to create an open, accessible, and inclusive space for knowledge and skill-sharing between Sandberg Instituut/Gerrit Rietveld students and the outside world in the shape of workshops, discussions, and consultations.
+
+Believing in the necessity for inclusive learning and open knowledge, all events and activities will be archived and documented on online platforms, in order to open-source education to all Type fanatics inside and outside the school.
+
+TypeLab is managed by Mohamed Gaber and Farah Fayyad as part of PUB, a trans-departmental initiative founded and run by Sandberg students with the hopes of establishing collaborative publishing practices at the university.

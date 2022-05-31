@@ -3,14 +3,6 @@
 <!-- typed text intro -->
 <?php snippet('intro') ?>
 
-<!-- svg clip paths (for css) -->
-
-<div class = 'project-overlay'></div>
-
-<style>
-* > img {
-  width: 100px;
-}
-</style>
+<!-- <div class = 'project-overlay'></div> -->
 
 <?php snippet('footer') ?>

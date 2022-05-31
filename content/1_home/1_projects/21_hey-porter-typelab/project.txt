@@ -1,0 +1,22 @@
+Title: Hey Porter - TypeLab
+
+----
+
+Text-toggle: false
+
+----
+
+Year: March 2021
+
+----
+
+Participants: Farah Fayyad, Mohamed Gaber
+
+----
+
+Text:
+
+In this workshop, we introduced the participants to the concept of asemic writing as a tool to questioning the system of meaning, and famous applications in fiction film making.
+
+You can find complete documentation of the workshop on GitHub through the link in the bio.
+https://gue3bara.github.io/TypoFiction/

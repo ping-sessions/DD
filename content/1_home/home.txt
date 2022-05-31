@@ -2,7 +2,7 @@ Title: Home
 
 ----
 
-Words: Durable, Discussions, Diasbura, Delights, Daily, Decisions, Drifting, Dialogues
+Words: Durable, Discussions, Diasbura, Delights, Daily, Decisions, Drifting, Dialogues, Decent, Drafts, Decentralised, Depictions, Developing, Discrepancy, Dumb, Deadlines, Disassembling, Details, Dismantling, Discourses, Doubting, Data, Doubling, Down, Disorganised, Daring, Drama, Dazzling, Dance, Diaspora, Days, Decolonising, Decolonisation, Dodging, Dogma, Distance, Decay, Deepest, Desires, Depth, Dwellers, Dramatic, Dinosaurs, Dear, Deviants, Devoted, Devices, Detailed, Detours, Damned, Dadaism, Deployed, Development, Divine, Dialects, Done, Deal, Direct, Divergent, Distorted, Demonstration, Demanded, Distant, Departure, Difference, Disobedient, Dissemination, Diving, Deep, Deadly, Dreams, Discursive, Distress, Double, Dilemma, Distressful, Dominant, Disorders, Distinctive, Disputes, Despite, Division, Darkness, Descending, Delicious, Displacing, Dough
 
 ----
 
@@ -20,7 +20,139 @@ Names:
 - 
   first_word: Drifting
   last_word: Dialogues
+- 
+  first_word: Decent
+  last_word: Drafts
+- 
+  first_word: Decentralised
+  last_word: Depictions
+- 
+  first_word: Developing
+  last_word: Discrepancy
+- 
+  first_word: Dumb
+  last_word: Deadlines
+- 
+  first_word: Disassembling
+  last_word: Details
+- 
+  first_word: Disassembling
+  last_word: Details
+- 
+  first_word: Dismantling
+  last_word: Discourses
+- 
+  first_word: Doubting
+  last_word: Data
+- 
+  first_word: Doubling
+  last_word: Down
+- 
+  first_word: Displacing
+  last_word: Discussions
+- 
+  first_word: Daring
+  last_word: Drama
+- 
+  first_word: Dazzling
+  last_word: Dance
+- 
+  first_word: Diaspora
+  last_word: Days
+- 
+  first_word: Decolonising
+  last_word: Decolonisation
+- 
+  first_word: Dodging
+  last_word: Dogma
+- 
+  first_word: Distance
+  last_word: Decay
+- 
+  first_word: Deepest
+  last_word: Desires
+- 
+  first_word: Depth
+  last_word: Dwellers
+- 
+  first_word: Dramatic
+  last_word: Dinosaurs
+- 
+  first_word: Dear
+  last_word: Deviants
+- 
+  first_word: Devoted
+  last_word: Devices
+- 
+  first_word: Detailed
+  last_word: Detours
+- 
+  first_word: Damned
+  last_word: Dadaism
+- 
+  first_word: Deployed
+  last_word: Desires
+- 
+  first_word: Decentralised
+  last_word: Development
+- 
+  first_word: Divine
+  last_word: Dialects
+- 
+  first_word: Done
+  last_word: Deal
+- 
+  first_word: Direct
+  last_word: Divergent
+- 
+  first_word: Distorted
+  last_word: Demonstration
+- 
+  first_word: Demanded
+  last_word: Discourses
+- 
+  first_word: Distant
+  last_word: Departure
+- 
+  first_word: Dramatic
+  last_word: Difference
+- 
+  first_word: Disobedient
+  last_word: Dissemination
+- 
+  first_word: Diving
+  last_word: Deep
+- 
+  first_word: Deadly
+  last_word: Dreams
+- 
+  first_word: Discursive
+  last_word: Discourses
+- 
+  first_word: Distress
+  last_word: Devices
+- 
+  first_word: Double
+  last_word: Dilemma
+- 
+  first_word: Distressful
+  last_word: Dance
+- 
+  first_word: Dominant
+  last_word: Disorders
+- 
+  first_word: Distinctive
+  last_word: Disputes
+- 
+  first_word: Despite
+  last_word: Division
+- 
+  first_word: Darkness
+  last_word: Descending
+- 
+  first_word: Delicious
+  last_word: Dough
 
 ----
 
-Participants: Yara van Teeffelen, Sarah El Saleh
+Participants: Sarah Saleh, Jara van Teeffelen, Lama Aloul, Saja Amro, Julina Vanille Bezold, Anna Celda, Rasha Dakkak, Farah Fayyad, Mohamed Gaber, Ayman Hassan, Siwar Kraitem, Ott Metusala, Naira Nigrelli, Karmel Sabri, Qusai Al Saify, Mohammed Tatour, Samira Vogel

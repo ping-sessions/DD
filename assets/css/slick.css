@@ -811,7 +811,6 @@ button.swiper-pagination-bullet {
 }
 
 .swiper-slide {
-  background: radial-gradient(at 50% 0%, #ae7eca, white);
   height: 100vh;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
