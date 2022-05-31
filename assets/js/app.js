@@ -224,23 +224,15 @@ function initThumbHover() {
         item.classList.remove('blured');
       document.querySelector('body').style.backgroundColor = item.getAttribute('data-bg');
 
-const project_items = document.querySelectorAll('.projects__item');
-Array.from(project_items).forEach(function (item) {
-  item.addEventListener("mouseenter", function (event) {
-    document.querySelectorAll('.projects__item').forEach(element => element.classList.add('blured'));
-      item.classList.remove('blured');
-    document.querySelector('body').style.backgroundColor = item.getAttribute('data-bg');
-
-    document.querySelector('.fixed__title__inner__number').textContent = item.getAttribute('data-number');
-    document.querySelector('.fixed__title__inner').textContent = item.getAttribute('data-title');
-    document.querySelector('.fixed__title__inner').classList.add('active');
-  });
-  item.addEventListener("mouseleave", function (event) {
-
-    document.querySelector('body').style.backgroundColor = '#000';
-
-    document.querySelectorAll('.projects__item').forEach(element => element.classList.remove('blured'));
-    document.querySelector('.fixed__title__inner').classList.remove('active');
+      document.querySelector('.fixed__title__inner__number').textContent = item.getAttribute('data-number');
+      document.querySelector('.fixed__title__inner').textContent = item.getAttribute('data-title');
+      document.querySelector('.fixed__title__inner').classList.add('active');
+    });
+    item.addEventListener("mouseleave", function (event) {
+      document.querySelector('body').style.backgroundColor = '#000';
+      document.querySelectorAll('.projects__item').forEach(element => element.classList.remove('blured'));
+      document.querySelector('.fixed__title__inner').classList.remove('active');
+    });
   });
 }
 

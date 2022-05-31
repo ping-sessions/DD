@@ -1,6 +1,6 @@
 <?php $siteurl = $site->url()?>
 
-<div data-bg="#fff" data-title="(<?= $fileObj->position + 1 ?>) <?= $fileObj->project_title ?>" class="projects__item">
+<div data-bg="#fff" data-number="(<?= $fileObj->position + 1 ?>)" data-title="<?= $fileObj->project_title ?>" class="projects__item">
   <a data-position="<?= $fileObj->position ?>" href = '<?= $siteurl."/home/projects/".$fileObj->project ?>'>
     <?php if ($fileObj->type == 'image') : ?>
       <img class="clip1" src = '<?= $fileObj->url ?>' />
