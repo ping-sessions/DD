@@ -441,6 +441,11 @@ audio {
   pointer-events: inherit;
 }
 
+.about-page .project-overlay {
+  opacity: 1;
+  pointer-events: inherit;
+}
+
 .project-overlay {
   opacity: 0;
   background: -webkit-gradient(linear, left top, left bottom, from(#ae7ecade), color-stop(30%, white), to(#ae7ecade));

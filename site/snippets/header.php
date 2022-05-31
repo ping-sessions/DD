@@ -67,7 +67,7 @@
 Digests 8 Projects</div>
 
 
-<a href="<?= $site->url()?>/about" class="about__link">(About & Contact)</a>
+<a href="<?= $site->url()?>/home/about" class="about__link">(About & Contact)</a>
 
   <?php snippet('shapes') ?>
   

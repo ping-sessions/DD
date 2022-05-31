@@ -410,18 +410,25 @@ img {
   }
 
   .project-page {
-      .project-overlay {
-          opacity: 1;
-          pointer-events: inherit;
-      }
+    .project-overlay {
+        opacity: 1;
+        pointer-events: inherit;
+    }
+  }
+
+  .about-page {
+    .project-overlay {
+      opacity: 1;
+      pointer-events: inherit;
+    }
   }
 
   .project-overlay {
-      opacity: 0;
-      background: linear-gradient(180deg, #ae7ecade 0%, white 30%, #ae7ecade 100%);
-      pointer-events: none;
-      transition-delay: 0.7s;
-      transition: all 0.7s ease-in-out;
+    opacity: 0;
+    background: linear-gradient(180deg, #ae7ecade 0%, white 30%, #ae7ecade 100%);
+    pointer-events: none;
+    transition-delay: 0.7s;
+    transition: all 0.7s ease-in-out;
   }
 
     
