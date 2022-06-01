@@ -54,12 +54,14 @@
     <?php snippet('selector') ?>
 
     <!-- get random content -->
+    <div class="projects__outer">
     <div class = 'content projects'>
       <!-- $tagged_files variable is set in controller -->
       <?php foreach ($tagged_files as $fileObj) : ?>
         <?php snippet('file', ['fileObj' => $fileObj]) ?>
       <?php endforeach ?>
     </div>
+      </div>
   
   </div>
   <div class="fixed__title"><span class="fixed__title__inner__number"></span><span class="fixed__title__inner"></span></div>

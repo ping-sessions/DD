@@ -2,7 +2,7 @@ Title: Inner Outer World - Weaving Futures
 
 ----
 
-Text-toggle: true
+Text-toggle: false
 
 ----
 

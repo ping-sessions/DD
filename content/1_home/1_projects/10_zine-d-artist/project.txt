@@ -2,7 +2,7 @@ Title: Zine D-artist
 
 ----
 
-Text-toggle: true
+Text-toggle: false
 
 ----
 

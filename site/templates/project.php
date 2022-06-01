@@ -3,10 +3,6 @@
 
 <div class = 'project-overlay'>
 
-<div class="project__meta">
-<div class="project__meta__year"><?= $page->year() ?></div>
-<div class="project__meta__participants"><?= $page->participants() ?></div>
-</div>
 
 <div class="project-title">
   <?= $page->title() ?>
@@ -68,7 +64,12 @@
 <!-- Slider main container -->
     
   <div class = 'project-info'>
+  <div class="project__meta">
+<div class="project__meta__year"><span>Date<br></span><?= $page->year() ?></div>
+<div class="project__meta__participants"><span>Participants<br></span><?= $page->participants() ?></div>
+</div>
     <div class="project-info__inner">
+
       
     <?= $page->text() ?>
       </div>

@@ -73,7 +73,7 @@ button {
   text-decoration: none;
   background-color: #fff;
   color: #000;
-  font-size: 1rem;
+  font-size: 1.2rem;
   font-variant-ligatures: discretionary-ligatures;
   font-family: 'EB Garamond';
   border-radius: 1rem;
@@ -133,8 +133,8 @@ html,body {
   }
   
   .index.blurred {
-    filter: blur(5px);
-    height: 100vh;
+   // filter: blur(5px);
+  //  height: 100vh;
     // overflow: hidden;
   }
   
@@ -170,9 +170,13 @@ html,body {
     display: flex;
     margin: 0;
     position: fixed;
-    left: 50%;
-    text-align: center;
-    transform: translateX(-50%);
+    left: 1rem;
+    text-align: left;
+    /* -webkit-transform: translateX(-50%); */
+    /* transform: translateX(-50%); */
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-flow: column;
     flex-flow: column;
     color: white;
   }
@@ -199,11 +203,17 @@ html,body {
     position: fixed;
     overflow-y: scroll;
     top: 0;
-    left: 0;
-    width: 100%;
+    border-radius: 1rem;
+   // left: 0;
+   // width: 100%;
     height: 100%;
     background: rgba(255, 255, 255, 0.5);
     z-index: 2;
+
+    /* half test */ 
+    width: 50vw;
+    right: 0;
+    left: inherit;
   }
 
   .close-project {
@@ -274,31 +284,53 @@ html,body {
 
   .project {
     &__meta {
-      position: fixed;
+     // position: fixed;
       z-index: 2;
-      font-size: 1.5rem;
       left: 1rem;
       top: 1rem;
-      letter-spacing: 0.05rem;
+      margin-right: 1rem;
+      margin-bottom: 1rem;
       line-height: 1;
-      color: #fff;
+      font-size: 1.2rem;
+      background: -webkit-linear-gradient(rgb(0, 0, 0), #ae7ecade);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+
+      span {
+        letter-spacing: 0.1rem;
+        font-family: 'KTF Rublena Solid';
+      }
     }
   }
 
 
   .project-title {
-      position: fixed;
+      position: absolute;
       top: 1rem;
+     // display: none;
       left: 1rem;
       z-index: 10;
       letter-spacing: 0.1rem;
-      position: fixed;
-      left: 50%;
-      text-align: center;
-      transform: translateX(-50%);
+    //  left: 50%;
+    text-align: left;
+     // text-align: center;
+   //   transform: translateX(-50%);
       z-index: 3;
       color: #fff;
       font-size: 3rem;
+  }
+
+  .project-page {
+    .fixed__title__inner__number {
+    //  opacity: 0;
+      //width: 0;
+    }
+
+    .fixed__title {
+      left: inherit;
+      right: calc(50% + 1rem);
+      transform: translateX(0);
+    }
   }
 
   .project-info {
@@ -310,13 +342,15 @@ html,body {
       max-width: 100vw;
       position: relative;
       z-index: 4;
+      display: flex;
       font-size: 1.5rem;
-      background: linear-gradient(180deg, #ae7ecade 0%, white 100%);
+      background: linear-gradient(180deg, #fff 0%, #ae7ecade 100%);
       line-height: 1.2;
-      padding: 1rem 1rem;
+      padding: 1rem 1rem 10rem;
 
       &__inner {
-        max-width: 700px;
+        max-width: 960px;
+        font-size: 2rem;
         background: -webkit-linear-gradient(rgb(0, 0, 0), #ae7ecade);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
@@ -444,7 +478,7 @@ img {
 
   .project-overlay {
     opacity: 0;
-    background: linear-gradient(180deg, #ae7ecade 0%, white 30%, #ae7ecade 100%);
+    background: linear-gradient(180deg, #ae7ecade 0%, white 25%, #ae7ecade 50%,#fff 100%);
     pointer-events: none;
     transition-delay: 0.7s;
     transition: all 0.7s ease-in-out;
@@ -453,10 +487,21 @@ img {
     
   .projects {
     display: flex;
-    margin-top: 12vw;
+   // transition: all 0.1s linear;
+   // margin-left: 25vw;
+    width: 100%;
+    margin-top: 12vh;
+   // margin-top: 25vh;
     margin-bottom: 4rem;
     flex-direction: column;
     transition: opacity 0.3s ease-in-out;
+
+    &__outer {
+      height: 100%;
+      width: 100vw;
+      transition: width 0.3s ease-in-out;
+      position: relative;
+    }
 
     &.load-out {
       opacity: 0;
@@ -485,6 +530,7 @@ img {
     mix-blend-mode: darken;
     width: 45vw;
     height: 40rem;
+    transform: scale(0.7);
     float: left;
     position: relative;
     transition: all 0.3s ease-in-out;
@@ -618,11 +664,12 @@ img {
 .grid {
     position: relative;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   }
   
   .grid div {
-    height: 14.5vh;font-size: 0;
+   height: 16.7vh;
+    font-size: 0;
     
   }
   
@@ -661,24 +708,54 @@ img {
   margin-bottom: 1rem;
 }
 
+
+.project-page {
+  .fixed__title {
+  //  font-size: 3rem;
+  }
+
+  /* test with half screen */
+
+  .projects__item {
+    width: 25vw;
+    height: 27rem;
+
+    img {
+      max-width: 24vw;
+    }
+  }
+
+  .projects__outer {
+    width: 50vw;
+    overflow: scroll;
+  }
+}
+
+
 .fixed__title {
   position: fixed;
-    bottom: 1rem;
+  //  top: 1rem;
+  bottom: 1rem;
+    transition: 0.3s ease-in-out;
     font-size: 2rem;
-    font-family: 'EB Garamond';
     font-variant-ligatures: discretionary-ligatures;
     text-align: center;
     width: auto;
+   // letter-spacing: 0.1rem;
+    z-index: 100;
     align-items: center;
     display: flex;
+    transition: all 0.3s ease-in-out;
     left: 50%;
     transform: translateX(-50%);
     border-radius: 1rem;
     padding: 0.5rem 1rem;
+    font-family: 'EB Garamond';
     background-color: #fff;
     mix-blend-mode: lighten;
 
     &__inner__number {
+      font-family: 'EB Garamond';
       font-size: 1.5rem;
       display: flex;
       font-variant-numeric: oldstyle-nums;
@@ -689,7 +766,7 @@ img {
 .fixed__meta {
   position: fixed;
     bottom: 1rem;
-    font-size: 1rem;
+    font-size: 1.2rem;
     font-family: 'EB Garamond';
     font-variant-ligatures: discretionary-ligatures;
     text-align: left;

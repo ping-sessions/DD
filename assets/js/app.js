@@ -99,7 +99,7 @@ function renderData(content) {
   // empty container
   container.html('')
   for (var i = 0; i < content.length; i++) {
-    let projectUrl = '/home/projects/' + content[i].project
+    let projectUrl = '/dd_kirby/DD/home/projects/' + content[i].project
     let fileUrl = content[i].url 
     console.log('content', content[i])
     let el 
@@ -182,13 +182,14 @@ function initHandlers() {
     unlockIndex()
     document.removeEventListener('mousemove', cursorSelect);
   })
+  
 
   
   $(document).mousemove(function(event) {
-    windowWidth = $(window).width()
-    windowHeight = $(window).height()
-    mouseXpercentage = Math.round(event.pageX / windowWidth * 100)
-    mouseYpercentage = Math.round(event.pageY / windowHeight * 100)
+    var windowWidth_all = window.innerWidth;
+    var windowHeight_all = window.innerHeight;
+    mouseXpercentage = Math.round(event.pageX / windowWidth_all * 100)
+    mouseYpercentage = Math.round(event.pageY / windowHeight_all * 100)
     $('.fix').css('background', 'radial-gradient(at ' + mouseXpercentage + '% ' + mouseYpercentage + '%, #ae7eca, #fff)')
    // $('.fix').css('background', 'repeating-conic-gradient(#fff ' + mouseYpercentage/5.5 +'%, #ae7eca ' +100+'%, #fff ' + 0 +'%, #ae7eca ' + mouseXpercentage +'%) ' +  mouseXpercentage +'% ' + 50 +'% / 100% 100% repeat')
   });
@@ -196,6 +197,17 @@ function initHandlers() {
 
   $(document).mousemove(function (e) {
     $(".pointer").css({ left: e.pageX, top: e.pageY });
+  });
+
+  const bg = document.querySelector('.projects__outer');
+  const windowWidth = window.innerWidth / 5;
+  const windowHeight = window.innerHeight / 5 ;
+  
+  bg.addEventListener('mousemove', (e) => {
+    const mouseX = e.clientX / windowWidth;
+    const mouseY = e.clientY / windowHeight;
+    
+    bg.style.transform = `translate3d(-${mouseX}%, -${mouseY}%, 0)`;
   });
 
   initThumbHover()
