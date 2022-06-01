@@ -291,10 +291,9 @@ audio {
   margin-right: 1rem;
   margin-bottom: 1rem;
   line-height: 1;
+  mix-blend-mode: multiply;
+  color: #a178b7;
   font-size: 1.2rem;
-  background: -webkit-linear-gradient(black, #ae7ecade);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
 }
 
 .project__meta span {
@@ -358,10 +357,9 @@ audio {
 
 .project-info__inner {
   max-width: 960px;
+  mix-blend-mode: multiply;
+  color: #a178b7;
   font-size: 2rem;
-  background: -webkit-linear-gradient(black, #ae7ecade);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
 }
 
 .project-overlay .project-info {
