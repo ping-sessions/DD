@@ -91,6 +91,18 @@ function updateTitle(arr) {
   }
 }
 
+  // add random clip class to thumbnails
+  function initClip() {
+    var clip_classes = ["clip1", "clip2", "clip3", "clip4", "clip5", "clip6", "clip7", "clip8", "clip8", "clip9", "clip10", "clip11", "clip12", "clip13", "clip14"];
+  
+    $(".projects__item a").each(function(){
+        $(this).addClass(clip_classes[~~(Math.random()*clip_classes.length)]);
+    });
+  }
+  
+    // init
+    initClip();
+
 
 
 function renderData(content) {
@@ -107,7 +119,7 @@ function renderData(content) {
     if (content[i].type == 'image') {
       // json stringy seems to work (keep eye on this)
       let dataTitle = '(' + parseInt(content[i].position + 1) + ')' + ' ' + content[i].project_title
-      el = '<div class="projects__item clip1" data-title=' + JSON.stringify(dataTitle) + '><a href=' + projectUrl + ' data-position=' + content[i].position +'><img src =' + fileUrl + '></a></div>'
+      el = '<div class="projects__item" data-title=' + JSON.stringify(dataTitle) + '><a href=' + projectUrl + ' data-position=' + content[i].position +'><img src =' + fileUrl + '></a></div>'
     }
     else if (content[i].type == 'audio') {
       let dataTitle = '(' + parseInt(content[i].position + 1) + ')' + ' ' + content[i].project_title
@@ -119,11 +131,13 @@ function renderData(content) {
     }
     container.append(el)
   }
+
   // scroll back to top when selection made
   // may want to animate this 
   $(document).scrollTop(0);
   // ...
   initThumbHover()
+  initClip()
 }
 
 
@@ -182,6 +196,10 @@ function initHandlers() {
     unlockIndex()
     document.removeEventListener('mousemove', cursorSelect);
   })
+
+
+
+
   
 
   
@@ -308,11 +326,11 @@ function focusIndex() {
 }
 
 function lockIndex() {
-  scrollLock.disablePageScroll();
+ // scrollLock.disablePageScroll();
 }
 
 function unlockIndex() {
-  scrollLock.enablePageScroll();
+//  scrollLock.enablePageScroll();
 }
 
 function initRoutes() {

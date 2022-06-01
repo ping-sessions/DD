@@ -72,7 +72,7 @@ button {
 }
 
 html, body {
-  background: radial-gradient(50% 50% at 50% 50%, #268F56 64.75%, rgba(79, 79, 79, 0.66) 100%) fixed;
+  background: #c19cd6 !important;
   margin: 0;
   padding: 0;
   width: 100%;
@@ -115,6 +115,8 @@ body {
   height: 100vh;
   top: 0;
   z-index: 0;
+  -webkit-transition: width 0.3s ease-in-out;
+  transition: width 0.3s ease-in-out;
   left: 0;
   background: white;
   background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.503261)), color-stop(19%, #ae7eca), color-stop(36%, white), color-stop(71%, #ae7eca), color-stop(100%, #ae7eca), to(#ae7eca));
@@ -152,6 +154,8 @@ h1, h2, h3, h4, h5 {
           flex-flow: row;
   position: fixed;
   display: flex;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
   right: 1rem;
   padding-right: 0rem;
 }
@@ -203,8 +207,10 @@ h1, h2, h3, h4, h5 {
 .project-overlay {
   position: fixed;
   overflow-y: scroll;
+  border-top-right-radius: 15rem;
+  /* overflow: hidden; */
+  border-bottom-right-radius: 15rem;
   top: 0;
-  border-radius: 1rem;
   height: 100%;
   background: rgba(255, 255, 255, 0.5);
   z-index: 2;
@@ -308,7 +314,22 @@ audio {
   font-size: 3rem;
 }
 
-.project-page .fixed__title {
+.project-page .about__link, .about-page .about__link {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.project-page .fix, .about-page .fix {
+  width: 50vw;
+  border-top-right-radius: 15rem;
+  border-bottom-right-radius: 15rem;
+}
+
+.project-page .header .buttons, .about-page .header .buttons {
+  right: calc(50vw + 1rem);
+}
+
+.project-page .fixed__title, .about-page .fixed__title {
   left: inherit;
   right: calc(50% + 1rem);
   -webkit-transform: translateX(0);
@@ -470,6 +491,14 @@ audio {
   pointer-events: inherit;
 }
 
+.about-page .project-overlay p {
+  color: #fff;
+  font-family: 'EB Garamond';
+  font-size: 2rem;
+  line-height: 1.2;
+  padding: 1rem;
+}
+
 .project-overlay {
   opacity: 0;
   background: -webkit-gradient(linear, left top, left bottom, from(#ae7ecade), color-stop(25%, white), color-stop(50%, #ae7ecade), to(#fff));
@@ -485,9 +514,11 @@ audio {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  min-height: 100vh;
   width: 100%;
-  margin-top: 12vh;
-  margin-bottom: 4rem;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -580,6 +611,8 @@ audio {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  background: -webkit-gradient(linear, left bottom, left top, from(#ffffff00), to(#fff));
+  background: linear-gradient(0deg, #ffffff00 0%, #fff 100%);
   width: 100%;
   height: 100%;
   text-decoration: none;
@@ -588,11 +621,13 @@ audio {
 .projects__item img {
   text-decoration: none;
   mix-blend-mode: normal;
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  margin: 0;
   -webkit-filter: grayscale(2) contrast(2);
           filter: grayscale(2) contrast(2);
-  width: auto;
   margin: 0 auto;
-  max-width: 40vw;
+  width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
   height: 100%;
@@ -614,9 +649,95 @@ audio {
 }
 
 /* clipped */
+.svg {
+  height: 0;
+  position: absolute;
+  pointer-events: none;
+  width: 0;
+}
+
 .clip1 {
   -webkit-clip-path: url(#mclip1);
   clip-path: url(#clip1);
+  margin-left: 30% !important;
+}
+
+.clip2 {
+  -webkit-clip-path: url(#mclip2);
+  clip-path: url(#clip2);
+  margin-left: -30% !important;
+}
+
+.clip3 {
+  -webkit-clip-path: url(#mclip3);
+  clip-path: url(#clip3);
+  margin-left: 20% !important;
+}
+
+.clip4 {
+  -webkit-clip-path: url(#mclip4);
+  clip-path: url(#clip4);
+  margin-left: -20% !important;
+}
+
+.clip5 {
+  -webkit-clip-path: url(#mclip5);
+  clip-path: url(#clip5);
+  margin-left: 20% !important;
+}
+
+.clip6 {
+  -webkit-clip-path: url(#mclip6);
+  clip-path: url(#clip6);
+  margin-left: -20% !important;
+}
+
+.clip7 {
+  -webkit-clip-path: url(#mclip7);
+  clip-path: url(#clip7);
+  margin-left: 10% !important;
+}
+
+.clip8 {
+  -webkit-clip-path: url(#mclip8);
+  clip-path: url(#clip8);
+  margin-left: -10% !important;
+}
+
+.clip9 {
+  -webkit-clip-path: url(#mclip9);
+  clip-path: url(#clip9);
+  margin-left: 30% !important;
+}
+
+.clip10 {
+  -webkit-clip-path: url(#mclip10);
+  clip-path: url(#clip10);
+  margin-left: -30% !important;
+}
+
+.clip11 {
+  -webkit-clip-path: url(#mclip11);
+  clip-path: url(#clip11);
+  margin-left: 40% !important;
+}
+
+.clip12 {
+  -webkit-clip-path: url(#mclip12);
+  clip-path: url(#clip12);
+  margin-left: -40% !important;
+}
+
+.clip13 {
+  -webkit-clip-path: url(#mclip13);
+  clip-path: url(#clip13);
+  margin-left: 40% !important;
+}
+
+.clip14 {
+  -webkit-clip-path: url(#mclip14);
+  clip-path: url(#clip14);
+  margin-left: -40% !important;
 }
 
 /* intro */
@@ -652,7 +773,7 @@ audio {
   width: 100%;
   position: fixed;
   cursor: none;
-  z-index: 2;
+  z-index: 200;
   background: radial-gradient(circle, white 62%, #ae7eca 100%);
   opacity: .9;
   -webkit-transition: opacity 0.3s ease-in-out;
@@ -713,20 +834,20 @@ audio {
   margin-bottom: 1rem;
 }
 
-.project-page {
+.project-page, .about-page {
   /* test with half screen */
 }
 
-.project-page .projects__item {
+.project-page .projects__item, .about-page .projects__item {
   width: 25vw;
   height: 27rem;
 }
 
-.project-page .projects__item img {
+.project-page .projects__item img, .about-page .projects__item img {
   max-width: 24vw;
 }
 
-.project-page .projects__outer {
+.project-page .projects__outer, .about-page .projects__outer {
   width: 50vw;
   overflow: scroll;
 }
@@ -741,6 +862,7 @@ audio {
           font-variant-ligatures: discretionary-ligatures;
   text-align: center;
   width: auto;
+  letter-spacing: 0.1rem;
   z-index: 100;
   -webkit-box-align: center;
       -ms-flex-align: center;
@@ -755,7 +877,6 @@ audio {
           transform: translateX(-50%);
   border-radius: 1rem;
   padding: 0.5rem 1rem;
-  font-family: 'EB Garamond';
   background-color: #fff;
   mix-blend-mode: lighten;
 }
