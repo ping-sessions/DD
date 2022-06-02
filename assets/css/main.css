@@ -296,6 +296,10 @@ audio {
   font-size: 1.2rem;
 }
 
+.project__meta__year {
+  margin-bottom: 1rem;
+}
+
 .project__meta span {
   letter-spacing: 0.1rem;
   font-family: 'KTF Rublena Solid';
@@ -305,6 +309,8 @@ audio {
   position: absolute;
   top: 1rem;
   left: 1rem;
+  max-width: calc(50vw - 20rem);
+  line-height: 0.8;
   z-index: 10;
   letter-spacing: 0.1rem;
   text-align: left;
@@ -904,5 +910,160 @@ audio {
   padding: 0.5rem 1rem;
   background-color: #fff;
   mix-blend-mode: lighten;
+}
+
+.radio__overlay {
+  position: fixed;
+  width: 620px;
+  overflow: hidden;
+  height: auto;
+  z-index: 1000;
+  background: radial-gradient(at 50% 50%, #ae7eca, #ae7eca47);
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  background-color: #fff;
+  left: 50%;
+  color: #fff;
+  padding: 1rem;
+  font-size: 3rem;
+  border-radius: 1rem;
+}
+
+@media (max-width: 768px) {
+  .radio__overlay {
+    width: calc(100vw - 4rem);
+    left: 1rem;
+    height: auto;
+    -webkit-transform: translate(0, -50%);
+            transform: translate(0, -50%);
+  }
+}
+
+.radio__overlay .marquee {
+  padding: 0 0 0.5rem;
+  font-size: 1.5rem;
+  width: 100%;
+  font-family: 'EB Garamond';
+  -webkit-font-variant-ligatures: discretionary-ligatures;
+          font-variant-ligatures: discretionary-ligatures;
+}
+
+.radio__overlay .marquee span {
+  margin-right: 25px;
+}
+
+.radio__overlay__headline {
+  text-align: left;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 768px) {
+  .radio__overlay__headline {
+    font-size: 8vw;
+  }
+}
+
+.radio__overlay__headline .live {
+  opacity: 0;
+  font-family: 'EB Garamond';
+  -webkit-animation: 2s linear infinite blinker;
+          animation: 2s linear infinite blinker;
+}
+
+@-webkit-keyframes blinker {
+  0% {
+    opacity: 0;
+  }
+  49% {
+    opacity: 1;
+  }
+  69% {
+    opacity: 1;
+  }
+  99% {
+    opacity: 0;
+  }
+}
+
+@keyframes blinker {
+  0% {
+    opacity: 0;
+  }
+  49% {
+    opacity: 1;
+  }
+  69% {
+    opacity: 1;
+  }
+  99% {
+    opacity: 0;
+  }
+}
+
+.radio__overlay__headline__subline {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  font-family: 'EB Garamond';
+  -webkit-font-variant-ligatures: discretionary-ligatures;
+          font-variant-ligatures: discretionary-ligatures;
+  margin-bottom: 0.5rem;
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+@media (max-width: 768px) {
+  .radio__overlay__headline__subline {
+    font-size: 5vw;
+  }
+}
+
+.radio__overlay .play,
+.radio__overlay .pause {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  cursor: pointer;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  color: #000;
+  mix-blend-mode: lighten;
+  border-radius: 1rem;
+  background-color: #fff;
+  font-size: 2rem;
+  padding: 1rem;
+  font-family: 'EB GARAMOND';
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .radio__overlay .play,
+  .radio__overlay .pause {
+    font-size: 8vw;
+  }
+}
+
+.radio__overlay .play svg,
+.radio__overlay .pause svg {
+  width: 30px;
+  fill: #000;
+  height: 30px;
+  margin-right: 10px;
+}
+
+.radio__overlay .play.hide,
+.radio__overlay .pause.hide {
+  display: none !important;
+}
+
+.radio__overlay svg {
+  width: 3rem;
 }
 /*# sourceMappingURL=main.css.map */

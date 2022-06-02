@@ -1,6 +1,6 @@
 
 
-
+$mobile: 768px;
 
 @font-face {
     font-family: 'EB Garamond';
@@ -305,6 +305,10 @@ html,body {
     //  -webkit-background-clip: text;
     //  -webkit-text-fill-color: transparent;
 
+    &__year {
+      margin-bottom: 1rem;
+    }
+
       span {
         letter-spacing: 0.1rem;
         font-family: 'KTF Rublena Solid';
@@ -318,6 +322,8 @@ html,body {
       top: 1rem;
      // display: none;
       left: 1rem;
+      max-width: calc(50vw - 20rem);
+      line-height: 0.8;
       z-index: 10;
       letter-spacing: 0.1rem;
     //  left: 50%;
@@ -902,4 +908,126 @@ img {
     padding: 0.5rem 1rem;
     background-color: #fff;
     mix-blend-mode: lighten;
+}
+
+
+.radio {
+  &__overlay {
+    position: fixed;
+    width: 620px;
+    overflow: hidden;
+    height: auto;
+    z-index: 1000;
+    background: radial-gradient(at 50% 50%, #ae7eca, #ae7eca47);
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    left: 50%;
+    color: #fff;
+    padding: 1rem;
+    font-size: 3rem;
+    border-radius: 1rem;
+
+    @media (max-width: $mobile) {
+      width: calc(100vw - 4rem);
+      left: 1rem;
+      height: auto;
+      transform: translate(0, -50%);
+      
+    }
+
+    .marquee {
+      padding: 0 0 0.5rem;
+      font-size: 1.5rem;
+      width: 100%;
+      font-family: 'EB Garamond';
+      font-variant-ligatures: discretionary-ligatures;
+      
+    }
+    
+    .marquee3k {
+      //white-space: pre;
+      //overflow:hidden
+    }
+    
+    .marquee span {
+      margin-right: 25px;
+    }
+
+    &__headline {
+      text-align: left;
+      margin-bottom: 1rem;
+
+      @media (max-width: $mobile) {
+        font-size: 8vw;
+      }
+
+      .live {
+        opacity: 0;
+        font-family: 'EB Garamond';
+        animation: 2s linear infinite blinker;
+      }
+
+      @keyframes blinker {
+        0% {opacity: 0;}
+        49% {opacity: 1;}
+        69% {opacity: 1;}
+        99% {opacity: 0;}
+      }
+
+      &__subline {
+        display: flex;
+        justify-content: space-between;
+        font-family: 'EB Garamond';
+        font-variant-ligatures: discretionary-ligatures;
+        margin-bottom: 0.5rem;
+        font-size: 1.5rem;
+        line-height: 1;
+
+        @media (max-width: $mobile) {
+          font-size: 5vw;
+        }
+  
+
+      }
+    }
+
+
+
+    .play,
+.pause {
+  display: flex;
+  cursor: pointer;
+  justify-content: center;
+  color: #000;
+  mix-blend-mode: lighten;
+  border-radius: 1rem;
+  background-color: #fff;
+  font-size: 2rem;
+  padding: 1rem;
+  font-family: 'EB GARAMOND';
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+
+  @media (max-width: $mobile) {
+    font-size: 8vw;
+  }
+
+  svg {
+    width: 30px;
+    fill: #000;
+    height: 30px;
+    margin-right: 10px;
+  }
+
+  &.hide {
+    display: none !important;
+  }
+}
+
+    svg {
+      width: 3rem;
+    }
+  }
 }
