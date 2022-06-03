@@ -21,7 +21,7 @@
 
   <div class="fix"></div>
 
-  <?php snippet('radio') ?>
+ <!-- <?php snippet('radio') ?>--->
 
 
   <!-- content that is always visible: tidy this up -->
