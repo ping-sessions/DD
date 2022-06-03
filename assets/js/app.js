@@ -115,7 +115,6 @@ function renderData(content) {
   for (var i = 0; i < content.length; i++) {
     let projectUrl = '/dd_kirby/DD/home/projects/' + content[i].project
     let fileUrl = content[i].url 
-    console.log('content', content[i])
     let el 
     // markup must match file.php snippet
     if (content[i].type == 'image') {
@@ -134,6 +133,32 @@ function renderData(content) {
     }
     container.append(el)
   }
+
+  // empty counter 
+  $('.fixed__meta').html('')
+  var imageCount = content.filter((file) => file.type === 'image').length
+  var audioCount = content.filter((file) => file.type === 'audio').length
+  // add rtf here to ensure it doesn't pick up pdf
+  var textCount = content.filter((file) => file.type === 'document' && file.extension === 'rtf').length
+  var videoCount = content.filter((file) => file.type === 'video').length
+  // $('.fixed__meta').append('<div>' + 'Your decision has' + '</div>')
+  if (imageCount > 0) {
+    $('.fixed__meta').append('<div>' + imageCount + ' ' + 'Images</div>')
+    console.log('has images', imageCount)
+  }
+  if (audioCount > 0) {
+    $('.fixed__meta').append('<div>' + audioCount + ' ' + 'Audios</div>')
+    console.log('has audio', audioCount)
+  }
+  if (textCount > 0) {
+    $('.fixed__meta').append('<div>' + textCount + ' ' + 'Texts</div>')
+    console.log('has text', textCount)
+  }
+  if (videoCount > 0) {
+    $('.fixed__meta').append('<div>' + videoCount + ' ' + 'Videos</div>')
+    console.log('has video', videoCount)
+  }
+
 
   // scroll back to top when selection made
   // may want to animate this 
@@ -234,6 +259,26 @@ function initHandlers() {
   });
 
   initThumbHover()
+  initDrag()
+}
+
+function initDrag() {
+  $( ".program-button" ).draggable({
+    addClasses: true,
+    cursorAt: {
+      top: 25,
+      left: 25
+    }
+  });
+
+  $( ".radio__overlay" ).draggable({
+    addClasses: true,
+    cursor: 'move',
+    cursorAt: {
+      top: 25,
+      left: 25
+    }
+  });
 }
 
 
@@ -248,6 +293,14 @@ function initThumbHover() {
       document.querySelector('.fixed__title__inner__number').textContent = item.getAttribute('data-number');
       document.querySelector('.fixed__title__inner').textContent = item.getAttribute('data-title');
       document.querySelector('.fixed__title__inner').classList.add('active');
+
+      // update fixed meta 
+      // no longer using
+      // var dataTagsArr = item.getAttribute('data-tags').split(',')
+      // $('.fixed__meta').html('')
+      // for (var i = 0; i < dataTagsArr.length; i++) {
+      //   $('.fixed__meta').append('<div>' + dataTagsArr[i] + '</div>')
+      // }
     });
     item.addEventListener("mouseleave", function (event) {
       document.querySelector('body').style.backgroundColor = '#000';

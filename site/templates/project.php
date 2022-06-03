@@ -68,9 +68,9 @@
 <div class="project__meta__year"><span>Date<br></span><?= $page->year() ?></div>
 <div class="project__meta__participants"><span>Participants<br></span><?= $page->participants() ?></div>
 </div>
-    <div class="project-info__inner">
-        <?= kirbytext($page->text()) ?>
-      </div>
+  <div class="project-info__inner">
+    <?= kirbytext($page->text()) ?>
+  </div>
   </div>
 </div>
 
