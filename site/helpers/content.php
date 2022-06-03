@@ -33,6 +33,7 @@
           $fileObj = new stdClass();
           $fileObj->id = $file->id();
           $fileObj->type = $file->type();
+          $fileObj->extension = $file->extension();
           $fileObj->project_title = $file->page()->title()->value();
           $fileObj->project = $file->page()->slug();
           $fileObj->url = $file->url();
@@ -53,6 +54,7 @@
         $fileObj = new stdClass();
         $fileObj->id = $file->id();
         $fileObj->type = $file->type();
+        $fileObj->extension = $file->extension();
         $fileObj->project_title = $file->page()->title()->value();
         $fileObj->project = $file->page()->slug();
         $fileObj->url = $file->url();

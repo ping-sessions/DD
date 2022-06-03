@@ -929,11 +929,12 @@ img {
     text-align: left;
     width: auto;
     left: 1rem;
-   color: #000;
+  //  color: #000;
     border-radius: 1rem;
     padding: 0.5rem 1rem;
-    background-color: #fff;
-    mix-blend-mode: lighten;
+    // background-color: #fff;
+    // mix-blend-mode: lighten;
+    color: #FFF;
 }
 
 
@@ -1065,7 +1066,7 @@ img {
   top: 25%;
   left: 25%;
   z-index: 4;
-  transition: 0.3s ease-in-out;
+  // transition: 0.3s ease-in-out;
   font-size: 2rem;
   font-variant-ligatures: discretionary-ligatures;
   text-align: center;
@@ -1074,16 +1075,23 @@ img {
   z-index: 100;
   align-items: center;
   display: flex;
-  transition: all 0.3s ease-in-out;
   left: 50%;
   transform: translateX(-50%);
   border-radius: 1rem;
   padding: 0.5rem 1rem;
   background-color: red;
   // mix-blend-mode: lighten;
+  white-space: nowrap;
   & a {
     color: white;
     text-decoration: none;
+  }
+  &.ui-draggable-dragging {
+    cursor: move;
+    & a {
+      cursor: move;
+      pointer-events: none;
+    }
   }
 }
 

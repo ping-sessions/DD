@@ -76,9 +76,45 @@
 
   <div class="fixed__title"><span class="fixed__title__inner__number"></span><span class="fixed__title__inner"></span></div>
   <div class="fixed__meta">
-    Displays in 48 DDs
-    <br>
-    Digests 26 Dispositions
+    <?php 
+      $imageCount = 0;
+      $documentCount = 0;
+      $audioCount = 0;
+      $videoCount = 0;
+      foreach ($tagged_files as $tagged_file) {
+        if ($tagged_file->type == 'image') {
+          $imageCount++;
+        }
+        else if ($tagged_file->type == 'audio') {
+          $audioCount++;
+        }
+        // would have to check for screenshot/if using video at all
+        else if ($tagged_file->type == 'video') {
+          $videoCount++;
+        }
+        // filter out pdfs
+        else if ($tagged_file->type == 'document' && $tagged_file->extension == 'rtf') {
+          $documentCount++;
+        }
+      }
+    ?>
+    <?php if ($imageCount > 0) : ?>
+      <div><?= $imageCount ?> Images</div>
+    <?php endif ?>
+    <?php if ($audioCount > 0) : ?>
+      <!-- need to rename this -->
+      <div><?= $audioCount ?> Audios</div>
+    <?php endif ?>
+    <?php if ($documentCount > 0) : ?>
+      <div><?= $documentCount ?> Texts</div>
+    <?php endif ?>
+    <?php if ($videoCount > 0) : ?>
+      <div><?= $documentCount ?> Videos</div>
+    <?php endif ?>
+
+    <!-- Displays in 48 DDs -->
+    <!-- <br> -->
+    <!-- Digests 26 Dispositions -->
   </div>
 
 
@@ -87,3 +123,5 @@
   <?php snippet('shapes') ?>
   
   <main data-barba="container" data-barba-namespace="<?= $page->template() ?>">
+
+

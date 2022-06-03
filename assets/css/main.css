@@ -919,11 +919,9 @@ audio {
   text-align: left;
   width: auto;
   left: 1rem;
-  color: #000;
   border-radius: 1rem;
   padding: 0.5rem 1rem;
-  background-color: #fff;
-  mix-blend-mode: lighten;
+  color: #FFF;
 }
 
 .radio__overlay {
@@ -1086,8 +1084,6 @@ audio {
   top: 25%;
   left: 25%;
   z-index: 4;
-  -webkit-transition: 0.3s ease-in-out;
-  transition: 0.3s ease-in-out;
   font-size: 2rem;
   -webkit-font-variant-ligatures: discretionary-ligatures;
           font-variant-ligatures: discretionary-ligatures;
@@ -1101,19 +1097,27 @@ audio {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
   left: 50%;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
   border-radius: 1rem;
   padding: 0.5rem 1rem;
   background-color: red;
+  white-space: nowrap;
 }
 
 .program-button a {
   color: white;
   text-decoration: none;
+}
+
+.program-button.ui-draggable-dragging {
+  cursor: move;
+}
+
+.program-button.ui-draggable-dragging a {
+  cursor: move;
+  pointer-events: none;
 }
 
 .program strong {
