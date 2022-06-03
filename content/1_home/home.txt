@@ -6,7 +6,7 @@ Show-radio: false
 
 ----
 
-Show-program: true
+Show-program: false
 
 ----
 

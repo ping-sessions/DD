@@ -74,15 +74,15 @@
   
   </div>
 
-  <div class="fixed__title"><span class="fixed__title__inner__number"></span><span class="fixed__title__inner"></span></div>
-  <div class="fixed__meta">
+  <div class="fixed__title hide-mobile"><span class="fixed__title__inner__number"></span><span class="fixed__title__inner"></span></div>
+  <div class="fixed__meta hide-mobile">
     Displays in 48 DDs
     <br>
     Digests 26 Dispositions
   </div>
 
 
-<a href="<?= $site->url()?>/home/about" class="about__link">(About & Contact)</a>
+<a href="<?= $site->url()?>/home/about" class="about__link">About & Contact</a>
 
   <?php snippet('shapes') ?>
   

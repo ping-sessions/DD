@@ -1,7 +1,8 @@
 // --- variables ---
 let currentData = {}
 let selectedFile = ''
-const apiUrl = `${window.location.href}home.json`
+const apiUrl = 'http://localhost:8888/dd_kirby/DD/home.json'
+//const apiUrl = `${window.location.href}home.json`
 
 
 // --- helpers --- 
@@ -24,6 +25,7 @@ var contains = function (arr1, arr2) {
 
 // --- api stuf ---
 function getData(random, tags) {
+
   $.ajax({
     type: "GET",
     url: apiUrl,
@@ -118,16 +120,17 @@ function renderData(content) {
     // markup must match file.php snippet
     if (content[i].type == 'image') {
       // json stringy seems to work (keep eye on this)
-      let dataTitle = '(' + parseInt(content[i].position + 1) + ')' + ' ' + content[i].project_title
-      el = '<div class="projects__item" data-title=' + JSON.stringify(dataTitle) + '><a href=' + projectUrl + ' data-position=' + content[i].position +'><img src =' + fileUrl + '></a></div>'
+      let dataNumber = '(' + parseInt(content[i].position + 1) + ')'
+      let dataTitle = content[i].project_title
+      el = '<div class="projects__item" data-number=' + JSON.stringify(dataNumber) + '" data-title=' + JSON.stringify(dataTitle) + '><a href=' + projectUrl + ' data-position=' + content[i].position +'><img src =' + fileUrl + '></a></div>'
     }
     else if (content[i].type == 'audio') {
       let dataTitle = '(' + parseInt(content[i].position + 1) + ')' + ' ' + content[i].project_title
-      el = '<div class="projects__item" data-title=' + JSON.stringify(dataTitle) + '><a href=' + projectUrl + ' data-position=' + content[i].position +'><audio controls><source src =' + fileUrl + ' type="audio/mpeg"></audio></a></div>'
+      el = '<div class="projects__item" data-number=' + JSON.stringify(dataNumber) + '" data-title=' + JSON.stringify(dataTitle) + '><a href=' + projectUrl + ' data-position=' + content[i].position +'><audio controls><source src =' + fileUrl + ' type="audio/mpeg"></audio></a></div>'
     }
     else if (content[i].type == 'document') {
       let dataTitle = '(' + parseInt(content[i].position + 1) + ')' + ' ' + content[i].project_title
-      el = '<div class="projects__item" data-title=' + JSON.stringify(dataTitle) + '><a href=' + projectUrl + ' data-position=' + content[i].position +'><div class="projects__text">' + content[i].text + '</div></a></div>'
+      el = '<div class="projects__item" data-number=' + JSON.stringify(dataNumber) + '" data-title=' + JSON.stringify(dataTitle) + '><a href=' + projectUrl + ' data-position=' + content[i].position +'><div class="projects__text">' + content[i].text + '</div></a></div>'
     }
     container.append(el)
   }
@@ -139,6 +142,7 @@ function renderData(content) {
   initThumbHover()
   initClip()
 }
+
 
 
 
@@ -193,6 +197,7 @@ function initHandlers() {
     let dataTags = $(this).attr('data-tags')
     let tagsArray = dataTags.split(", ")
     getData(false, tagsArray)
+    console.log('is triggered?')
     unlockIndex()
     document.removeEventListener('mousemove', cursorSelect);
   })
@@ -209,7 +214,7 @@ function initHandlers() {
     mouseXpercentage = Math.round(event.pageX / windowWidth_all * 100)
     mouseYpercentage = Math.round(event.pageY / windowHeight_all * 100)
     $('.fix').css('background', 'radial-gradient(at ' + mouseXpercentage + '% ' + mouseYpercentage + '%, #ae7eca, #fff)')
-   // $('.fix').css('background', 'repeating-conic-gradient(#fff ' + mouseYpercentage/5.5 +'%, #ae7eca ' +100+'%, #fff ' + 0 +'%, #ae7eca ' + mouseXpercentage +'%) ' +  mouseXpercentage +'% ' + 50 +'% / 100% 100% repeat')
+    $('.fix_2').css('background', 'radial-gradient(at ' + mouseXpercentage + '% ' + mouseYpercentage + '%, #ae7eca, #fff)')
   });
 
 
