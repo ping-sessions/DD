@@ -440,7 +440,7 @@ function initProjectSwiper(data) {
     var swiper = new Swiper('.swiper', {
       // Optional parameters
       loop: false,
-      slidesPerView: 1.5,
+      slidesPerView: "auto",
       centeredSlides: true,
       initialSlide: parseInt(position),
   

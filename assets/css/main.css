@@ -847,6 +847,15 @@ audio {
   /* test with half screen */
 }
 
+.project-page .projects__item:nth-child(3n+3), .about-page .projects__item:nth-child(3n+3), .program-page .projects__item:nth-child(3n+3) {
+  margin-left: 28% !important;
+  margin-top: -5vw !important;
+}
+
+.project-page .projects__item:nth-child(odd), .about-page .projects__item:nth-child(odd), .program-page .projects__item:nth-child(odd) {
+  margin-top: -5vw !important;
+}
+
 .project-page .projects__item, .about-page .projects__item, .program-page .projects__item {
   width: 25vw;
   height: 27rem;
