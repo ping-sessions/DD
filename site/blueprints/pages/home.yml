@@ -12,10 +12,30 @@ columns:
     sections:
       pages:
         type: pages
-        max: 2
+        max: 3
         template:
           - projects
           - about
+          - program
+      popups:
+        type: fields
+        fields:
+          show_radio:
+            label: Show Radio
+            type: toggle
+            width: 1/2
+            default: false
+            text: 
+              - "No"
+              - "Yes"
+          show_program:
+            label: Show Program
+            type: toggle
+            width: 1/2
+            default: false
+            text: 
+              - "No"
+              - "Yes"
   dd:
     width: 1/2
     sections:

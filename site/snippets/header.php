@@ -21,7 +21,16 @@
 
   <div class="fix"></div>
 
- <!-- <?php snippet('radio') ?>--->
+
+  <?php if ($site->page('home')->show_radio()->toBool() == true) : ?>
+    <?php snippet('radio') ?>
+  <?php endif ?>
+
+
+  <?php if ($site->page('home')->show_program()->toBool() == true) : ?>
+    <?php snippet('program-button') ?>
+  <?php endif ?>
+
 
 
   <!-- content that is always visible: tidy this up -->
@@ -64,6 +73,7 @@
       </div>
   
   </div>
+
   <div class="fixed__title"><span class="fixed__title__inner__number"></span><span class="fixed__title__inner"></span></div>
   <div class="fixed__meta">
     Displays in 48 DDs
