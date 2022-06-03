@@ -358,7 +358,7 @@ audio {
   background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#ae7ecade));
   background: linear-gradient(180deg, #fff 0%, #ae7ecade 100%);
   line-height: 1.2;
-  padding: 1rem 1rem 10rem;
+  padding: 2rem 1rem 10rem;
 }
 
 .project-info__inner {
@@ -366,6 +366,10 @@ audio {
   mix-blend-mode: multiply;
   color: #a178b7;
   font-size: 2rem;
+}
+
+.project-info__inner p:first-child {
+  margin-top: 0;
 }
 
 .project-overlay .project-info {
@@ -646,12 +650,18 @@ audio {
 }
 
 .projects__item:nth-child(even) {
-  margin-top: -20vw;
+  margin-top: -5vw;
   margin-left: 3vw;
 }
 
 .projects__item:nth-child(3n+3) {
-  margin-left: 28%;
+  margin-left: 28% !important;
+}
+
+@media (max-width: 768px) {
+  .projects__item:nth-child(3n+3) {
+    margin-left: 13vw !important;
+  }
 }
 
 .projects__item:nth-child(odd) {

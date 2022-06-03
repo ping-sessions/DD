@@ -715,8 +715,8 @@ button.swiper-pagination-bullet {
 
 .swiper-slide {
   // background: radial-gradient(at 50% 0%, #ae7eca, white);
-  margin-top: 7rem;
-  height: 70vh;
+  margin-top: 5.5rem;
+  height: calc(100% - 9.5rem);
   width: auto;
 	flex-direction: column;
 	justify-content: center;

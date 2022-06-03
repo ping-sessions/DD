@@ -811,8 +811,8 @@ button.swiper-pagination-bullet {
 }
 
 .swiper-slide {
-  margin-top: 7rem;
-  height: 70vh;
+  margin-top: 5.5rem;
+  height: calc(100% - 9.5rem);
   width: auto;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;

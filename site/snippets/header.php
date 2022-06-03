@@ -51,10 +51,10 @@
       <div class = 'buttons'>
         <!-- accesskey is temp/need to figure out -->
         <button class = 'dd-select hide-mobile' accesskey="o">
-          (Decide DD)
+          Decide DD
         </button>
         <button class = 'dd-random hide-desktop' accesskey="m">
-          (Do DD)
+          Do DD
         </button>
       </div>
     </header>

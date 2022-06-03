@@ -376,7 +376,7 @@ html,body {
       font-size: 1.5rem;
       background: linear-gradient(180deg, #fff 0%, #ae7ecade 100%);
       line-height: 1.2;
-      padding: 1rem 1rem 10rem;
+      padding: 2rem 1rem 10rem;
 
       &__inner {
         max-width: 960px;
@@ -386,6 +386,9 @@ html,body {
        // background: -webkit-linear-gradient(rgb(0, 0, 0), #ae7ecade);
       //  -webkit-background-clip: text;
      //   -webkit-text-fill-color: transparent;
+     p:first-child {
+       margin-top: 0;
+     }
       }
   }
   
@@ -646,13 +649,16 @@ img {
     }
 
     &:nth-child(even) {
-        margin-top: -20vw;
-        margin-left: 3vw;
- 
+      margin-top: -5vw;
+      margin-left: 3vw;
     }
 
     &:nth-child(3n+3) {
-      margin-left: 28%;
+      margin-left: 28% !important;
+
+      @media (max-width: $mobile) {
+        margin-left: 13vw !important;
+      }
     }
 
         &:nth-child(odd) {

@@ -59,7 +59,7 @@
   <div class="swiper-pagination"></div>
   </div>
 <?php endif ?>
-<a href="<?= $site->url()?>" class="close-project">(Discontinue Project)</a>
+<a href="<?= $site->url()?>" class="close-project">Disclose Decision</a>
 
 <!-- Slider main container -->
     
