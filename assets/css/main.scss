@@ -1040,6 +1040,37 @@ img {
 }
 
 
+// --- program button ---
+.program-button {
+  position: fixed;
+  top: 25%;
+  left: 25%;
+  z-index: 4;
+  transition: 0.3s ease-in-out;
+  font-size: 2rem;
+  font-variant-ligatures: discretionary-ligatures;
+  text-align: center;
+  width: auto;
+  letter-spacing: 0.1rem;
+  z-index: 100;
+  align-items: center;
+  display: flex;
+  transition: all 0.3s ease-in-out;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: red;
+  // mix-blend-mode: lighten;
+  & a {
+    color: white;
+    text-decoration: none;
+  }
+}
+
+
+
+
 // --- program stuff (copypasted from temporary page) ---
 .program strong {
   font-family: 'KTF Rublena Solid';

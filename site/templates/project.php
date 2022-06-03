@@ -69,9 +69,7 @@
 <div class="project__meta__participants"><span>Participants<br></span><?= $page->participants() ?></div>
 </div>
     <div class="project-info__inner">
-
-      
-    <?= $page->text() ?>
+        <?= kirbytext($page->text()) ?>
       </div>
   </div>
 </div>
