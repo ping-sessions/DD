@@ -644,6 +644,10 @@ img {
  
     }
 
+    &:nth-child(3n+3) {
+      margin-left: 28%;
+    }
+
         &:nth-child(odd) {
             margin-top: -10vw;
             width: 48vw;

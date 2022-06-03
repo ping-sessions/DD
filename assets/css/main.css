@@ -645,6 +645,10 @@ audio {
   margin-left: 3vw;
 }
 
+.projects__item:nth-child(3n+3) {
+  margin-left: 28%;
+}
+
 .projects__item:nth-child(odd) {
   margin-top: -10vw;
   width: 48vw;
