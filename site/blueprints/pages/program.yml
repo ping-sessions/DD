@@ -1,0 +1,13 @@
+title: Program
+options:
+  changeStatus: false
+  changeTitle: true
+  changeSlug: false 
+  delete: false 
+  duplicate: false 
+  changeTemplate: false
+fields:
+  program:
+    label: Program (Markdown)
+    type: textarea
+    size: large

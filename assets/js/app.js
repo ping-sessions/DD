@@ -409,6 +409,22 @@ function initRoutes() {
         beforeLeave(data) {
           focusIndex()
         } 
+      }, {
+      namespace: 'schedule',
+        afterEnter(data) {
+          // ...
+          console.log('after enter schedule')
+        },
+        afterLeave(data) {
+          // ...
+        },
+        beforeEnter(data) {
+          lockIndex()
+          // ...
+        },
+        beforeLeave(data) {
+          focusIndex()
+        } 
       }
     ]
   })

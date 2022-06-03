@@ -12,10 +12,11 @@ columns:
     sections:
       pages:
         type: pages
-        max: 2
+        max: 3
         template:
           - projects
           - about
+          - program
   dd:
     width: 1/2
     sections:
