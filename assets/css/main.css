@@ -42,6 +42,21 @@
   }
 }
 
+.screensaver {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.screensaver img {
+  position: absolute;
+  width: 3rem;
+}
+
 /* buttons */
 button {
   padding: 0.5rem;
@@ -175,37 +190,49 @@ h1, h2, h3, h4, h5 {
   }
 }
 
+.dday.active {
+  display: none;
+}
+
 /* global */
 .header {
   position: fixed;
-  top: 0;
-  z-index: 1;
-  width: 100%;
-  mix-blend-mode: lighten;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  padding-top: 1rem;
-  padding-left: 1rem;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translateY(-50%) translateX(-50%);
+  transform: translateY(-50%) translateX(-50%);
+  font-size: 6rem;
+  text-align: center;
+  z-index: 0;
+  pointer-events: none;
+  width: 100vw;
 }
 
-.header .buttons {
+.buttons {
+  cursor: pointer;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-      -ms-flex-flow: row;
-          flex-flow: row;
+  -ms-flex-flow: row;
+  z-index: 10;
+  flex-flow: row;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
   position: fixed;
   display: flex;
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
-  right: 1rem;
+  left: 50%;
+  top: 1rem;
+  /* background-color: #fff; */
+  mix-blend-mode: lighten;
   padding-right: 0rem;
+}
+
+.buttons button {
+  background-color: #fff;
 }
 
 .header button {
@@ -220,10 +247,12 @@ h1, h2, h3, h4, h5 {
   display: flex;
   margin: 0;
   position: fixed;
+  font-size: 6rem;
   left: 1rem;
-  text-align: left;
-  /* -webkit-transform: translateX(-50%); */
-  /* transform: translateX(-50%); */
+  left: 50%;
+  text-align: center;
+  -webkit-transform: translateY(-50%) translateX(-50%);
+          transform: translateY(-50%) translateX(-50%);
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
   -ms-flex-flow: column;
@@ -246,7 +275,7 @@ h1, h2, h3, h4, h5 {
   -webkit-box-direction: normal;
       -ms-flex-flow: column;
           flex-flow: column;
-  font-size: 1.5rem;
+  font-size: 3rem;
 }
 
 .title {
@@ -254,7 +283,8 @@ h1, h2, h3, h4, h5 {
 }
 
 .title #decision {
-  font-size: 3rem;
+  font-size: 6rem;
+  width: 90vw;
 }
 
 @media (max-width: 768px) {
@@ -302,7 +332,7 @@ h1, h2, h3, h4, h5 {
   border-radius: 1rem;
   mix-blend-mode: lighten;
   background-color: #fff;
-  color: #000;
+  color: #c19cd6;
 }
 
 .close-project .hide-desktop {
@@ -427,12 +457,12 @@ audio {
   }
 }
 
-.project-page .header .buttons, .about-page .header .buttons, .program-page .header .buttons {
+.project-page .buttons, .about-page .buttons, .program-page .buttons {
   right: calc(50vw + 1rem);
 }
 
 @media (max-width: 768px) {
-  .project-page .header .buttons, .about-page .header .buttons, .program-page .header .buttons {
+  .project-page .buttons, .about-page .buttons, .program-page .buttons {
     right: 1rem;
   }
 }
@@ -461,7 +491,7 @@ audio {
   background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#ae7ecade));
   background: linear-gradient(180deg, #fff 0%, #ae7ecade 100%);
   line-height: 1.2;
-  padding: 2rem 1rem 10rem;
+  padding: 1rem 1rem 10rem;
 }
 
 @media (max-width: 768px) {
@@ -551,6 +581,99 @@ audio {
   opacity: 1;
 }
 
+#cursor {
+  position: fixed;
+  z-index: 99;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+  will-change: transform;
+}
+
+#cursor img {
+  -webkit-animation: spin 8s linear infinite;
+          animation: spin 8s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  10% {
+    -webkit-transform: rotate(36deg);
+    transform: rotate(36deg);
+  }
+  20% {
+    -webkit-transform: rotate(-10deg);
+    transform: rotate(-10deg);
+  }
+  60% {
+    -webkit-transform: rotate(-15deg);
+    transform: rotate(-15deg);
+  }
+  80% {
+    -webkit-transform: rotate(199deg);
+    transform: rotate(199deg);
+  }
+  100% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes spin {
+  10% {
+    -webkit-transform: rotate(36deg);
+    transform: rotate(36deg);
+  }
+  20% {
+    -webkit-transform: rotate(-10deg);
+    transform: rotate(-10deg);
+  }
+  60% {
+    -webkit-transform: rotate(-15deg);
+    transform: rotate(-15deg);
+  }
+  80% {
+    -webkit-transform: rotate(199deg);
+    transform: rotate(199deg);
+  }
+  100% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .cursor__circle {
+    width: 64px;
+    height: 64px;
+    margin-top: -50%;
+    margin-left: -50%;
+    border-radius: 50%;
+  }
+  #cursor.arrow .cursor__circle {
+    width: 128px;
+    height: 128px;
+  }
+  #cursor.arrow::after {
+    content: '';
+    position: absolute;
+    left: -50%;
+    top: -50%;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  #cursor.subtle .cursor__circle {
+    opacity: 0.16;
+  }
+  #cursor.overlay .cursor__circle {
+    width: 48px;
+    height: 48px;
+    background-color: rgba(227, 222, 193, 0.08);
+    border-color: transparent;
+  }
+}
+
 .cursor {
   width: 3rem;
   height: 3rem;
@@ -560,10 +683,6 @@ audio {
   position: fixed;
   z-index: 10;
   pointer-events: none;
-  left: 0;
-  top: 0;
-  -webkit-transform: translate(calc(-50% + 15px), -50%);
-          transform: translate(calc(-50% + 15px), -50%);
 }
 
 .cursor2 {
@@ -574,8 +693,6 @@ audio {
   background-color: black;
   opacity: 0 !important;
   position: fixed;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
   pointer-events: none;
   -webkit-transition: width .3s, height .3s, opacity .3s;
   transition: width .3s, height .3s, opacity .3s;
@@ -990,7 +1107,7 @@ audio {
 }
 
 @media (max-width: 768px) {
-  .project-page .header .buttons, .about-page .header .buttons, .program-page .header .buttons {
+  .project-page .buttons, .about-page .buttons, .program-page .buttons {
     opacity: 0;
   }
 }
@@ -1043,6 +1160,8 @@ audio {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  text-decoration: none;
+  color: #000;
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
   right: 50%;
@@ -1050,9 +1169,16 @@ audio {
   -webkit-transform: translateX(50%);
           transform: translateX(50%);
   border-radius: 1rem;
+  pointer-events: none;
   padding: 0.5rem 1rem;
   background-color: #fff;
   mix-blend-mode: lighten;
+  opacity: 0;
+}
+
+.fixed__title.active {
+  pointer-events: inherit;
+  opacity: 1;
 }
 
 .fixed__title__inner__number {
@@ -1082,7 +1208,7 @@ audio {
 
 .radio__overlay {
   position: fixed;
-  width: 620px;
+  width: 30.5rem;
   overflow: hidden;
   height: auto;
   z-index: 1000;
@@ -1240,7 +1366,7 @@ audio {
   top: 25%;
   left: 25%;
   z-index: 4;
-  font-size: 2rem;
+  font-size: 3rem;
   -webkit-font-variant-ligatures: discretionary-ligatures;
           font-variant-ligatures: discretionary-ligatures;
   text-align: center;
@@ -1254,15 +1380,19 @@ audio {
   display: -ms-flexbox;
   display: flex;
   left: 50%;
+  line-height: 1;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
   border-radius: 1rem;
-  padding: 0.5rem 1rem;
+  padding: 1.5rem;
   background-color: red;
   white-space: nowrap;
+  cursor: -webkit-grab;
+  cursor: grab;
 }
 
 .program-button a {
+  cursor: pointer;
   color: white;
   text-decoration: none;
 }

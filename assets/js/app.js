@@ -22,6 +22,53 @@ var contains = function (arr1, arr2) {
 
 
 
+if ($(window).width() > 768) {
+  var time = 1000; 
+  var activityTimer = setTimeout(inActive, time); 
+  
+  function resetActive() {
+    $('.screensaver').empty();
+    clearTimeout(activityTimer);
+    activityTimer = setTimeout(inActive, time);
+  }
+  
+
+  function inActive() {
+    var counter = 0;
+    var interval_loop = setInterval(function(){
+      counter++;
+
+     
+      var path = 'https://staging.dailydecisions.space/assets/',
+          imgs = ['dd_new.svg'],
+          i = Math.floor(Math.random()*imgs.length);
+       function getRandomInt(max) {
+        return Math.floor(Math.random() * Math.floor(max));
+      }
+      top_image = getRandomInt(80);
+      left = getRandomInt(90);
+      rotate = getRandomInt(360);
+
+
+      if (counter >= 250) {
+        $('.screensaver img').first().remove();
+        //clearInterval(interval_loop);
+    }
+  
+      $('.screensaver').append("<img style='transform:rotate("+rotate+"deg); left:"+left+"%; top:"+top_image+"%' src='"+path+imgs[i]+"'>").show();
+      }, 300);
+  
+      $(document).bind('mousemove scroll keydown', function () {
+        clearInterval(interval_loop);
+      });
+
+  }
+  
+  $(document).bind('mousemove scroll keydown', function () {
+    resetActive();
+  });
+  }
+
 
 // --- api stuf ---
 function getData(random, tags) {
@@ -97,7 +144,7 @@ function updateTitle(arr) {
   function initClip() {
     var clip_classes = ["clip1", "clip2", "clip3", "clip4", "clip5", "clip6", "clip7", "clip8", "clip8", "clip9", "clip10", "clip11", "clip12", "clip13", "clip14"];
   
-    $(".projects__item a").each(function(){
+    $(".projects__item").each(function(){
         $(this).addClass(clip_classes[~~(Math.random()*clip_classes.length)]);
     });
   }
@@ -125,11 +172,11 @@ function renderData(content) {
     }
     else if (content[i].type == 'audio') {
       let dataTitle = '(' + parseInt(content[i].position + 1) + ')' + ' ' + content[i].project_title
-      el = '<div class="projects__item" data-number=' + JSON.stringify(dataNumber) + '" data-title=' + JSON.stringify(dataTitle) + '><a href=' + projectUrl + ' data-position=' + content[i].position +'><audio controls><source src =' + fileUrl + ' type="audio/mpeg"></audio></a></div>'
+      el = '<div class="projects__item" data-number=' + JSON.stringify(2) + '" data-title=' + JSON.stringify(dataTitle) + '><a href=' + projectUrl + ' data-position=' + content[i].position +'><audio controls><source src =' + fileUrl + ' type="audio/mpeg"></audio></a></div>'
     }
     else if (content[i].type == 'document') {
       let dataTitle = '(' + parseInt(content[i].position + 1) + ')' + ' ' + content[i].project_title
-      el = '<div class="projects__item" data-number=' + JSON.stringify(dataNumber) + '" data-title=' + JSON.stringify(dataTitle) + '><a href=' + projectUrl + ' data-position=' + content[i].position +'><div class="projects__text">' + content[i].text + '</div></a></div>'
+      el = '<div class="projects__item" data-number=' + JSON.stringify(1) + '" data-title=' + JSON.stringify(dataTitle) + '><a href=' + projectUrl + ' data-position=' + content[i].position +'><div class="projects__text">' + content[i].text + '</div></a></div>'
     }
     container.append(el)
   }
@@ -164,6 +211,7 @@ function renderData(content) {
   // may want to animate this 
   $(document).scrollTop(0);
   // ...
+
   initThumbHover()
   initClip()
 }
@@ -186,12 +234,44 @@ function initHandlers() {
   })
   
 
-  function cursorSelect(e) {
-    var cursor = document.querySelector('.cursor');
-    var x = e.clientX;
-    var y = e.clientY;
-    cursor.style.transform = `translate3d(calc(${e.clientX}px - 50%), calc(${e.clientY}px - 50%), 0)`
+  const cursor = document.querySelector('#cursor');
+  const cursorCircle = cursor.querySelector('.cursor__circle');
+  
+  const mouse = { x: -100, y: -100 }; // mouse pointer's coordinates
+  const pos = { x: 0, y: 0 }; // cursor's coordinates
+  const speed = 0.1; // between 0 and 1
+  
+  const updateCoordinates = e => {
+    mouse.x = e.clientX;
+    mouse.y = e.clientY;
   }
+  window.addEventListener('mousemove', updateCoordinates);
+  
+  
+  
+  
+  
+  
+  
+  const updateCursor = () => {
+    const diffX = Math.round(mouse.x - pos.x);
+    const diffY = Math.round(mouse.y - pos.y);
+    
+    pos.x += diffX * speed;
+    pos.y += diffY * speed;
+    
+  
+    const translate = 'translate3d(' + pos.x + 'px ,' + pos.y + 'px, 0)';
+  
+    cursor.style.transform = translate;
+  };
+  
+  function loop() {
+    updateCursor();
+    requestAnimationFrame(loop);
+  }
+  requestAnimationFrame(loop);
+
 
   function initSelectionGrid() {
     for (const cell of document.querySelectorAll(".grid div")) {
@@ -211,7 +291,7 @@ function initHandlers() {
   selectButton.on('click', function(e) {
     $('.selector').removeClass('hidden')
     lockIndex()
-    document.addEventListener('mousemove', cursorSelect)
+    window.addEventListener('mousemove', updateCoordinates);
   })
 
 
@@ -224,7 +304,8 @@ function initHandlers() {
     getData(false, tagsArray)
     console.log('is triggered?')
     unlockIndex()
-    document.removeEventListener('mousemove', cursorSelect);
+    window.removeEventListener('mousemove', updateCoordinates);
+    document.querySelector('.dday').classList.add('active');
   })
 
 
@@ -233,13 +314,13 @@ function initHandlers() {
   
 
   
-  $(document).mousemove(function(event) {
+  $('.projects__outer').mousemove(function(event) {
     var windowWidth_all = window.innerWidth;
     var windowHeight_all = window.innerHeight;
     mouseXpercentage = Math.round(event.pageX / windowWidth_all * 100)
     mouseYpercentage = Math.round(event.pageY / windowHeight_all * 100)
     $('.fix').css('background', 'radial-gradient(at ' + mouseXpercentage + '% ' + mouseYpercentage + '%, #ae7eca, #fff)')
-    $('.fix_2').css('background', 'radial-gradient(at ' + mouseXpercentage + '% ' + mouseYpercentage + '%, #ae7eca, #fff)')
+   // $('.fix_2').css('background', 'radial-gradient(at ' + mouseXpercentage + '% ' + mouseYpercentage + '%, #ae7eca, #fff)')
   });
 
 
@@ -289,10 +370,11 @@ function initThumbHover() {
       document.querySelectorAll('.projects__item').forEach(element => element.classList.add('blured'));
       item.classList.remove('blured');
       document.querySelector('body').style.backgroundColor = item.getAttribute('data-bg');
-
+      document.querySelector('.fixed__title').setAttribute("href", item.getAttribute('href'));
       document.querySelector('.fixed__title__inner__number').textContent = item.getAttribute('data-number');
       document.querySelector('.fixed__title__inner').textContent = item.getAttribute('data-title');
       document.querySelector('.fixed__title__inner').classList.add('active');
+      document.querySelector('.fixed__title').classList.add('active');
 
       // update fixed meta 
       // no longer using
@@ -306,6 +388,7 @@ function initThumbHover() {
       document.querySelector('body').style.backgroundColor = '#000';
       document.querySelectorAll('.projects__item').forEach(element => element.classList.remove('blured'));
       document.querySelector('.fixed__title__inner').classList.remove('active');
+      document.querySelector('.fixed__title').classList.remove('active');
     });
   });
 }
@@ -379,6 +462,7 @@ if (document.querySelector('.swiper') != null) {
     pagination: {
       el: ".swiper-pagination",
       clickable: true,
+      dynamicBullets: true,
       renderBullet: function (index, className) {
         return '<span class="' + className + '">'+'('+ (index + 1) + ')' + "</span>";
       },
@@ -505,6 +589,7 @@ function initProjectSwiper(data) {
       // If we need pagination
       pagination: {
         el: ".swiper-pagination",
+        dynamicBullets: true,
         clickable: true,
         renderBullet: function (index, className) {
           return '<span class="' + className + '">'+'('+ (index + 1) + ')' + "</span>";

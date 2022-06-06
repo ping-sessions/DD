@@ -21,6 +21,8 @@
 
   <div class="fix"></div>
 
+  <div class="screensaver"></div>
+
 
   <?php if ($site->page('home')->show_radio()->toBool() == true) : ?>
     <?php snippet('radio') ?>
@@ -39,7 +41,7 @@
   
     <header class = 'header'>
       <h1 class = 'title'>
-        <span>Decision of the Day</span>
+        <span class="dday">Decision of the Day</span>
         <span id='decision'>
           <!-- $current_words variable is set in controller -->
           <?php foreach($current_words as $word) : ?>
@@ -48,7 +50,9 @@
         </span>
       </h1>
       
-      <div class = 'buttons'>
+    </header>
+
+    <div class = 'buttons'>
         <!-- accesskey is temp/need to figure out -->
         <button class = 'dd-select hide-mobile' accesskey="o">
           Decide DD
@@ -57,7 +61,6 @@
           Do DD
         </button>
       </div>
-    </header>
 
     <!-- DD selector overlay -->
     <?php snippet('selector') ?>
@@ -74,7 +77,7 @@
   
   </div>
 
-  <div class="fixed__title"><span class="fixed__title__inner__number"></span><span class="fixed__title__inner"></span></div>
+  <a href="" class="fixed__title"><span class="fixed__title__inner__number"></span><span class="fixed__title__inner"></span></a>
   <div class="fixed__meta">
     <?php 
       $imageCount = 0;

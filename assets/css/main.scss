@@ -51,6 +51,21 @@ $mobile: 768px;
   }
 }
 
+.screensaver {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  pointer-events: none;
+
+  img {
+    position: absolute;
+    width: 3rem;
+  }
+}
+
 
 /* buttons */
 
@@ -177,6 +192,12 @@ html,body {
       overflow: hidden;
       }
   }
+
+  .dday {
+    &.active {
+      display: none;
+    }
+  }
   
   .index.blurred {
    // filter: blur(5px);
@@ -187,24 +208,39 @@ html,body {
   /* global */
   .header {
     position: fixed;
-    top: 0;
-    z-index: 1;
-    width: 100%;
-    mix-blend-mode: lighten;
-    display: flex;
-    justify-content: space-between;
-    padding-top: 1rem;
-    padding-left: 1rem;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translateY(-50%) translateX(-50%);
+    transform: translateY(-50%) translateX(-50%);
+    font-size: 6rem;
+    text-align: center;
+    z-index: 0;
+    pointer-events: none;
+    width: 100vw;
   }
   
-  .header .buttons {
+   .buttons {
+     cursor: pointer;
     display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-flow: row;
+    z-index: 10;
     flex-flow: row;
+    transform: translateX(-50%);
     position: fixed;
     display: flex;
+    -webkit-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
-    right: 1rem;
+    left: 50%;
+    top: 1rem;
+    /* background-color: #fff; */
+    mix-blend-mode: lighten;
     padding-right: 0rem;
+
+    button {
+      background-color: #fff;
+    }
   }
   
   .header button {
@@ -217,10 +253,11 @@ html,body {
     display: flex;
     margin: 0;
     position: fixed;
+    font-size: 6rem;
     left: 1rem;
-    text-align: left;
-    /* -webkit-transform: translateX(-50%); */
-    /* transform: translateX(-50%); */
+    left: 50%;
+    text-align: center;
+    transform: translateY(-50%)translateX(-50%);
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
     -ms-flex-flow: column;
@@ -235,7 +272,7 @@ html,body {
     display: flex;
     letter-spacing: 0.1rem;
     flex-flow: column;
-    font-size: 1.5rem;
+    font-size: 3rem;
   }
 
   .title {
@@ -243,7 +280,8 @@ html,body {
 
 
       #decision {
-          font-size: 3rem;
+        font-size: 6rem;
+        width: 90vw;
           @media (max-width: $mobile) {
             font-size: 2.5rem;
           }
@@ -290,7 +328,7 @@ html,body {
     border-radius: 1rem;
     mix-blend-mode: lighten;
     background-color: #fff;
-    color: #000;
+    color: #c19cd6;
 
 
    .hide-desktop {
@@ -429,7 +467,7 @@ html,body {
       }
     }
 
-    .header .buttons {
+    .buttons {
       right: calc(50vw + 1rem);
       @media (max-width: $mobile) {
         right: 1rem;
@@ -456,7 +494,7 @@ html,body {
       font-size: 1.5rem;
       background: linear-gradient(180deg, #fff 0%, #ae7ecade 100%);
       line-height: 1.2;
-      padding: 2rem 1rem 10rem;
+      padding: 1rem 1rem 10rem;
 
       @media (max-width: $mobile) {
       flex-direction: column-reverse;
@@ -536,6 +574,88 @@ img {
     }
   }
 
+
+ 
+
+  
+  #cursor {
+    position: fixed;
+    z-index: 99;
+    left: 0;
+    top: 0;
+    pointer-events: none;
+    will-change: transform;
+
+    img {
+      animation:spin 8s linear infinite;
+    }
+  }
+
+  @keyframes spin { 
+    10% { 
+        -webkit-transform: rotate(36deg); 
+        transform:rotate(36deg); 
+    } 
+    20% { 
+      -webkit-transform: rotate(-10deg); 
+      transform:rotate(-10deg); 
+  } 
+  
+  60% { 
+    -webkit-transform: rotate(-15deg); 
+    transform:rotate(-15deg); 
+  } 
+  
+  80% { 
+    -webkit-transform: rotate(199deg); 
+    transform:rotate(199deg); 
+  } 
+  
+  100% { 
+    -webkit-transform: rotate(0deg); 
+    transform:rotate(0deg); 
+  } 
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .cursor__circle {
+      width: 64px;
+      height: 64px;
+      margin-top: -50%;
+      margin-left: -50%;
+      border-radius: 50%;
+    }
+    
+    #cursor.arrow .cursor__circle{
+      width: 128px;
+      height: 128px;
+    }
+    
+    #cursor.arrow::after{
+      content: '';
+      position: absolute;
+      left: -50%;
+      top: -50%;
+      width: 100%;
+      height: 100%;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+    
+    #cursor.subtle .cursor__circle{
+      opacity: 0.16;
+    }
+    
+    #cursor.overlay .cursor__circle{
+      width: 48px;
+      height: 48px;
+      background-color: rgba(227, 222, 193, 0.08);
+      border-color: transparent;
+    }
+  }
+  
+ 
+
   .cursor {
     width: 3rem;
     height: 3rem;
@@ -544,9 +664,6 @@ img {
     position: fixed;
     z-index: 10;
     pointer-events: none;
-    left: 0;
-    top: 0;
-    transform: translate(calc(-50% + 15px), -50%);
   
   
   }
@@ -559,7 +676,6 @@ img {
     background-color: black;
     opacity: 0 !important;
     position: fixed;
-    transform: translate(-50%, -50%);
     pointer-events: none;
     transition: width .3s, height .3s, opacity .3s;
   }
@@ -979,7 +1095,7 @@ img {
   //  font-size: 3rem;
   }
 
-  .header .buttons {
+.buttons {
     @media (max-width: $mobile) {
       opacity: 0;
     }
@@ -1029,14 +1145,23 @@ img {
     z-index: 100;
     align-items: center;
     display: flex;
+    text-decoration: none;
+    color: #000;
     transition: all 0.3s ease-in-out;
     right: 50%;
     max-width: 34vw;
     transform: translateX(50%);
     border-radius: 1rem;
+    pointer-events: none;
     padding: 0.5rem 1rem;
     background-color: #fff;
     mix-blend-mode: lighten;
+    opacity: 0;
+
+    &.active {
+      pointer-events: inherit;
+      opacity: 1;
+    }
 
     &__inner__number {
       font-family: 'EB Garamond';
@@ -1068,7 +1193,7 @@ img {
 .radio {
   &__overlay {
     position: fixed;
-    width: 620px;
+    width: 30.5rem;
     overflow: hidden;
     height: auto;
     z-index: 1000;
@@ -1194,7 +1319,7 @@ img {
   left: 25%;
   z-index: 4;
   // transition: 0.3s ease-in-out;
-  font-size: 2rem;
+  font-size: 3rem;
   font-variant-ligatures: discretionary-ligatures;
   text-align: center;
   width: auto;
@@ -1203,13 +1328,16 @@ img {
   align-items: center;
   display: flex;
   left: 50%;
+  line-height: 1;
   transform: translateX(-50%);
   border-radius: 1rem;
-  padding: 0.5rem 1rem;
+  padding: 1.5rem;
   background-color: red;
   // mix-blend-mode: lighten;
   white-space: nowrap;
+  cursor: grab;
   & a {
+    cursor: pointer;
     color: white;
     text-decoration: none;
   }

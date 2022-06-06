@@ -340,11 +340,6 @@
   width: 100%;
 }
 
-.swiper-pagination-bullets-dynamic {
-  overflow: hidden;
-  font-size: 0;
-}
-
 .swiper-pagination-bullets-dynamic .swiper-pagination-bullet {
   -webkit-transform: scale(0.33);
           transform: scale(0.33);
