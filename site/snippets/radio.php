@@ -7,7 +7,7 @@
 <div class="radio__overlay__headline">Disapora Delights <span class="live">Live</span>
     <div class="radio__overlay__headline__subline"><span>Radio Broadcast</span><span>08.06.2022</span><span>6pm–8pm</span></div>
 </div>
-
+<!--
 <div class="marquee">
         <div class="marquee3k" 
              data-speed="1">
@@ -18,7 +18,7 @@
           <span>18:00 Event 4</span>
           </div>
     </div>
-  </div>
+  </div>-->
    <div class="play">
       <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
          viewBox="0 0 27.8 30" style="enable-background:new 0 0 27.8 30;" xml:space="preserve">

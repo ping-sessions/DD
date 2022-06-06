@@ -199,6 +199,8 @@ h1, h2, h3, h4, h5 {
   position: fixed;
   left: 50%;
   top: 50%;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
   -webkit-transform: translateY(-50%) translateX(-50%);
   transform: translateY(-50%) translateX(-50%);
   font-size: 6rem;
@@ -250,6 +252,8 @@ h1, h2, h3, h4, h5 {
   font-size: 6rem;
   left: 1rem;
   left: 50%;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
   text-align: center;
   -webkit-transform: translateY(-50%) translateX(-50%);
           transform: translateY(-50%) translateX(-50%);
@@ -279,10 +283,14 @@ h1, h2, h3, h4, h5 {
 }
 
 .title {
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
   line-height: 1;
 }
 
 .title #decision {
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
   font-size: 6rem;
   width: 90vw;
 }
@@ -343,11 +351,6 @@ h1, h2, h3, h4, h5 {
   .close-project {
     font-size: 1.5rem;
   }
-}
-
-audio {
-  -webkit-transform: scale(2.5);
-          transform: scale(2.5);
 }
 
 .text__snippets {
@@ -434,6 +437,38 @@ audio {
   }
 }
 
+.project-page .buttons, .about-page .buttons, .program-page .buttons {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.project-page .header, .about-page .header, .program-page .header {
+  left: 1rem;
+  top: 1rem;
+  z-index: 10;
+  font-size: 3rem;
+  -webkit-transform: translate(0px, 0px);
+          transform: translate(0px, 0px);
+}
+
+.project-page .header .title, .about-page .header .title, .program-page .header .title {
+  text-align: left;
+  z-index: 10;
+  font-size: 3rem;
+  left: 0;
+  -webkit-transform: translate(0px, 0px);
+          transform: translate(0px, 0px);
+  top: 0;
+}
+
+.project-page .header .title .dday, .about-page .header .title .dday, .program-page .header .title .dday {
+  font-size: 1.5rem;
+}
+
+.project-page .header .title #decision, .about-page .header .title #decision, .program-page .header .title #decision {
+  font-size: 3rem;
+}
+
 @media (max-width: 768px) {
   .project-page .header .title, .about-page .header .title, .program-page .header .title {
     opacity: 0;
@@ -506,6 +541,8 @@ audio {
 .project-info__inner {
   max-width: 960px;
   color: #8b5fa7;
+  line-height: 2.3rem;
+  font-variant-numeric: oldstyle-nums;
   font-size: 2rem;
 }
 
@@ -727,7 +764,12 @@ audio {
   pointer-events: inherit;
 }
 
+.program-page .project-overlay {
+  background: radial-gradient(at 0% 50%, #a178b700, #fff);
+}
+
 .about-page__inner {
+  line-height: 2.3rem;
   margin-top: 5rem;
 }
 
@@ -735,13 +777,15 @@ audio {
   opacity: 1;
   background: radial-gradient(at 0% 50%, #a178b700, #fff);
   pointer-events: inherit;
+  font-variant-numeric: oldstyle-nums;
 }
 
 .about-page .project-overlay p {
   color: #8b5fa7;
   font-family: 'EB Garamond';
   font-size: 2rem;
-  line-height: 1.2;
+  font-variant-numeric: oldstyle-nums;
+  line-height: 2.3rem;
   padding: 1rem;
   max-width: 940px;
   margin: 0 auto;
@@ -809,13 +853,12 @@ audio {
 }
 
 .projects__text {
-  color: #000000;
-  line-height: 1.8rem;
-  font-size: 1.5rem;
+  color: #8b5fa7;
+  line-height: 3rem;
+  font-size: 3rem;
   font-family: 'EB Garamond';
   -webkit-font-variant-ligatures: discretionary-ligatures;
           font-variant-ligatures: discretionary-ligatures;
-  letter-spacing: 0.1rem;
   /* stroke-width: 1px; */
   /* -webkit-text-stroke-color: #fff; */
   /* -webkit-text-stroke-width: 1px;*/
@@ -832,6 +875,14 @@ audio {
   position: relative;
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
+}
+
+.projects__item audio {
+  -webkit-transform: scale(2.5) translate(-15%, 45%);
+          transform: scale(2.5) translate(-15%, 45%);
+  position: absolute;
+  top: 50%;
+  left: 50%;
 }
 
 @media (max-width: 768px) {
@@ -1211,12 +1262,12 @@ audio {
   width: 30.5rem;
   overflow: hidden;
   height: auto;
+  bottom: 10%;
   z-index: 1000;
   background: #ff0100;
-  top: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-  left: 50%;
+  right: 20%;
+  cursor: -webkit-grab;
+  cursor: grab;
   color: #fff;
   padding: 1rem;
   font-size: 3rem;
@@ -1363,8 +1414,8 @@ audio {
 
 .program-button {
   position: fixed;
-  top: 25%;
-  left: 25%;
+  top: 10%;
+  left: 5%;
   z-index: 4;
   font-size: 3rem;
   -webkit-font-variant-ligatures: discretionary-ligatures;
@@ -1379,10 +1430,7 @@ audio {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  left: 50%;
   line-height: 1;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
   border-radius: 1rem;
   padding: 1.5rem;
   background-color: red;
@@ -1408,9 +1456,8 @@ audio {
 
 .program strong {
   font-family: 'KTF Rublena Solid';
-  color: #fff;
-  letter-spacing: 0.1rem;
-  font-size: 1.5rem;
+  color: #8b5fa7;
+  font-size: 2rem;
   margin: 0 auto;
 }
 
@@ -1427,11 +1474,12 @@ audio {
 }
 
 .program {
-  font-size: 1.5rem !important;
-  letter-spacing: 0.1rem;
+  font-size: 2rem !important;
   margin: 2rem auto 2rem;
+  line-height: 2.3rem;
   color: #fff;
   display: block;
+  font-family: 'EB Garamond';
   padding: 0 1rem 5rem;
   max-width: 700px;
 }
@@ -1456,9 +1504,10 @@ audio {
 }
 
 .program p {
-  font-size: 1.7rem;
-  letter-spacing: 0.07rem;
-  color: #fff;
+  font-size: 2rem;
+  line-height: 1;
+  color: #8b5fa7;
+  font-family: 'EB Garamond';
   font-variant-numeric: oldstyle-nums;
   margin-bottom: 1rem;
 }
@@ -1467,6 +1516,7 @@ audio {
   border-radius: 1rem;
   display: block;
   font-style: normal;
+  text-decoration: none;
   background-color: #fff;
   margin: 1rem auto 2.5rem;
   color: #b68dcf !important;

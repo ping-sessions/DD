@@ -1,8 +1,9 @@
 // --- variables ---
 let currentData = {}
 let selectedFile = ''
-const apiUrl = 'http://localhost:8888/dd_kirby/DD/home.json'
+//const apiUrl = 'http://localhost:8888/dd_kirby/DD/home.json'
 //const apiUrl = `${window.location.href}home.json`
+const apiUrl = `https://staging.dailydecisions.space/home.json`
 
 
 // --- helpers --- 
@@ -463,6 +464,7 @@ if (document.querySelector('.swiper') != null) {
       el: ".swiper-pagination",
       clickable: true,
       dynamicBullets: true,
+      dynamicMainBullets: 5,
       renderBullet: function (index, className) {
         return '<span class="' + className + '">'+'('+ (index + 1) + ')' + "</span>";
       },
@@ -590,6 +592,7 @@ function initProjectSwiper(data) {
       pagination: {
         el: ".swiper-pagination",
         dynamicBullets: true,
+        dynamicMainBullets: 5,
         clickable: true,
         renderBullet: function (index, className) {
           return '<span class="' + className + '">'+'('+ (index + 1) + ')' + "</span>";

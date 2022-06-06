@@ -2,7 +2,7 @@ Title: Home
 
 ----
 
-Show-radio: false
+Show-radio: true
 
 ----
 

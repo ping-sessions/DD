@@ -210,6 +210,7 @@ html,body {
     position: fixed;
     left: 50%;
     top: 50%;
+    transition: all 0.3s ease-in-out;
     -webkit-transform: translateY(-50%) translateX(-50%);
     transform: translateY(-50%) translateX(-50%);
     font-size: 6rem;
@@ -256,6 +257,7 @@ html,body {
     font-size: 6rem;
     left: 1rem;
     left: 50%;
+    transition: all 0.3s ease-in-out;
     text-align: center;
     transform: translateY(-50%)translateX(-50%);
     -webkit-box-orient: vertical;
@@ -276,10 +278,12 @@ html,body {
   }
 
   .title {
+    transition: all 0.3s ease-in-out;
       line-height: 1;
 
 
       #decision {
+        transition: all 0.3s ease-in-out;
         font-size: 6rem;
         width: 90vw;
           @media (max-width: $mobile) {
@@ -341,9 +345,7 @@ html,body {
     }
   }
 
-  audio {
-    transform: scale(2.5);
-  }
+
 
 
   .text {
@@ -447,6 +449,36 @@ html,body {
       //width: 0;
     }
 
+    .buttons {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .header {
+      left: 1rem;
+      top: 1rem;
+      z-index: 10;
+      font-size: 3rem;
+      transform: translate(0px, 0px);
+    }
+
+    .header .title {
+      text-align: left;
+      z-index: 10;
+      font-size: 3rem;
+      left: 0;
+      transform: translate(0px, 0px);
+      top: 0;
+
+      .dday {
+        font-size: 1.5rem;
+      }
+
+      #decision {
+        font-size: 3rem;
+      }
+    }
+
     @media (max-width: $mobile) {
       .header .title {
         opacity: 0;
@@ -504,6 +536,8 @@ html,body {
       &__inner {
         max-width: 960px;
     color: #8b5fa7;
+    line-height: 2.3rem;
+    font-variant-numeric: oldstyle-nums;
         font-size: 2rem;
        // background: -webkit-linear-gradient(rgb(0, 0, 0), #ae7ecade);
       //  -webkit-background-clip: text;
@@ -711,9 +745,16 @@ img {
     }
   }
 
+  .program-page {
+    .project-overlay {
+      background: radial-gradient(at 0% 50%, #a178b700, #fff);
+    }
+  }
+
   .about-page {
 
     &__inner {
+      line-height: 2.3rem;
       margin-top: 5rem;
     }
 
@@ -722,11 +763,15 @@ img {
    background: radial-gradient(at 0% 50%, #a178b700, #fff);
       pointer-events: inherit;
 
+      font-variant-numeric: oldstyle-nums;
+
       p {
         color: #8b5fa7;
         font-family: 'EB Garamond';
         font-size: 2rem;
-        line-height: 1.2;
+      
+        font-variant-numeric: oldstyle-nums;
+        line-height: 2.3rem;
         padding: 1rem;
         max-width: 940px;
         margin: 0 auto;
@@ -790,12 +835,11 @@ img {
     }
 
     &__text {
-      color: #000000;
-      line-height: 1.8rem;
-      font-size: 1.5rem;
+      color: #8b5fa7;
+      line-height: 3rem;
+      font-size: 3rem;
       font-family: 'EB Garamond';
       font-variant-ligatures: discretionary-ligatures;
-      letter-spacing: 0.1rem;
       /* stroke-width: 1px; */
       /* -webkit-text-stroke-color: #fff; */
       /* -webkit-text-stroke-width: 1px;*/
@@ -812,6 +856,13 @@ img {
     float: left;
     position: relative;
     transition: all 0.3s ease-in-out;
+
+    audio {
+      transform: scale(2.5) translate(-15%, 45%);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+    }
 
     @media (max-width: $mobile) {
       width: 100vw !important;
@@ -1196,11 +1247,11 @@ img {
     width: 30.5rem;
     overflow: hidden;
     height: auto;
+    bottom: 10%;
     z-index: 1000;
     background: #ff0100;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    left: 50%;
+    right: 20%;
+    cursor: grab;
     color: #fff;
     padding: 1rem;
     font-size: 3rem;
@@ -1315,8 +1366,8 @@ img {
 // --- program button ---
 .program-button {
   position: fixed;
-  top: 25%;
-  left: 25%;
+  top: 10%;
+  left: 5%;
   z-index: 4;
   // transition: 0.3s ease-in-out;
   font-size: 3rem;
@@ -1327,9 +1378,7 @@ img {
   z-index: 100;
   align-items: center;
   display: flex;
-  left: 50%;
   line-height: 1;
-  transform: translateX(-50%);
   border-radius: 1rem;
   padding: 1.5rem;
   background-color: red;
@@ -1356,9 +1405,9 @@ img {
 // --- program stuff (copypasted from temporary page) ---
 .program strong {
   font-family: 'KTF Rublena Solid';
-  color: #fff;
-  letter-spacing: 0.1rem;
-  font-size: 1.5rem;
+   color: #8b5fa7;
+  //letter-spacing: 0.1rem;
+  font-size: 2rem;
   margin: 0 auto;
 }
 
@@ -1375,11 +1424,12 @@ img {
 }
 
 .program {
-  font-size: 1.5rem !important;
-  letter-spacing: 0.1rem;
+  font-size: 2rem !important;
   margin: 2rem auto 2rem;
+  line-height: 2.3rem;
   color: #fff;
   display: block;
+  font-family: 'EB Garamond';
   padding: 0 1rem 5rem;
   max-width: 700px;
 }
@@ -1401,9 +1451,10 @@ img {
 }
 
 .program p {
-  font-size: 1.7rem;
-  letter-spacing: 0.07rem;
-  color: #fff;
+  font-size: 2rem;
+  line-height: 1;
+  color: #8b5fa7;
+  font-family: 'EB Garamond';
   font-variant-numeric: oldstyle-nums;
   margin-bottom: 1rem;
 }
@@ -1412,6 +1463,7 @@ img {
   border-radius: 1rem;
   display: block;
   font-style: normal;
+  text-decoration: none ;
   background-color: #fff;
   margin: 1rem auto 2.5rem;
   color: #b68dcf !important;
