@@ -57,7 +57,7 @@ if ($(window).width() > 768) {
     }
   
       $('.screensaver').append("<img style='transform:rotate("+rotate+"deg); left:"+left+"%; top:"+top_image+"%' src='"+path+imgs[i]+"'>").show();
-      }, 300);
+      }, 100);
   
       $(document).bind('mousemove scroll keydown', function () {
         clearInterval(interval_loop);
@@ -177,7 +177,7 @@ function renderData(content) {
     }
     else if (content[i].type == 'document') {
       let dataTitle = '(' + parseInt(content[i].position + 1) + ')' + ' ' + content[i].project_title
-      el = '<div class="projects__item" data-number=' + JSON.stringify(1) + '" data-title=' + JSON.stringify(dataTitle) + '><a href=' + projectUrl + ' data-position=' + content[i].position +'><div class="projects__text">' + content[i].text + '</div></a></div>'
+      el = '<div class="projects__item" data-number=' + JSON.stringify(1) + '" data-title=' + JSON.stringify(dataTitle) + '><a href=' + projectUrl + ' data-position=' + content[i].position +'><div class="projects__text"><div class="projects__text__inner">' + content[i].text + '</div></div></a></div>'
     }
     container.append(el)
   }
