@@ -2,11 +2,11 @@ Title: Home
 
 ----
 
-Show-radio: true
+Show-radio: false
 
 ----
 
-Show-program: true
+Show-program: false
 
 ----
 
