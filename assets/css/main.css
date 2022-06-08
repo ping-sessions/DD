@@ -194,6 +194,20 @@ h1, h2, h3, h4, h5 {
   width: 100vw;
 }
 
+@media (max-width: 768px) {
+  .header {
+    left: 0.5rem;
+    top: 0.5rem;
+    width: 100vw;
+    z-index: 10;
+    -webkit-transition: opacity 0.3s ease-in-out;
+    transition: opacity 0.3s ease-in-out;
+    text-align: center;
+    -webkit-transform: none;
+            transform: none;
+  }
+}
+
 .buttons {
   cursor: pointer;
   display: -webkit-box;
@@ -215,6 +229,17 @@ h1, h2, h3, h4, h5 {
   /* background-color: #fff; */
   mix-blend-mode: lighten;
   padding-right: 0rem;
+}
+
+@media (max-width: 768px) {
+  .buttons {
+    -webkit-transform: none;
+            transform: none;
+    right: 0.5rem;
+    left: inherit;
+    top: 0.5rem;
+    left: inherit;
+  }
 }
 
 .buttons button {
@@ -251,6 +276,13 @@ h1, h2, h3, h4, h5 {
 @media (max-width: 768px) {
   .header .title {
     max-width: 70vw;
+    -webkit-transition: opacity 0.3s ease-in-out;
+    transition: opacity 0.3s ease-in-out;
+    font-size: 3rem;
+    text-align: left;
+    left: 0.5rem;
+    -webkit-transform: none;
+            transform: none;
   }
 }
 
@@ -264,6 +296,12 @@ h1, h2, h3, h4, h5 {
       -ms-flex-flow: column;
           flex-flow: column;
   font-size: 3rem;
+}
+
+@media (max-width: 768px) {
+  .title span {
+    font-size: 1.5rem;
+  }
 }
 
 .title {
@@ -281,7 +319,7 @@ h1, h2, h3, h4, h5 {
 
 @media (max-width: 768px) {
   .title #decision {
-    font-size: 2.5rem;
+    font-size: 2.5rem !important;
   }
 }
 
@@ -334,6 +372,8 @@ h1, h2, h3, h4, h5 {
 @media (max-width: 768px) {
   .close-project {
     font-size: 1.5rem;
+    right: 0.5rem;
+    top: 0.5rem;
   }
 }
 
@@ -417,8 +457,19 @@ h1, h2, h3, h4, h5 {
   .project-title {
     max-width: calc(100vw - 7rem);
     position: fixed;
+    left: 0.5rem;
+    top: 0.5rem;
     font-size: 2.5rem;
   }
+}
+
+.project-page .radio__overlay, .about-page .radio__overlay, .program-page .radio__overlay {
+  bottom: 0.5rem;
+  right: 0.5rem;
+}
+
+.project-page .radio__overlay__headline, .project-page .radio__overlay__subline, .about-page .radio__overlay__headline, .about-page .radio__overlay__subline, .program-page .radio__overlay__headline, .program-page .radio__overlay__subline {
+  display: none;
 }
 
 .project-page .buttons, .about-page .buttons, .program-page .buttons {
@@ -433,6 +484,13 @@ h1, h2, h3, h4, h5 {
   font-size: 3rem;
   -webkit-transform: translate(0px, 0px);
           transform: translate(0px, 0px);
+}
+
+@media (max-width: 768px) {
+  .project-page .header, .about-page .header, .program-page .header {
+    left: 0.5rem;
+    top: 0.5rem;
+  }
 }
 
 .project-page .header .title, .about-page .header .title, .program-page .header .title {
@@ -493,6 +551,12 @@ h1, h2, h3, h4, h5 {
           transform: translateX(0);
 }
 
+@media (max-width: 768px) {
+  .project-page .fixed__title, .about-page .fixed__title, .program-page .fixed__title {
+    display: none !important;
+  }
+}
+
 .project-info {
   max-width: 70vw;
   font-size: 1.5rem;
@@ -519,6 +583,7 @@ h1, h2, h3, h4, h5 {
     -webkit-box-direction: reverse;
         -ms-flex-direction: column-reverse;
             flex-direction: column-reverse;
+    padding: 0.5rem 0.5rem 10rem;
   }
 }
 
@@ -528,6 +593,14 @@ h1, h2, h3, h4, h5 {
   line-height: 2.3rem;
   font-variant-numeric: oldstyle-nums;
   font-size: 2rem;
+}
+
+@media (max-width: 768px) {
+  .project-info__inner {
+    font-size: 1.8rem;
+    padding: 0;
+    line-height: 2rem;
+  }
 }
 
 .project-info__inner a {
@@ -1244,6 +1317,12 @@ h1, h2, h3, h4, h5 {
   opacity: 0;
 }
 
+@media (max-width: 768px) {
+  .fixed__title {
+    display: none !important;
+  }
+}
+
 .fixed__title.active {
   pointer-events: inherit;
   opacity: 1;
@@ -1293,12 +1372,24 @@ h1, h2, h3, h4, h5 {
 
 @media (max-width: 768px) {
   .radio__overlay {
-    width: calc(100vw - 4rem);
-    left: 1rem;
-    font-size: 2.5rem;
+    position: fixed;
+    width: 30.5rem;
+    overflow: hidden;
     height: auto;
-    -webkit-transform: translate(0, -50%);
-            transform: translate(0, -50%);
+    bottom: 5rem;
+    width: calc(100vw - 3rem);
+    -webkit-transform: translate(0, 0) !important;
+            transform: translate(0, 0) !important;
+    z-index: 10;
+    background: #ff0100;
+    right: inherit;
+    left: 0.5rem;
+    cursor: -webkit-grab;
+    cursor: grab;
+    color: #fff;
+    padding: 1rem;
+    font-size: 3rem;
+    border-radius: 1rem;
   }
 }
 
@@ -1408,7 +1499,8 @@ h1, h2, h3, h4, h5 {
 @media (max-width: 768px) {
   .radio__overlay .play,
   .radio__overlay .pause {
-    font-size: 8vw;
+    font-size: 2rem;
+    padding: 0.5rem;
   }
 }
 
@@ -1454,6 +1546,20 @@ h1, h2, h3, h4, h5 {
   white-space: nowrap;
   cursor: -webkit-grab;
   cursor: grab;
+}
+
+@media only screen and (max-width: 768px) {
+  .program-button {
+    width: calc(50vw - 2rem);
+    left: 1rem;
+    top: inherit;
+    bottom: 1rem;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    font-size: 1rem;
+    padding: 1rem;
+  }
 }
 
 .program-button a {

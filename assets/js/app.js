@@ -46,8 +46,8 @@ if ($(window).width() > 768) {
        function getRandomInt(max) {
         return Math.floor(Math.random() * Math.floor(max));
       }
-      top_image = getRandomInt(80);
-      left = getRandomInt(90);
+      top_image = getRandomInt(100);
+      left = getRandomInt(100);
       rotate = getRandomInt(360);
 
 
