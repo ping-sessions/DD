@@ -204,7 +204,7 @@ function renderData(content) {
     container.append(el)
     setTimeout(function() {
       document.querySelector('.projects').classList.remove('load-out')
-      document.querySelector('.show-title').classList.remove('load-out')
+      document.querySelector('.title').classList.remove('load-out')
     }, 250)
 
     // re init lazyload
@@ -331,7 +331,7 @@ function initHandlers() {
     let dataTags = $(this).attr('data-tags')
     let tagsArray = dataTags.split(", ")
     document.querySelector('.projects').classList.add('load-out');
-    document.querySelector('.show-title').classList.add('load-out')
+    document.querySelector('.title').classList.add('load-out')
     console.log('show title', document.querySelector('.show-title'))
     getData(false, tagsArray)
     unlockIndex()

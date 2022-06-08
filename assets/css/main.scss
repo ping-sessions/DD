@@ -54,6 +54,14 @@ $font-size-text-small: 1.7rem;
   }
 }
 
+.load-out {
+  opacity: 0;
+}
+
+.load-in {
+  opacity: 1;
+}
+
 .screensaver {
   position: fixed;
   width: 100vw;
@@ -986,13 +994,6 @@ img {
       position: relative;
     }
 
-    &.load-out {
-      opacity: 0;
-    }
-
-    &.load-in {
-      opacity: 1;
-    }
 
     &__text {
       color: #8b5fa7;
