@@ -30,7 +30,7 @@
 
 <div class="text__snippets">
   <?php foreach($text_files as $text_file) : ?>
-    <div class="text__snippet"><span class="text__snippet__number">(<?= $text_file->indexOf() + 1?></span><?= parse_rtf($text_file) ?>)</div>
+    <div class="text__snippet"><span class="text__snippet__number">(<?= $text_file->indexOf() + 1?>)</span><?= parse_rtf($text_file) ?></div>
   <?php endforeach ?>
   <a class="text__snippets__pdf-button" href = '<?= $pdf_file ?>' target='_blank'>Display PDF</a>
   </div>

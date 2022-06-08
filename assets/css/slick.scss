@@ -46,6 +46,7 @@ $font-size-text-small: 1.7rem;
 			display: flex;
     justify-content: center;
     align-items: center;
+	max-width: 50vw;
 		}
 
 		img {
@@ -67,6 +68,7 @@ $font-size-text-small: 1.7rem;
 
 			.swiper-slide-inner {
 				height: auto;
+				max-width: 100%;
 			}
 
 			img {
