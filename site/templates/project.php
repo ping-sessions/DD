@@ -1,6 +1,7 @@
 <?php snippet('header') ?>
 <?php require_once $kirby->root('site') . '/helpers/parse-rtf.php'; ?>
 
+<a href="<?= $site->url()?>" class="close-project"><span class="hide-mobile">X</span><span class="hide-desktop">X</span></a>
 <div class = 'project-overlay'>
 
 
@@ -29,9 +30,9 @@
 
 <div class="text__snippets">
   <?php foreach($text_files as $text_file) : ?>
-    <div class="text__snippet"><span class="text__snippet__number"><?= $text_file->indexOf() + 1?></span><?= parse_rtf($text_file) ?></div>
+    <div class="text__snippet"><span class="text__snippet__number">(<?= $text_file->indexOf() + 1?></span><?= parse_rtf($text_file) ?>)</div>
   <?php endforeach ?>
-  <a class="text__snippets__pdf-button" href = '<?= $pdf_file ?>' target='_blank'>(Display PDF)</a>
+  <a class="text__snippets__pdf-button" href = '<?= $pdf_file ?>' target='_blank'>Display PDF</a>
   </div>
 
   <!-- $page->files() ?> -->
@@ -59,7 +60,7 @@
   <div class="swiper-pagination"></div>
   </div>
 <?php endif ?>
-<a href="<?= $site->url()?>" class="close-project"><span class="hide-mobile">X</span><span class="hide-desktop">X</span></a>
+
 
 <!-- Slider main container -->
     

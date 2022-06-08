@@ -23,8 +23,13 @@ var contains = function (arr1, arr2) {
 
 
 
-if ($(window).width() > 768) {
+if ($(window).width() > 1) {
+  if ($(window).width() > 768) {
   var time = 1000; 
+  }
+  else {
+    var time = 10000; 
+  }
   var activityTimer = setTimeout(inActive, time); 
   
   function resetActive() {
@@ -59,13 +64,13 @@ if ($(window).width() > 768) {
       $('.screensaver').append("<img style='transform:rotate("+rotate+"deg); left:"+left+"%; top:"+top_image+"%' src='"+path+imgs[i]+"'>").show();
       }, 100);
   
-      $(document).bind('mousemove scroll keydown', function () {
+      $(document).bind('mousemove scroll keydown touchstart', function () {
         clearInterval(interval_loop);
       });
 
   }
   
-  $(document).bind('mousemove scroll keydown', function () {
+  $(document).bind('mousemove scroll keydown touchstart', function () {
     resetActive();
   });
   }
@@ -242,7 +247,7 @@ function initHandlers() {
     },1500);
   })
   
-
+  if ($(window).width() > 768) {
   const cursor = document.querySelector('#cursor');
   const cursorCircle = cursor.querySelector('.cursor__circle');
   
@@ -280,6 +285,7 @@ function initHandlers() {
     requestAnimationFrame(loop);
   }
   requestAnimationFrame(loop);
+}
 
 
   function initSelectionGrid() {
@@ -414,7 +420,7 @@ function initIntro() {
 
     const typed = new Typed('#typed', {
       stringsElement: '#typed-strings',
-      typeSpeed: 70,
+      typeSpeed: 50,
       cursorChar: 'D_D',
     });
     
@@ -516,6 +522,8 @@ function initRoutes() {
   barba.use(barbaCss)
   // barba js
   barba.init({
+  //  prefetchIgnore: true,
+    timeout: 200000,
     views: [{
       namespace: 'home',
         afterEnter(data) {

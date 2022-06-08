@@ -5,7 +5,7 @@
 <div class="player">
 
 <div class="radio__overlay__headline">Disapora Delights <span class="live">Live</span>
-    <div class="radio__overlay__headline__subline"><span>Radio Broadcast</span><span>08.06.2022</span><span>6pm–8pm</span></div>
+    <div class="radio__overlay__headline__subline"><span class="hide-mobile">Radio Broadcast</span><span>08.06.2022</span><span>6pm–8pm</span></div>
 </div>
 <!--
 <div class="marquee">

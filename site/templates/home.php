@@ -1,7 +1,7 @@
 <?php snippet('header') ?>
 
 <!-- typed text intro -->
-<?php snippet('intro') ?>
+
 
 
 

@@ -1,6 +1,9 @@
 
 
 $mobile: 768px;
+$font-size-text: 1.9rem;
+$line-height-text: 1.9rem;
+$font-size-text-small: 1.7rem;
 
 @font-face {
     font-family: 'EB Garamond';
@@ -71,7 +74,7 @@ $mobile: 768px;
 
 button {
     padding: 0.5rem;
-    font-size: 2rem;
+    font-size: 1.8rem;
     font-variant-ligatures: discretionary-ligatures;
     font-family: 'EB Garamond';
     color: #000;
@@ -79,7 +82,7 @@ button {
     border: none;
     border-radius: 1rem;
     @media (max-width: $mobile) {
-      font-size: 1.5rem;
+      font-size: $font-size-text-small;
     }
 }
 
@@ -100,7 +103,9 @@ button {
 
   @media (max-width: $mobile) {
     font-size: 1.5rem;
+    text-align: center;
     right: 0.5rem;
+    width: calc(50vw - 1.25rem);
     bottom: 0.5rem;
   }
 }
@@ -197,7 +202,7 @@ html,body {
     position: fixed;
     left: 50%;
     top: 50%;
-    transition: all 0.3s ease-in-out;
+    transition: opacity 0.3s ease-in-out;
     -webkit-transform: translateY(-50%) translateX(-50%);
     transform: translateY(-50%) translateX(-50%);
     font-size: 6rem;
@@ -262,7 +267,7 @@ html,body {
     font-size: 6rem;
     left: 1rem;
     left: 50%;
-    transition: all 0.3s ease-in-out;
+    transition: opacity 0.3s ease-in-out;
     text-align: center;
     transform: translateY(-50%)translateX(-50%);
     -webkit-box-orient: vertical;
@@ -286,7 +291,7 @@ html,body {
     flex-flow: column;
     font-size: 3rem;
     @media (max-width: $mobile) {
-      font-size: 1.5rem;
+      font-size: 1.2rem;
     }
   }
 
@@ -314,6 +319,7 @@ html,body {
     border-top-right-radius: 15rem;
     /* overflow: hidden; */
     border-bottom-right-radius: 15rem;
+
     top: 0;
    // left: 0;
    // width: 100%;
@@ -328,6 +334,8 @@ html,body {
 
     @media (max-width: $mobile) {
       width: 100vw;
+      border-top-right-radius: 12rem;
+      border-bottom-right-radius: 12rem;
     }
   }
 
@@ -338,7 +346,7 @@ html,body {
     top: 1rem;
     cursor: pointer;
     text-decoration: none;
-    font-size: 2rem;
+    font-size: 1.8rem;
     font-variant-ligatures: discretionary-ligatures;
     font-family: 'EB Garamond';
     z-index: 10;
@@ -355,7 +363,7 @@ html,body {
    }
 
     @media (max-width: $mobile) {
-      font-size: 1.5rem;
+      font-size: $font-size-text-small;
       right: 0.5rem;
       top: 0.5rem;
     }
@@ -369,7 +377,7 @@ html,body {
     &__snippets {
       margin-top: 5rem;
       padding-left: 1rem;
-      padding-right: 1rem;
+      padding-right: 4rem;
       margin-bottom: 5rem;
       min-height: 90vh;
       max-width: 60rem;
@@ -382,7 +390,7 @@ html,body {
         font-variant-ligatures: discretionary-ligatures;
         border-radius: 1rem;
         background-color: #fff;
-        font-size: 2rem;
+        font-size: 1.8rem;
         margin-left: auto;
         mix-blend-mode: lighten;
         text-decoration: none;
@@ -392,14 +400,15 @@ html,body {
 
     &__snippet {
       font-family: 'EB Garamond';
-      font-size: 2rem;
+      font-size: 1.8rem;
+      line-height: 2rem;
       font-variant-ligatures: discretionary-ligatures;
       margin-bottom: 3rem;
+      color: #a178b7;
 
       &__number {
-        font-family: 'KTF Rublena Solid';
         margin-right: 0.5rem;
-        font-size: 1.5rem;
+        font-size: $font-size-text;
         margin-right: 6rem;
         display: inline-block;
       }
@@ -423,6 +432,10 @@ html,body {
      // background: -webkit-linear-gradient(rgb(0, 0, 0), #ae7ecade);
     //  -webkit-background-clip: text;
     //  -webkit-text-fill-color: transparent;
+
+    @media (max-width: $mobile) {
+      font-size: $font-size-text-small;
+    }
 
     &__year {
       margin-bottom: 1rem;
@@ -470,7 +483,7 @@ html,body {
     @media (max-width: $mobile) {
     .radio {
       &__overlay {
-        width: calc(50vw - 2.25rem);
+        width: calc(50vw - 1.25rem);
         bottom: 0.5rem;
         right: 0.5rem;
         left: inherit;
@@ -533,6 +546,8 @@ html,body {
       border-bottom-right-radius: 15rem;
       @media (max-width: $mobile) {
         width: 100vw;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
       }
     }
 
@@ -578,15 +593,15 @@ html,body {
       &__inner {
         max-width: 960px;
     color: #8b5fa7;
-    line-height: 2.3rem;
+    line-height: $line-height-text;
     font-variant-numeric: oldstyle-nums;
-        font-size: 2rem;
+        font-size: $font-size-text;
 
 
       @media (max-width: $mobile) {
-        font-size: 1.8rem;
+        font-size: $font-size-text-small;
         padding: 0;
-        line-height: 2rem;
+        line-height: $line-height-text;
       }
        // background: -webkit-linear-gradient(rgb(0, 0, 0), #ae7ecade);
       //  -webkit-background-clip: text;
@@ -818,17 +833,17 @@ img {
       p {
         color: #8b5fa7;
         font-family: 'EB Garamond';
-        font-size: 2rem;
+        font-size: $font-size-text;
+        line-height: $line-height-text;
       
         font-variant-numeric: oldstyle-nums;
-        line-height: 2.3rem;
-        padding: 1rem 2rem;
+        padding: 1rem 1rem;
         max-width: 940px;
         margin: 0 auto;
         @media (max-width: $mobile) {
-          font-size: 1.8rem;
-          line-height: 2rem;
-        padding: 1rem 0.5rem ;
+          font-size: $font-size-text-small;
+          line-height: $line-height-text;
+        padding: 1rem 0.5rem;
         }
 
         &:first-child {
@@ -890,6 +905,7 @@ img {
    // transition: all 0.1s linear;
    // margin-left: 25vw;
    justify-content: center;
+   overflow: hidden;
    min-height: 100vh;
     width: 100%;
    // margin-top: 12vh;
@@ -922,8 +938,9 @@ img {
 
     &__text {
       color: #8b5fa7;
-      line-height: 3rem;
+      line-height: 2.5rem;
       font-size: 3rem;
+      letter-spacing: -0.1rem;
       font-family: 'EB Garamond';
       font-variant-ligatures: discretionary-ligatures;
       /* stroke-width: 1px; */
@@ -1141,18 +1158,28 @@ height: 90%;
 .intro {
     position: fixed;
     left:0;
+    cursor: pointer;
+
     top: 0;
-    z-index: 10;
-    width: 100vw;
+    z-index: 1000;
+    width: calc(100vw - 1rem);
     height: 100vh;
-    font-size: 4rem;
+    padding: 0.5rem;
+    font-size: 3rem;
+    letter-spacing: 0.1rem;
+    line-height: 3rem;
       /*Fallback if gradeints don't work */
-  background: transparent;
+  background: #c19cd6;
   opacity: 0;
   color:#fff;
   pointer-events: none;
   transition: all 0.7s ease-in-out;
   /*Linear gradient... */
+
+  @media (max-width: $mobile) {
+    font-size: 2rem;
+    line-height: 2rem;
+  }
 
      &.active {
         transition: all 0s ease-in-out;
@@ -1331,13 +1358,16 @@ height: 90%;
     // background-color: #fff;
     // mix-blend-mode: lighten;
     color: #FFF;
+    @media (max-width: $mobile) {
+      font-size: 1.5rem;
+    }
 }
 
 
 .radio {
   &__overlay {
     position: fixed;
-    width: 30.5rem;
+    width: 33rem;
     overflow: hidden;
     height: 11rem;
     bottom: 10%;
@@ -1352,11 +1382,11 @@ height: 90%;
 
     @media (max-width: $mobile) {
       position: fixed;
-      width: 30.5rem;
       overflow: hidden;
       height: auto;
-      bottom: 6.5rem;
-      width: calc(100vw - 3rem);
+      bottom: 6rem;
+      width: calc(100vw - 2rem);
+
       transform: translate(0, 0) !important;
       z-index: 10;
       background: #ff0100;
@@ -1365,8 +1395,8 @@ height: 90%;
       cursor: -webkit-grab;
       cursor: grab;
       color: #fff;
-      padding: 1rem;
-      font-size: 3rem;
+      padding: 0.5rem;
+      font-size: rem;
       border-radius: 1rem;
       
     }
@@ -1392,10 +1422,11 @@ height: 90%;
     &__headline {
       text-align: center;
       margin-bottom: 1rem;
+      letter-spacing: 0.1rem;
 
       @media (max-width: $mobile) {
         font-size: 2rem;
-        letter-spacing: 0.1rem;
+        letter-spacing: 0.08rem;
       }
 
       @media only screen and (max-width: 375px) {
@@ -1443,7 +1474,8 @@ height: 90%;
   mix-blend-mode: lighten;
   border-radius: 1rem;
   background-color: #fff;
-  font-size: 2rem;
+  font-size: $font-size-text;
+  line-height: $line-height-text;
   padding: 1rem;
   font-family: 'EB GARAMOND';
   -webkit-box-align: center;
@@ -1451,7 +1483,8 @@ height: 90%;
   align-items: center;
 
   @media (max-width: $mobile) {
-    font-size: 2rem;
+    font-size: $font-size-text-small;
+    line-height: $line-height-text;
     padding: 0.5rem;
     
   }
@@ -1513,7 +1546,7 @@ height: 90%;
     top: inherit;
     bottom: 0.5rem;
     justify-content: center;
-    font-size: 2rem;
+    font-size: $font-size-text-small;
     padding: 0.75rem 0.5rem;
 
     br {
@@ -1545,7 +1578,9 @@ height: 90%;
   font-family: 'KTF Rublena Solid';
    color: #8b5fa7;
   //letter-spacing: 0.1rem;
-  font-size: 2rem;
+  font-size: 1.7rem;
+  letter-spacing: 0.1rem;
+  line-height: $line-height-text;
   margin: 0 auto;
 }
 
@@ -1562,14 +1597,18 @@ height: 90%;
 }
 
 .program {
-  font-size: 2rem !important;
-  margin: 2rem auto 2rem;
-  line-height: 2.3rem;
+  font-size: $font-size-text;
+  line-height: $line-height-text;
+  margin: 5rem auto 0rem;
   color: #fff;
   display: block;
   font-family: 'EB Garamond';
   padding: 0 1rem 5rem;
-  max-width: 700px;
+  max-width: 940px;
+  @media only screen and (max-width: 768px) {
+    padding: 0 0.5rem 8rem;
+    font-size: $font-size-text-small;
+  }
 }
 
 .program__wrapper {
@@ -1589,15 +1628,14 @@ height: 90%;
 }
 
 .program p {
-  font-size: 2rem;
-  line-height: 1;
+  font-size: $font-size-text;
+  line-height: $line-height-text;
   color: #8b5fa7;
   font-family: 'EB Garamond';
   font-variant-numeric: oldstyle-nums;
   margin-bottom: 1rem;
   @media only screen and (max-width: 768px) {
-  font-size: 1.8rem;
-  line-height: 2rem;
+    font-size: $font-size-text-small;
   }
 }
 

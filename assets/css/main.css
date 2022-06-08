@@ -60,7 +60,7 @@
 /* buttons */
 button {
   padding: 0.5rem;
-  font-size: 2rem;
+  font-size: 1.8rem;
   -webkit-font-variant-ligatures: discretionary-ligatures;
           font-variant-ligatures: discretionary-ligatures;
   font-family: 'EB Garamond';
@@ -72,7 +72,7 @@ button {
 
 @media (max-width: 768px) {
   button {
-    font-size: 1.5rem;
+    font-size: 1.7rem;
   }
 }
 
@@ -96,7 +96,9 @@ button {
 @media (max-width: 768px) {
   .about__link {
     font-size: 1.5rem;
+    text-align: center;
     right: 0.5rem;
+    width: calc(50vw - 1.25rem);
     bottom: 0.5rem;
   }
 }
@@ -185,8 +187,8 @@ h1, h2, h3, h4, h5 {
   position: fixed;
   left: 50%;
   top: 50%;
-  -webkit-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
+  -webkit-transition: opacity 0.3s ease-in-out;
+  transition: opacity 0.3s ease-in-out;
   -webkit-transform: translateY(-50%) translateX(-50%);
   transform: translateY(-50%) translateX(-50%);
   font-size: 6rem;
@@ -263,8 +265,8 @@ h1, h2, h3, h4, h5 {
   font-size: 6rem;
   left: 1rem;
   left: 50%;
-  -webkit-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
+  -webkit-transition: opacity 0.3s ease-in-out;
+  transition: opacity 0.3s ease-in-out;
   text-align: center;
   -webkit-transform: translateY(-50%) translateX(-50%);
           transform: translateY(-50%) translateX(-50%);
@@ -302,7 +304,7 @@ h1, h2, h3, h4, h5 {
 
 @media (max-width: 768px) {
   .title span {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
   }
 }
 
@@ -346,6 +348,8 @@ h1, h2, h3, h4, h5 {
 @media (max-width: 768px) {
   .project-overlay {
     width: 100vw;
+    border-top-right-radius: 12rem;
+    border-bottom-right-radius: 12rem;
   }
 }
 
@@ -356,7 +360,7 @@ h1, h2, h3, h4, h5 {
   top: 1rem;
   cursor: pointer;
   text-decoration: none;
-  font-size: 2rem;
+  font-size: 1.8rem;
   -webkit-font-variant-ligatures: discretionary-ligatures;
           font-variant-ligatures: discretionary-ligatures;
   font-family: 'EB Garamond';
@@ -374,7 +378,7 @@ h1, h2, h3, h4, h5 {
 
 @media (max-width: 768px) {
   .close-project {
-    font-size: 1.5rem;
+    font-size: 1.7rem;
     right: 0.5rem;
     top: 0.5rem;
   }
@@ -383,7 +387,7 @@ h1, h2, h3, h4, h5 {
 .text__snippets {
   margin-top: 5rem;
   padding-left: 1rem;
-  padding-right: 1rem;
+  padding-right: 4rem;
   margin-bottom: 5rem;
   min-height: 90vh;
   max-width: 60rem;
@@ -398,7 +402,7 @@ h1, h2, h3, h4, h5 {
           font-variant-ligatures: discretionary-ligatures;
   border-radius: 1rem;
   background-color: #fff;
-  font-size: 2rem;
+  font-size: 1.8rem;
   margin-left: auto;
   mix-blend-mode: lighten;
   text-decoration: none;
@@ -406,16 +410,17 @@ h1, h2, h3, h4, h5 {
 
 .text__snippet {
   font-family: 'EB Garamond';
-  font-size: 2rem;
+  font-size: 1.8rem;
+  line-height: 2rem;
   -webkit-font-variant-ligatures: discretionary-ligatures;
           font-variant-ligatures: discretionary-ligatures;
   margin-bottom: 3rem;
+  color: #a178b7;
 }
 
 .text__snippet__number {
-  font-family: 'KTF Rublena Solid';
   margin-right: 0.5rem;
-  font-size: 1.5rem;
+  font-size: 1.9rem;
   margin-right: 6rem;
   display: inline-block;
 }
@@ -431,6 +436,12 @@ h1, h2, h3, h4, h5 {
   color: #a178b7;
   font-size: 1.2rem;
   padding-top: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .project__meta {
+    font-size: 1.7rem;
+  }
 }
 
 .project__meta__year {
@@ -468,7 +479,7 @@ h1, h2, h3, h4, h5 {
 
 @media (max-width: 768px) {
   .project-page .radio__overlay, .about-page .radio__overlay, .program-page .radio__overlay {
-    width: calc(50vw - 2.25rem);
+    width: calc(50vw - 1.25rem);
     bottom: 0.5rem;
     right: 0.5rem;
     left: inherit;
@@ -537,6 +548,8 @@ h1, h2, h3, h4, h5 {
 @media (max-width: 768px) {
   .project-page .fix, .about-page .fix, .program-page .fix {
     width: 100vw;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
   }
 }
 
@@ -597,16 +610,16 @@ h1, h2, h3, h4, h5 {
 .project-info__inner {
   max-width: 960px;
   color: #8b5fa7;
-  line-height: 2.3rem;
+  line-height: 1.9rem;
   font-variant-numeric: oldstyle-nums;
-  font-size: 2rem;
+  font-size: 1.9rem;
 }
 
 @media (max-width: 768px) {
   .project-info__inner {
-    font-size: 1.8rem;
+    font-size: 1.7rem;
     padding: 0;
-    line-height: 2rem;
+    line-height: 1.9rem;
   }
 }
 
@@ -848,18 +861,18 @@ h1, h2, h3, h4, h5 {
 .about-page .project-overlay p {
   color: #8b5fa7;
   font-family: 'EB Garamond';
-  font-size: 2rem;
+  font-size: 1.9rem;
+  line-height: 1.9rem;
   font-variant-numeric: oldstyle-nums;
-  line-height: 2.3rem;
-  padding: 1rem 2rem;
+  padding: 1rem 1rem;
   max-width: 940px;
   margin: 0 auto;
 }
 
 @media (max-width: 768px) {
   .about-page .project-overlay p {
-    font-size: 1.8rem;
-    line-height: 2rem;
+    font-size: 1.7rem;
+    line-height: 1.9rem;
     padding: 1rem 0.5rem;
   }
 }
@@ -923,6 +936,7 @@ h1, h2, h3, h4, h5 {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  overflow: hidden;
   min-height: 100vh;
   width: 100%;
   -webkit-box-orient: vertical;
@@ -959,8 +973,9 @@ h1, h2, h3, h4, h5 {
 
 .projects__text {
   color: #8b5fa7;
-  line-height: 3rem;
+  line-height: 2.5rem;
   font-size: 3rem;
+  letter-spacing: -0.1rem;
   font-family: 'EB Garamond';
   -webkit-font-variant-ligatures: discretionary-ligatures;
           font-variant-ligatures: discretionary-ligatures;
@@ -1169,19 +1184,30 @@ h1, h2, h3, h4, h5 {
 .intro {
   position: fixed;
   left: 0;
+  cursor: pointer;
   top: 0;
-  z-index: 10;
-  width: 100vw;
+  z-index: 1000;
+  width: calc(100vw - 1rem);
   height: 100vh;
-  font-size: 4rem;
+  padding: 0.5rem;
+  font-size: 3rem;
+  letter-spacing: 0.1rem;
+  line-height: 3rem;
   /*Fallback if gradeints don't work */
-  background: transparent;
+  background: #c19cd6;
   opacity: 0;
   color: #fff;
   pointer-events: none;
   -webkit-transition: all 0.7s ease-in-out;
   transition: all 0.7s ease-in-out;
   /*Linear gradient... */
+}
+
+@media (max-width: 768px) {
+  .intro {
+    font-size: 2rem;
+    line-height: 2rem;
+  }
 }
 
 .intro.active {
@@ -1365,9 +1391,15 @@ h1, h2, h3, h4, h5 {
   color: #FFF;
 }
 
+@media (max-width: 768px) {
+  .fixed__meta {
+    font-size: 1.5rem;
+  }
+}
+
 .radio__overlay {
   position: fixed;
-  width: 30.5rem;
+  width: 33rem;
   overflow: hidden;
   height: 11rem;
   bottom: 10%;
@@ -1385,11 +1417,10 @@ h1, h2, h3, h4, h5 {
 @media (max-width: 768px) {
   .radio__overlay {
     position: fixed;
-    width: 30.5rem;
     overflow: hidden;
     height: auto;
-    bottom: 6.5rem;
-    width: calc(100vw - 3rem);
+    bottom: 6rem;
+    width: calc(100vw - 2rem);
     -webkit-transform: translate(0, 0) !important;
             transform: translate(0, 0) !important;
     z-index: 10;
@@ -1399,8 +1430,8 @@ h1, h2, h3, h4, h5 {
     cursor: -webkit-grab;
     cursor: grab;
     color: #fff;
-    padding: 1rem;
-    font-size: 3rem;
+    padding: 0.5rem;
+    font-size: rem;
     border-radius: 1rem;
   }
 }
@@ -1421,12 +1452,13 @@ h1, h2, h3, h4, h5 {
 .radio__overlay__headline {
   text-align: center;
   margin-bottom: 1rem;
+  letter-spacing: 0.1rem;
 }
 
 @media (max-width: 768px) {
   .radio__overlay__headline {
     font-size: 2rem;
-    letter-spacing: 0.1rem;
+    letter-spacing: 0.08rem;
   }
 }
 
@@ -1507,7 +1539,8 @@ h1, h2, h3, h4, h5 {
   mix-blend-mode: lighten;
   border-radius: 1rem;
   background-color: #fff;
-  font-size: 2rem;
+  font-size: 1.9rem;
+  line-height: 1.9rem;
   padding: 1rem;
   font-family: 'EB GARAMOND';
   -webkit-box-align: center;
@@ -1518,7 +1551,8 @@ h1, h2, h3, h4, h5 {
 @media (max-width: 768px) {
   .radio__overlay .play,
   .radio__overlay .pause {
-    font-size: 2rem;
+    font-size: 1.7rem;
+    line-height: 1.9rem;
     padding: 0.5rem;
   }
 }
@@ -1584,7 +1618,7 @@ h1, h2, h3, h4, h5 {
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
-    font-size: 2rem;
+    font-size: 1.7rem;
     padding: 0.75rem 0.5rem;
   }
   .program-button br {
@@ -1610,7 +1644,9 @@ h1, h2, h3, h4, h5 {
 .program strong {
   font-family: 'KTF Rublena Solid';
   color: #8b5fa7;
-  font-size: 2rem;
+  font-size: 1.7rem;
+  letter-spacing: 0.1rem;
+  line-height: 1.9rem;
   margin: 0 auto;
 }
 
@@ -1627,14 +1663,21 @@ h1, h2, h3, h4, h5 {
 }
 
 .program {
-  font-size: 2rem !important;
-  margin: 2rem auto 2rem;
-  line-height: 2.3rem;
+  font-size: 1.9rem;
+  line-height: 1.9rem;
+  margin: 5rem auto 0rem;
   color: #fff;
   display: block;
   font-family: 'EB Garamond';
   padding: 0 1rem 5rem;
-  max-width: 700px;
+  max-width: 940px;
+}
+
+@media only screen and (max-width: 768px) {
+  .program {
+    padding: 0 0.5rem 8rem;
+    font-size: 1.7rem;
+  }
 }
 
 .program__wrapper {
@@ -1657,8 +1700,8 @@ h1, h2, h3, h4, h5 {
 }
 
 .program p {
-  font-size: 2rem;
-  line-height: 1;
+  font-size: 1.9rem;
+  line-height: 1.9rem;
   color: #8b5fa7;
   font-family: 'EB Garamond';
   font-variant-numeric: oldstyle-nums;
@@ -1667,8 +1710,7 @@ h1, h2, h3, h4, h5 {
 
 @media only screen and (max-width: 768px) {
   .program p {
-    font-size: 1.8rem;
-    line-height: 2rem;
+    font-size: 1.7rem;
   }
 }
 

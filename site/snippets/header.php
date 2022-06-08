@@ -14,6 +14,8 @@
 
 <body class=" <?php if ($page->template() == 'project'):?> project-page <?php endif?> <?= $page->slug() ?>-page" data-barba="wrapper">
 
+  <?php snippet('intro') ?>
+
   <div class="fix"></div>
 
   <div class="screensaver"></div>
