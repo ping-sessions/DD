@@ -84,20 +84,21 @@ function getData(random, tags) {
     url: apiUrl,
   })
   .done(function(data) {
+    console.log('done', data)
     if (random) {
-      if (currentData.hasOwnProperty('current_words')) {
+      if (currentData.hasOwnProperty('random_words')) {
         // if words from new request are not same words currently stored 
         // handle the data (populate content)
-        if (!arraysMatch(data.current_words, currentData.current_words)) {
-          handleData(data, false)
+        if (!arraysMatch(data.random_words, currentData.random_words)) {
+          handleData(data, data.random_words)
         }
         // if they are the same, make request again until they are different
         else {
-          getData(true)
+          getData(true, data.random_words)
         }
       }
       else {
-        handleData(data, false)
+        handleData(data, data.random_words)
       }
     }
     else {
@@ -110,15 +111,28 @@ function getData(random, tags) {
 }
 
 
+// clean this up
 function handleData(data, tags) {
   const content = document.querySelector('.content')
   const decision = document.querySelector('#decision')
   // if random (no tags passed from event)
   // probably not best way to do this
   if (!tags.length) {
+
     // update title (DD) with arr from api 
-    updateTitle(data.current_words)
-    renderData(data.tagged_files)
+    // updateTitle(data.current_words)
+    updateTitle(data.random_words)
+    // renderData(data.tagged_files)
+
+    let filteredData = data.all_files.filter((file) => {
+      var match = file.tags.some(function(v) { return tags.indexOf(v) != -1 })
+      if (match) {
+        return file
+      }
+    })
+
+    renderData(filteredData)
+
   }
   else {
     // update title (DD) with arr from event 
@@ -146,17 +160,14 @@ function updateTitle(arr) {
   }
 }
 
-  // add random clip class to thumbnails
-  function initClip() {
-    var clip_classes = ["clip1", "clip2", "clip3", "clip4", "clip5", "clip6", "clip7", "clip8", "clip8", "clip9", "clip10", "clip11", "clip12", "clip13", "clip14"];
-  
-    $(".projects__item").each(function(){
-        $(this).addClass(clip_classes[~~(Math.random()*clip_classes.length)]);
-    });
-  }
-  
-    // init
-    initClip();
+// add random clip class to thumbnails
+function initClips() {
+  var clip_classes = ["clip1", "clip2", "clip3", "clip4", "clip5", "clip6", "clip7", "clip8", "clip8", "clip9", "clip10", "clip11", "clip12", "clip13", "clip14"];
+
+  $(".projects__item").each(function(){
+    $(this).addClass(clip_classes[~~(Math.random()*clip_classes.length)]);
+  });
+}
 
 
 
@@ -191,7 +202,6 @@ function renderData(content) {
     }
     container.append(el)
     // re init lazyload
-    // initLazyLoad()
     lazyLoadInstance.update()
   }
 
@@ -227,7 +237,7 @@ function renderData(content) {
   // ...
 
   initThumbHover()
-  initClip()
+  initClips()
 }
 
 
@@ -237,19 +247,19 @@ function renderData(content) {
 function initHandlers() {
   const randomButton = document.querySelector('.dd-random')
   randomButton.addEventListener('click', function() {
-    document.querySelector('.projects').classList.add('load-out');
+    // document.querySelector('.projects').classList.add('load-out');
     setTimeout(function(){
       getData(true, false)
     },700);
 
     setTimeout(function(){
-      document.querySelector('.projects').classList.remove('load-out');
+      // document.querySelector('.projects').classList.remove('load-out');
     },1500);
   })
   
   if ($(window).width() > 768) {
   const cursor = document.querySelector('#cursor');
-  const cursorCircle = cursor.querySelector('.cursor__circle');
+  // const cursorCircle = cursor.querySelector('.cursor__circle');
   
   const mouse = { x: -100, y: -100 }; // mouse pointer's coordinates
   const pos = { x: 0, y: 0 }; // cursor's coordinates
@@ -259,12 +269,8 @@ function initHandlers() {
     mouse.x = e.clientX;
     mouse.y = e.clientY;
   }
-  window.addEventListener('mousemove', updateCoordinates);
-  
-  
-  
-  
-  
+
+  window.addEventListener('mousemove', updateCoordinates)
   
   
   const updateCursor = () => {
@@ -282,7 +288,7 @@ function initHandlers() {
   
   function loop() {
     updateCursor();
-    requestAnimationFrame(loop);
+    requestAnimationFrame(loop)
   }
   requestAnimationFrame(loop);
 }
@@ -326,16 +332,12 @@ function initHandlers() {
 
 
 
-  
-
-  
   $('.projects__outer').mousemove(function(event) {
     var windowWidth_all = window.innerWidth;
     var windowHeight_all = window.innerHeight;
     mouseXpercentage = Math.round(event.pageX / windowWidth_all * 100)
     mouseYpercentage = Math.round(event.pageY / windowHeight_all * 100)
     $('.fix').css('background', 'radial-gradient(at ' + mouseXpercentage + '% ' + mouseYpercentage + '%, #ae7eca, #fff)')
-   // $('.fix_2').css('background', 'radial-gradient(at ' + mouseXpercentage + '% ' + mouseYpercentage + '%, #ae7eca, #fff)')
   });
 
 
@@ -390,14 +392,6 @@ function initThumbHover() {
       document.querySelector('.fixed__title__inner').textContent = item.getAttribute('data-title');
       document.querySelector('.fixed__title__inner').classList.add('active');
       document.querySelector('.fixed__title').classList.add('active');
-
-      // update fixed meta 
-      // no longer using
-      // var dataTagsArr = item.getAttribute('data-tags').split(',')
-      // $('.fixed__meta').html('')
-      // for (var i = 0; i < dataTagsArr.length; i++) {
-      //   $('.fixed__meta').append('<div>' + dataTagsArr[i] + '</div>')
-      // }
     });
     item.addEventListener("mouseleave", function (event) {
       document.querySelector('body').style.backgroundColor = '#000';
@@ -447,8 +441,8 @@ var playing = false,
     pause_button = document.querySelector('.pause');
 
 document.addEventListener("DOMContentLoaded", function() {
-  
-  
+
+  if (player !== null) {
     player.onclick = function() {
         if (playing == false) {
             radio.play();
@@ -463,10 +457,12 @@ document.addEventListener("DOMContentLoaded", function() {
             playing = false;
         }
     };
+  }
+  
 });
 
 
-if (document.querySelector('.swiper') != null) {
+if (document.querySelector('.swiper') !== null) {
   const swiper = new Swiper('.swiper', {
     // Optional parameters
     loop: false,
@@ -498,10 +494,6 @@ if (document.querySelector('.swiper') != null) {
 }
 
 
-
-
-
-
 function blurIndex() {
   $('.index').addClass('blurred')
 }
@@ -519,12 +511,15 @@ function unlockIndex() {
 }
 
 function initRoutes() {
-  barba.use(barbaCss)
+  console.log('init routes', barba)
+  // barba.use(barbaCss)
   // barba js
   barba.init({
-  //  prefetchIgnore: true,
-    timeout: 200000,
+    preventRunning: true,
+    prefetchIgnore: false,
+    timeout: 20000000000,
     views: [{
+      debug: true,
       namespace: 'home',
         afterEnter(data) {
           // ...
@@ -594,7 +589,7 @@ function initRoutes() {
 
 function initProjectSwiper(data) {
   // i.e. if not a text project
-  if (document.querySelector('.swiper') != null) {
+  if (document.querySelector('.swiper') !== null) {
     var position = data.trigger.getAttribute('data-position');
     console.log('position >', position)
     var swiper = new Swiper('.swiper', {
@@ -603,7 +598,13 @@ function initProjectSwiper(data) {
       slidesPerView: "auto",
       centeredSlides: true,
       initialSlide: parseInt(position),
-  
+      preloadImages: false,
+      // watchSlidesProgress: true,
+      // lazy: true,
+      // lazy: {
+      //   loadPrevNext: true,
+      //   loadPrevNextAmount: 2
+      // },
       // If we need pagination
       pagination: {
         el: ".swiper-pagination",
@@ -630,8 +631,10 @@ function initProjectSwiper(data) {
 }
 
 function initHooks() {
+  // barba.Pjax.start();
+  // barba.use(barbaPrefetch);
   barba.hooks.beforeEnter((data) => {
-    console.log('before enter hook...')
+    console.log('before enter', data)
     var nextHtml = data.next.html
     var response = nextHtml.replace(/(<\/?)body( .+?)?>/gi, '$1notbody$2>', nextHtml);
     var bodyClasses = $(response).filter('notbody').attr('class');
@@ -643,18 +646,6 @@ function initHooks() {
 
 
 
-// function initLazyLoad() {
-//   const observer = lozad('.lozad', {
-//     rootMargin: '10px 0px', // syntax similar to that of CSS Margin
-//     threshold: .1, // ratio of element convergence
-//     enableAutoReload: true,
-//     load: function() {
-//       console.log('lazy load cb')
-//     }
-//   });
-//   observer.observe();
-// }
-
 var lazyLoadInstance
 function initLazyLoad() {
   lazyLoadInstance = new LazyLoad({
@@ -665,12 +656,11 @@ function initLazyLoad() {
 
 // --- init ---
 $(document).ready(function() {
-
   initIntro()
   initHandlers()
   initRoutes()
   initLazyLoad()
-  Marquee3k.init()
+  initClips()
 })
 
 
