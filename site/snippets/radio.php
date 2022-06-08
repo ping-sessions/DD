@@ -1,7 +1,7 @@
 <div class="radio__overlay">
 
 
-<audio style="opacity:0; pointer-events:none" id="radio" src="https://r.0x56.net/live" autoplay loop allow="autoplay" preload="auto"></audio>
+<audio style="opacity:0; pointer-events:none" id="radio" src="http://pub.sandberg.nl:18000/live" autoplay loop allow="autoplay" preload="auto"></audio>
 <div class="player">
 
 <div class="radio__overlay__headline">Disapora Delights <span class="live">Live</span>

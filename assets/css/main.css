@@ -96,6 +96,8 @@ button {
 @media (max-width: 768px) {
   .about__link {
     font-size: 1.5rem;
+    right: 0.5rem;
+    bottom: 0.5rem;
   }
 }
 
@@ -319,7 +321,8 @@ h1, h2, h3, h4, h5 {
 
 @media (max-width: 768px) {
   .title #decision {
-    font-size: 2.5rem !important;
+    font-size: 2rem !important;
+    max-width: calc(100vw - 7rem);
   }
 }
 
@@ -443,7 +446,7 @@ h1, h2, h3, h4, h5 {
   position: fixed;
   top: 1rem;
   left: calc( 50vw + 1rem);
-  max-width: calc(50vw - 20rem);
+  max-width: calc(50vw - 5rem);
   line-height: 0.8;
   z-index: 10;
   letter-spacing: 0.1rem;
@@ -459,17 +462,20 @@ h1, h2, h3, h4, h5 {
     position: fixed;
     left: 0.5rem;
     top: 0.5rem;
-    font-size: 2.5rem;
+    font-size: 2rem;
   }
 }
 
-.project-page .radio__overlay, .about-page .radio__overlay, .program-page .radio__overlay {
-  bottom: 0.5rem;
-  right: 0.5rem;
-}
-
-.project-page .radio__overlay__headline, .project-page .radio__overlay__subline, .about-page .radio__overlay__headline, .about-page .radio__overlay__subline, .program-page .radio__overlay__headline, .program-page .radio__overlay__subline {
-  display: none;
+@media (max-width: 768px) {
+  .project-page .radio__overlay, .about-page .radio__overlay, .program-page .radio__overlay {
+    width: calc(50vw - 2.25rem);
+    bottom: 0.5rem;
+    right: 0.5rem;
+    left: inherit;
+  }
+  .project-page .radio__overlay__headline, .project-page .radio__overlay__subline, .about-page .radio__overlay__headline, .about-page .radio__overlay__subline, .program-page .radio__overlay__headline, .program-page .radio__overlay__subline {
+    display: none;
+  }
 }
 
 .project-page .buttons, .about-page .buttons, .program-page .buttons {
@@ -562,6 +568,7 @@ h1, h2, h3, h4, h5 {
   font-size: 1.5rem;
   line-height: 1.2;
   font-family: 'EB Garamond';
+  font-variant-numeric: oldstyle-nums;
   -webkit-font-variant-ligatures: discretionary-ligatures;
           font-variant-ligatures: discretionary-ligatures;
   max-width: 100vw;
@@ -828,6 +835,7 @@ h1, h2, h3, h4, h5 {
 .about-page__inner {
   line-height: 2.3rem;
   margin-top: 5rem;
+  padding-bottom: 7rem;
 }
 
 .about-page .project-overlay {
@@ -848,13 +856,21 @@ h1, h2, h3, h4, h5 {
   margin: 0 auto;
 }
 
+@media (max-width: 768px) {
+  .about-page .project-overlay p {
+    font-size: 1.8rem;
+    line-height: 2rem;
+    padding: 1rem 0.5rem;
+  }
+}
+
 .about-page .project-overlay p:first-child {
   margin-top: 5rem;
 }
 
 .program-page .project-overlay {
   opacity: 1;
-  padding: 1rem 2rem;
+  padding: 1rem 0;
   pointer-events: inherit;
 }
 
@@ -1267,10 +1283,6 @@ h1, h2, h3, h4, h5 {
   height: 27rem;
 }
 
-.project-page .projects__item img, .about-page .projects__item img, .program-page .projects__item img {
-  max-width: 24vw;
-}
-
 .project-page .projects__outer, .about-page .projects__outer, .program-page .projects__outer {
   width: 50vw;
   overflow: scroll;
@@ -1359,7 +1371,7 @@ h1, h2, h3, h4, h5 {
   overflow: hidden;
   height: 11rem;
   bottom: 10%;
-  z-index: 10;
+  z-index: 100;
   background: #ff0100;
   right: 20%;
   cursor: -webkit-grab;
@@ -1376,7 +1388,7 @@ h1, h2, h3, h4, h5 {
     width: 30.5rem;
     overflow: hidden;
     height: auto;
-    bottom: 5rem;
+    bottom: 6.5rem;
     width: calc(100vw - 3rem);
     -webkit-transform: translate(0, 0) !important;
             transform: translate(0, 0) !important;
@@ -1407,13 +1419,20 @@ h1, h2, h3, h4, h5 {
 }
 
 .radio__overlay__headline {
-  text-align: left;
+  text-align: center;
   margin-bottom: 1rem;
 }
 
 @media (max-width: 768px) {
   .radio__overlay__headline {
-    font-size: 8vw;
+    font-size: 2rem;
+    letter-spacing: 0.1rem;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  .radio__overlay__headline {
+    font-size: 7vw;
   }
 }
 
@@ -1548,17 +1567,28 @@ h1, h2, h3, h4, h5 {
   cursor: grab;
 }
 
+.program-button span {
+  font-family: 'EB Garamond';
+}
+
+.program-button br {
+  display: none;
+}
+
 @media only screen and (max-width: 768px) {
   .program-button {
-    width: calc(50vw - 2rem);
-    left: 1rem;
+    width: calc(50vw - 2.25rem);
+    left: 0.5rem;
     top: inherit;
-    bottom: 1rem;
+    bottom: 0.5rem;
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
-    font-size: 1rem;
-    padding: 1rem;
+    font-size: 2rem;
+    padding: 0.75rem 0.5rem;
+  }
+  .program-button br {
+    display: block;
   }
 }
 
@@ -1633,6 +1663,13 @@ h1, h2, h3, h4, h5 {
   font-family: 'EB Garamond';
   font-variant-numeric: oldstyle-nums;
   margin-bottom: 1rem;
+}
+
+@media only screen and (max-width: 768px) {
+  .program p {
+    font-size: 1.8rem;
+    line-height: 2rem;
+  }
 }
 
 .program a {
