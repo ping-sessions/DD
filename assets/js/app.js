@@ -202,10 +202,13 @@ function renderData(content) {
       el = '<div class="projects__item" data-number=' + JSON.stringify(1) + '" data-title=' + JSON.stringify(dataTitle) + '><a class="circ-grad" href=' + projectUrl + ' data-position=' + content[i].position +'><div class="projects__text"><div class="projects__text__inner">' + content[i].text + '</div></div></a></div>'
     }
     container.append(el)
+
+    setTimeout(function() {
+      document.querySelector('.title').classList.remove('load-out')
+    }, 1)
     setTimeout(function() {
       document.querySelector('.projects').classList.remove('load-out')
-      document.querySelector('.title').classList.remove('load-out')
-    }, 250)
+    }, 300)
 
     // re init lazyload
     lazyLoadInstance.update()
@@ -254,15 +257,17 @@ function initHandlers() {
   const randomButton = document.querySelector('.dd-random')
   randomButton.addEventListener('click', function() {
     console.log('random clicked')
+    document.querySelector('#cursor').classList.add('clicked')
     document.querySelector('.projects').classList.add('load-out')
     document.querySelector('.show-title').classList.add('load-out')
     setTimeout(function() {
       getData(true, false)
-    }, 700);
+      document.querySelector('#cursor').classList.remove('clicked')
+    }, 300);
 
-    setTimeout(function(){
+   // setTimeout(function(){
       // document.querySelector('.projects').classList.remove('load-out');
-    },1500);
+   // },1500);
   })
   
   if ($(window).width() > 768) {
@@ -273,7 +278,7 @@ function initHandlers() {
   const pos = { x: 0, y: 0 }; // cursor's coordinates
   const speed = 0.1; // between 0 and 1
   
-  const updateCoordinates = e => {
+  var updateCoordinates = e => {
     mouse.x = e.clientX;
     mouse.y = e.clientY;
   }
@@ -281,7 +286,7 @@ function initHandlers() {
   window.addEventListener('mousemove', updateCoordinates)
   
   
-  const updateCursor = () => {
+  var updateCursor = () => {
     const diffX = Math.round(mouse.x - pos.x);
     const diffY = Math.round(mouse.y - pos.y);
     
@@ -294,11 +299,7 @@ function initHandlers() {
     cursor.style.transform = translate;
   };
   
-  function loop() {
-    updateCursor();
-    requestAnimationFrame(loop)
-  }
-  requestAnimationFrame(loop);
+
 }
 
 
@@ -321,6 +322,12 @@ function initHandlers() {
     $('.selector').removeClass('hidden')
     lockIndex()
     window.addEventListener('mousemove', updateCoordinates);
+
+    function loop() {
+      updateCursor();
+      requestAnimationFrame(loop)
+    }
+    requestAnimationFrame(loop);
   })
 
 

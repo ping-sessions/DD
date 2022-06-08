@@ -44,6 +44,7 @@
 
 .load-out {
   opacity: 0;
+  pointer-events: none;
 }
 
 .load-in {
@@ -775,6 +776,11 @@ h1, h2, h3, h4, h5 {
   will-change: transform;
 }
 
+#cursor.clicked {
+  -webkit-transform: scale(2) !important;
+          transform: scale(2) !important;
+}
+
 #cursor img {
   -webkit-animation: spin 8s linear infinite;
           animation: spin 8s linear infinite;
@@ -1485,7 +1491,7 @@ h1, h2, h3, h4, h5 {
   position: fixed;
   width: 33rem;
   overflow: hidden;
-  height: 11rem;
+  height: 10.5rem;
   bottom: 10%;
   z-index: 100;
   background: #ff0100;

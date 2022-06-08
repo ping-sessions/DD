@@ -91,7 +91,7 @@
 <div class = 'project-info'>
   <div class="project__meta">
     <?php if ($pdf_file !== '') : ?>
-  <a class="project__meta__pdf-button" href = '<?= $pdf_file ?>' target='_blank'>(Open PDF)</a>
+  <a class="project__meta__pdf-button" href = '<?= $pdf_file ?>' target='_blank'>Open PDF</a>
 <?php endif ?>
 <div class="project__meta__year"><span>Date<br></span><?= $page->year() ?></div>
 <div class="project__meta__participants"><span>Participants<br></span><?= $page->participants() ?></div>

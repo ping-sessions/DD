@@ -350,13 +350,13 @@ $font-size-text-small: 1.7rem;
 }
 
 .swiper-pagination-bullets-dynamic {
-	overflow: hidden;
+	//overflow: hidden;
 	//overflow: hidden;
 //	font-size: 0
 }
 
 .swiper-pagination-bullets-dynamic .swiper-pagination-bullet {
-	transform: scale(.33);
+	transform: scale(.6);
 	position: relative
 }
 
@@ -369,19 +369,19 @@ $font-size-text-small: 1.7rem;
 }
 
 .swiper-pagination-bullets-dynamic .swiper-pagination-bullet-active-prev {
-	transform: scale(.66)
+	transform: scale(.75)
 }
 
 .swiper-pagination-bullets-dynamic .swiper-pagination-bullet-active-prev-prev {
-	transform: scale(.33)
+	transform: scale(.6)
 }
 
 .swiper-pagination-bullets-dynamic .swiper-pagination-bullet-active-next {
-	transform: scale(.66)
+	transform: scale(.75)
 }
 
 .swiper-pagination-bullets-dynamic .swiper-pagination-bullet-active-next-next {
-	transform: scale(.33)
+	transform: scale(.6)
 }
 
 .swiper-pagination-bullet {
