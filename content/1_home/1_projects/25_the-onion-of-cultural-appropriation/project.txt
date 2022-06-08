@@ -2,7 +2,7 @@ Title: The Onion of Cultural Appropriation
 
 ----
 
-Text-toggle: false
+Text-toggle: true
 
 ----
 
