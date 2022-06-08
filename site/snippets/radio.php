@@ -5,7 +5,7 @@
 <div class="player">
 
 <div class="radio__overlay__headline">Disapora Delights <span class="live">Live</span>
-    <div class="radio__overlay__headline__subline"><span class="hide-mobile">Radio Broadcast</span><span>08.06.2022</span><span>6pm–8pm</span></div>
+    <div class="radio__overlay__headline__subline"><span class="hide-mobile">Radio broadcast</span><span><a href="<?= $site->url()?>/home/program">See full schedule</a></span></div>
 </div>
 <!--
 <div class="marquee">
@@ -19,6 +19,7 @@
           </div>
     </div>
   </div>-->
+  <div class="play-wrapper">
    <div class="play">
       <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
          viewBox="0 0 27.8 30" style="enable-background:new 0 0 27.8 30;" xml:space="preserve">
@@ -34,6 +35,7 @@
       </svg>
       <span>Pause</span>
    </div>
+</div>
    
 </div>
 </div>

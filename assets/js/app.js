@@ -442,7 +442,7 @@ function initIntro() {
 
 var playing = false,
     radio = document.getElementById('radio'),
-    player = document.querySelector('.player'),
+    player = document.querySelector('.play-wrapper'),
     play_button = document.querySelector('.play'),
     pause_button = document.querySelector('.pause');
 

@@ -487,6 +487,12 @@ h1, h2, h3, h4, h5 {
           align-items: flex-start;
 }
 
+@media (max-width: 768px) {
+  .project__meta {
+    font-size: 1.7rem;
+  }
+}
+
 .project__meta__pdf-button {
   background-color: #a178b7;
   color: #fff;
@@ -499,12 +505,6 @@ h1, h2, h3, h4, h5 {
   mix-blend-mode: lighten;
   text-decoration: none;
   margin-bottom: 1rem;
-}
-
-@media (max-width: 768px) {
-  .project__meta {
-    font-size: 1.7rem;
-  }
 }
 
 .project__meta__year {
@@ -1398,7 +1398,7 @@ h1, h2, h3, h4, h5 {
   text-align: center;
   width: auto;
   letter-spacing: 0.1rem;
-  z-index: 100;
+  z-index: 99;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -1583,6 +1583,7 @@ h1, h2, h3, h4, h5 {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  letter-spacing: 0;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
@@ -1590,6 +1591,7 @@ h1, h2, h3, h4, h5 {
   -webkit-font-variant-ligatures: discretionary-ligatures;
           font-variant-ligatures: discretionary-ligatures;
   margin-bottom: 0.5rem;
+  font-variant: oldstyle-nums;
   font-size: 1.5rem;
   line-height: 1;
 }
@@ -1597,6 +1599,9 @@ h1, h2, h3, h4, h5 {
 @media (max-width: 768px) {
   .radio__overlay__headline__subline {
     font-size: 5vw;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
   }
 }
 
@@ -1644,6 +1649,11 @@ h1, h2, h3, h4, h5 {
   display: none !important;
 }
 
+.radio__overlay a {
+  color: #fff;
+  text-decoration: none;
+}
+
 .radio__overlay svg {
   width: 3rem;
 }
@@ -1668,7 +1678,7 @@ h1, h2, h3, h4, h5 {
   display: flex;
   line-height: 1;
   border-radius: 1rem;
-  padding: 1.5rem;
+  padding: 1rem;
   background-color: red;
   white-space: nowrap;
   cursor: -webkit-grab;
@@ -1676,6 +1686,7 @@ h1, h2, h3, h4, h5 {
 }
 
 .program-button span {
+  font-variant: oldstyle-nums;
   font-family: 'EB Garamond';
 }
 
