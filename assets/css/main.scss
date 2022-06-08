@@ -5,32 +5,32 @@ $font-size-text: 1.9rem;
 $line-height-text: 1.9rem;
 $font-size-text-small: 1.7rem;
 
-// @font-face {
-//     font-family: 'EB Garamond';
-//     src: url('./EBGaramond-Italic.woff2') format('woff2'),
-//         url('./EBGaramond-Italic.woff') format('woff');
-//     font-weight: normal;
-//     font-style: italic;
-//     font-display: swap;
-// }
+@font-face {
+   font-family: 'EB Garamond';
+    src: url('./EBGaramond-Italic.woff2') format('woff2'),
+        url('./EBGaramond-Italic.woff') format('woff');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+ }
 
-// @font-face {
-//     font-family: 'EB Garamond';
-//     src: url('./EBGaramond-Regular.woff2') format('woff2'),
-//         url('./EBGaramond-Regular.woff') format('woff');
-//     font-weight: normal;
-//     font-style: normal;
-//     font-display: swap;
-// }
+ @font-face {
+   font-family: 'EB Garamond';
+   src: url('./EBGaramond-Regular.woff2') format('woff2'),
+        url('./EBGaramond-Regular.woff') format('woff');
+     font-weight: normal;
+   font-style: normal;
+    font-display: swap;
+ }
 
-// @font-face {
-//     font-family: 'EB Garamond';
-//     src: url('./EBGaramond-Regular.woff2') format('woff2'),
-//         url('./EBGaramond-Regular.woff') format('woff');
-//     font-weight: normal;
-//     font-style: normal;
-//     font-display: swap;
-// }
+ @font-face {
+    font-family: 'EB Garamond';
+  src: url('./EBGaramond-Regular.woff2') format('woff2'),
+       url('./EBGaramond-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+ }
 
 @font-face {
     font-family: 'KTF Rublena Solid';
@@ -339,6 +339,27 @@ html,body {
     }
   }
 
+  .swiper-wrapper {
+    audio {
+      width: 400px;
+      display: flex;
+      @media (max-width: $mobile) {
+        width: 90vw;
+      }
+    }
+  }
+
+  .audio-caption {
+    font-family: 'EB Garamond';
+    font-style: italic;
+    margin-top: 1rem;
+    color: #fff;
+    font-size: $font-size-text;
+    @media (max-width: $mobile) {
+      font-size: $font-size-text-small;
+    }
+  }
+
   .close-project {
     position: fixed;
     right: 1rem;
@@ -400,13 +421,18 @@ html,body {
 
     &__snippet {
       font-family: 'EB Garamond';
-      font-size: 1.8rem;
+      font-size: $font-size-text;
+      line-height: $line-height-text;
       line-height: 2rem;
       font-variant-ligatures: discretionary-ligatures;
       margin-bottom: 3rem;
       color: #a178b7;
+      @media (max-width: $mobile) {
+        font-size: $font-size-text-small;
+      }
 
       &__number {
+        font-variant: oldstyle-nums;
         margin-right: 0.5rem;
         font-size: $font-size-text;
         margin-right: 6rem;
@@ -954,6 +980,7 @@ img {
     height: 100%;
     mix-blend-mode: darken;
     width: 45vw;
+    overflow: hidden;
     height: 40rem;
     transform: scale(0.7);
     float: left;
@@ -1006,6 +1033,7 @@ img {
         position: absolute;
         justify-content: center;
         display: flex;
+        text-align: center;
         width: 100%;
 height: 90%;
         align-items: center;
@@ -1352,14 +1380,18 @@ height: 90%;
     text-align: left;
     width: auto;
     left: 1rem;
-  //  color: #000;
+    color: #000;
     border-radius: 1rem;
     padding: 0.5rem 1rem;
-    // background-color: #fff;
-    // mix-blend-mode: lighten;
-    color: #FFF;
+     background-color: #fff;
+     mix-blend-mode: lighten;
+   // color: #FFF;
     @media (max-width: $mobile) {
       font-size: 1.5rem;
+      width: calc(50vw - 3.5rem);
+      left: 0.5rem;
+      display: flex;
+      bottom: 0.5rem;
     }
 }
 
@@ -1651,4 +1683,8 @@ height: 90%;
   mix-blend-mode: lighten;
 
   width: fit-content;
+}
+
+.active-item {
+  pointer-events: none;
 }

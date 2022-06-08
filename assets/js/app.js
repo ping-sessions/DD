@@ -25,10 +25,10 @@ var contains = function (arr1, arr2) {
 
 if ($(window).width() > 1) {
   if ($(window).width() > 768) {
-  var time = 1000; 
+  var time = 2000; 
   }
   else {
-    var time = 10000; 
+    var time = 15000; 
   }
   var activityTimer = setTimeout(inActive, time); 
   
@@ -177,8 +177,8 @@ function renderData(content) {
   // empty container
   container.html('')
   for (var i = 0; i < content.length; i++) {
-    // let projectUrl = '/dd_kirby/DD/home/projects/' + content[i].project
-    let projectUrl = '/home/projects/' + content[i].project
+     let projectUrl = '/dd_kirby/DD/home/projects/' + content[i].project
+   // let projectUrl = '/home/projects/' + content[i].project
     // let fileUrl = content[i].url 
     let fileUrl 
     let el 
@@ -188,17 +188,17 @@ function renderData(content) {
       // json stringy seems to work (keep eye on this)
       let dataNumber = '(' + parseInt(content[i].position + 1) + ')'
       let dataTitle = content[i].project_title
-      el = '<div class="projects__item" data-number=' + JSON.stringify(dataNumber) + '" data-title=' + JSON.stringify(dataTitle) + '><a href=' + projectUrl + ' data-position=' + content[i].position +'><img data-src =' + fileUrl + ' class="lazy"></a></div>'
+      el = '<div class="projects__item" data-number=' + JSON.stringify(dataNumber) + '" data-title=' + JSON.stringify(dataTitle) + '><a href=' + projectUrl + ' data-position=' + content[i].position +'><div class="lin-grad"></div><img data-src =' + fileUrl + ' class="lazy"></a></div>'
     }
     else if (content[i].type == 'audio') {
       fileUrl = content[i].url
       let dataTitle = '(' + parseInt(content[i].position + 1) + ')' + ' ' + content[i].project_title
-      el = '<div class="projects__item" data-number=' + JSON.stringify(2) + '" data-title=' + JSON.stringify(dataTitle) + '><a href=' + projectUrl + ' data-position=' + content[i].position +'><audio controls><source src =' + fileUrl + ' type="audio/mpeg"></audio></a></div>'
+      el = '<div class="projects__item" data-number=' + JSON.stringify(2) + '" data-title=' + JSON.stringify(dataTitle) + '><a class="circ-grad" href=' + projectUrl + ' data-position=' + content[i].position +'></a><div class="projects__text"><div class="projects__text__inner">' + content[i].filename + '</div></div></div>'
     }
     else if (content[i].type == 'document') {
       fileUrl = content[i].url
       let dataTitle = '(' + parseInt(content[i].position + 1) + ')' + ' ' + content[i].project_title
-      el = '<div class="projects__item" data-number=' + JSON.stringify(1) + '" data-title=' + JSON.stringify(dataTitle) + '><a href=' + projectUrl + ' data-position=' + content[i].position +'><div class="projects__text"><div class="projects__text__inner">' + content[i].text + '</div></div></a></div>'
+      el = '<div class="projects__item" data-number=' + JSON.stringify(1) + '" data-title=' + JSON.stringify(dataTitle) + '><a class="circ-grad" href=' + projectUrl + ' data-position=' + content[i].position +'><div class="projects__text"><div class="projects__text__inner">' + content[i].text + '</div></div></a></div>'
     }
     container.append(el)
     // re init lazyload
@@ -468,7 +468,9 @@ if (document.querySelector('.swiper') !== null) {
     loop: false,
     slidesPerView: "auto",
     centeredSlides: true,
-
+    preloadImages: false,
+    lazy: true,
+    watchSlidesVisibility: true,
     // If we need pagination
     pagination: {
       el: ".swiper-pagination",
@@ -512,7 +514,7 @@ function unlockIndex() {
 
 function initRoutes() {
   console.log('init routes', barba)
-  // barba.use(barbaCss)
+   barba.use(barbaCss)
   // barba js
   barba.init({
     preventRunning: true,
@@ -599,6 +601,8 @@ function initProjectSwiper(data) {
       centeredSlides: true,
       initialSlide: parseInt(position),
       preloadImages: false,
+      lazy: true,
+      watchSlidesVisibility: true,
       // watchSlidesProgress: true,
       // lazy: true,
       // lazy: {
@@ -641,8 +645,19 @@ function initHooks() {
     $("body").attr("class", bodyClasses);
     // ...
     initProjectSwiper(data)
+
+    var getUrl = window.location.origin;
+    if ( data.next.url.path ) {
+        $("a").removeClass('active-item');
+        $('a[href$="' + getUrl + data.next.url.path +'"]').addClass('active-item');
+    }
   });
+
+  
 }
+
+var currenttUrl = window.location;
+$('a[href$="' + currenttUrl +'"]').addClass('active-item');
 
 
 

@@ -1,4 +1,28 @@
 @font-face {
+  font-family: 'EB Garamond';
+  src: url("./EBGaramond-Italic.woff2") format("woff2"), url("./EBGaramond-Italic.woff") format("woff");
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'EB Garamond';
+  src: url("./EBGaramond-Regular.woff2") format("woff2"), url("./EBGaramond-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'EB Garamond';
+  src: url("./EBGaramond-Regular.woff2") format("woff2"), url("./EBGaramond-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
   font-family: 'KTF Rublena Solid';
   src: url("./KTFRublena-Solid.woff2") format("woff2"), url("./KTFRublena-Solid.woff") format("woff");
   font-weight: 900;
@@ -329,6 +353,33 @@ h1, h2, h3, h4, h5 {
   }
 }
 
+.swiper-wrapper audio {
+  width: 400px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+@media (max-width: 768px) {
+  .swiper-wrapper audio {
+    width: 90vw;
+  }
+}
+
+.audio-caption {
+  font-family: 'EB Garamond';
+  font-style: italic;
+  margin-top: 1rem;
+  color: #fff;
+  font-size: 1.9rem;
+}
+
+@media (max-width: 768px) {
+  .audio-caption {
+    font-size: 1.7rem;
+  }
+}
+
 .close-project {
   position: fixed;
   right: 1rem;
@@ -386,7 +437,8 @@ h1, h2, h3, h4, h5 {
 
 .text__snippet {
   font-family: 'EB Garamond';
-  font-size: 1.8rem;
+  font-size: 1.9rem;
+  line-height: 1.9rem;
   line-height: 2rem;
   -webkit-font-variant-ligatures: discretionary-ligatures;
           font-variant-ligatures: discretionary-ligatures;
@@ -394,7 +446,14 @@ h1, h2, h3, h4, h5 {
   color: #a178b7;
 }
 
+@media (max-width: 768px) {
+  .text__snippet {
+    font-size: 1.7rem;
+  }
+}
+
 .text__snippet__number {
+  font-variant: oldstyle-nums;
   margin-right: 0.5rem;
   font-size: 1.9rem;
   margin-right: 6rem;
@@ -964,6 +1023,7 @@ h1, h2, h3, h4, h5 {
   height: 100%;
   mix-blend-mode: darken;
   width: 45vw;
+  overflow: hidden;
   height: 40rem;
   -webkit-transform: scale(0.7);
           transform: scale(0.7);
@@ -1028,6 +1088,7 @@ h1, h2, h3, h4, h5 {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  text-align: center;
   width: 100%;
   height: 90%;
   -webkit-box-align: center;
@@ -1362,14 +1423,22 @@ h1, h2, h3, h4, h5 {
   text-align: left;
   width: auto;
   left: 1rem;
+  color: #000;
   border-radius: 1rem;
   padding: 0.5rem 1rem;
-  color: #FFF;
+  background-color: #fff;
+  mix-blend-mode: lighten;
 }
 
 @media (max-width: 768px) {
   .fixed__meta {
     font-size: 1.5rem;
+    width: calc(50vw - 3.5rem);
+    left: 0.5rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    bottom: 0.5rem;
   }
 }
 
@@ -1703,5 +1772,9 @@ h1, h2, h3, h4, h5 {
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
+}
+
+.active-item {
+  pointer-events: none;
 }
 /*# sourceMappingURL=main.css.map */

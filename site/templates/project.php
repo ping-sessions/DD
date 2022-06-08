@@ -59,14 +59,16 @@
           $resize_url = $file->url();
         }
       ?>
-      <div data-url='<?= $resize_url ?>' class='project-slider_slide swiper-slide'><div class="swiper-slide-inner"><img loading="lazy" src="<?= $resize_url ?>" /></div></div>
+      <div data-url='<?= $resize_url ?>' class='project-slider_slide swiper-slide'><div class="swiper-slide-inner"><img class="swiper-lazy" data-src="<?= $resize_url ?>" /><div class="swiper-lazy-preloader"></div></div></div>
       <?php endif ?>
       <?php if ($file->type() == 'audio'):?>
       <div data-url='<?= $file->url() ?>' class='project-slider_slide swiper-slide'>
       <audio controls>
   <source src="<?= $file->url()?>" type="audio/mpeg">
 </audio>
-<?= $file->filename()?>
+<div class="audio-caption">
+<?= $file->text()?>
+      </div>
     </div>
       <?php endif ?>
     <?php endforeach ?>

@@ -6,9 +6,7 @@
       <div class="lin-grad"></div>
       <img class='lazy' data-src='<?= $fileObj->resize_url ?>' />
     <?php elseif ($fileObj->type == 'audio') : ?>
-      <audio controls>
-        <source src="<?= $fileObj->url?>" type="audio/mpeg">
-      </audio>
+      <div class="projects__text"><div class="projects__text__inner"><?= $fileObj->filename ?></div></div>
     <?php elseif ($fileObj->type == 'document') : ?>
       <div class="projects__text"><div class="Projects__text__inner"><?= $fileObj->text ?>"</div></div>
     <?php endif ?>

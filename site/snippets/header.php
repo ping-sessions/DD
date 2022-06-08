@@ -8,7 +8,7 @@
   <title><?= $page->title() ?></title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital@0;1&display=swap" rel="stylesheet">
+ <!-- <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital@0;1&display=swap" rel="stylesheet">-->
   <?= css(['assets/css/slick.css']) ?>
   <?= css(['assets/css/main.css']) ?>
 </head>
@@ -77,7 +77,7 @@
   </div>
 
   <a href="" class="fixed__title"><span class="fixed__title__inner__number"></span><span class="fixed__title__inner"></span></a>
-  <div class="fixed__meta">
+  <div class="fixed__meta hide-mobile">
     <?php 
       $imageCount = 0;
       $documentCount = 0;
