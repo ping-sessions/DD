@@ -345,6 +345,10 @@ h1, h2, h3, h4, h5 {
   left: inherit;
 }
 
+.project-overlay::-webkit-scrollbar {
+  display: none;
+}
+
 @media (max-width: 768px) {
   .project-overlay {
     width: 100vw;
@@ -1046,6 +1050,7 @@ h1, h2, h3, h4, h5 {
   .projects__item {
     width: 100vw !important;
     height: 25rem;
+    margin-left: -8vw !important;
   }
 }
 
@@ -1468,7 +1473,7 @@ h1, h2, h3, h4, h5 {
     width: calc(100vw - 2rem);
     -webkit-transform: translate(0, 0) !important;
             transform: translate(0, 0) !important;
-    z-index: 10;
+    z-index: 100 !important;
     background: #ff0100;
     right: inherit;
     left: 0.5rem;

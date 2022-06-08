@@ -469,6 +469,7 @@ if (document.querySelector('.swiper') !== null) {
     slidesPerView: "auto",
     centeredSlides: true,
     preloadImages: false,
+    allowTouchMove: false,
     lazy: true,
     watchSlidesVisibility: true,
     // If we need pagination
@@ -598,6 +599,7 @@ function initProjectSwiper(data) {
       // Optional parameters
       loop: false,
       slidesPerView: "auto",
+      allowTouchMove: false,
       centeredSlides: true,
       initialSlide: parseInt(position),
       preloadImages: false,

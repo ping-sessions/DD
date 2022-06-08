@@ -320,6 +320,10 @@ html,body {
     /* overflow: hidden; */
     border-bottom-right-radius: 15rem;
 
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
     top: 0;
    // left: 0;
    // width: 100%;
@@ -998,6 +1002,7 @@ img {
     @media (max-width: $mobile) {
       width: 100vw !important;
       height: 25rem;
+      margin-left: -8vw !important;
     }
 
     &.blured {
@@ -1420,7 +1425,7 @@ height: 90%;
       width: calc(100vw - 2rem);
 
       transform: translate(0, 0) !important;
-      z-index: 10;
+      z-index: 100 !important;
       background: #ff0100;
       right: inherit;
       left: 0.5rem;

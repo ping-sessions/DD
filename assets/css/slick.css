@@ -71,6 +71,7 @@
   }
   .swiper .swiper-slide .swiper-slide-inner {
     height: auto;
+    max-height: 100%;
     max-width: 100%;
   }
   .swiper .swiper-slide img {
