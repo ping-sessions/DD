@@ -39,7 +39,7 @@
           $fileObj->url = $file->url();
           $fileObj->text = $file->text();
           $fileObj->position = $file->indexOf();
-          $fileObj->resize = $file->resize(1200);
+          $fileObj->resize = $file->resize(1200)->url();
           $fileObj->tags = $file->tags()->split(',');
           $fileObj->text = parse_rtf($file);
           $tagged_files_arr[] = $fileObj;
@@ -60,7 +60,7 @@
         $fileObj->url = $file->url();
         $fileObj->text = $file->text();
         $fileObj->position = $file->indexOf();
-        $fileObj->resize = $file->resize(1200);
+        $fileObj->resize = $file->resize(1200)->url();
         $fileObj->tags = $file->tags()->split(',');
         $fileObj->text = parse_rtf($file);
         $files_arr[] = $fileObj;

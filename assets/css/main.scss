@@ -164,25 +164,6 @@ html,body {
     }
   }
 
-  .fix_2 {
-    position: fixed;
-    width: 50vw;
-    height: 100vh;
-
-    top: 0;
-    z-index: 0;
-    transition: width 0.3s ease-in-out;
-    right: 0;
-    background: rgb(255,255,255);
-    background: linear-gradient(180deg, rgba(255,255,255,0.5032606792717087) 0%, rgba(174,126,202,1) 19%, rgba(255,255,255,1) 36%, rgba(174,126,202,1) 71%, rgba(174,126,202,1) 100%, rgba(174,126,202,1) 100%);
-
-
-    @media (max-width: $mobile) {
-    border-top-right-radius: 15rem;
-    border-bottom-right-radius: 15rem;
-    }
-  }
-
 
 
   h1,h2,h3,h4,h5 {
@@ -807,6 +788,24 @@ img {
     background: radial-gradient(circle, rgba(255, 255, 255, 0) 15%, white 65%) !important;
   }
 
+  .lin-grad {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 2;
+  }
+
+  .lin-grad:after {
+    content: '';
+    position: absolute;
+    z-index: 10;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(0deg, #ffffff00 0%, #fff 100%);
+  }
+
   .project-overlay {
     opacity: 0;
     background: linear-gradient(180deg, #ae7ecade 0%, white 25%, #ae7ecade 50%,#fff 100%);
@@ -875,10 +874,11 @@ img {
     transition: all 0.3s ease-in-out;
 
     audio {
-      transform: scale(2.5) translate(-15%, 45%);
+      transform: scale(1.5) translate(0%, 50%);
       position: absolute;
       top: 50%;
-      left: 50%;
+      position: absolute;
+      top: 50%;
     }
 
     @media (max-width: $mobile) {
@@ -919,8 +919,10 @@ img {
         position: absolute;
         justify-content: center;
         display: flex;
+        width: 100%;
+height: 90%;
         align-items: center;
-        background: linear-gradient(0deg, #ffffff00 0%, #fff 100%);
+      //  background: linear-gradient(0deg, #ffffff00 0%, #fff 100%);
         width: 100%;
         height: 100%;
         text-decoration: none;
@@ -935,7 +937,7 @@ img {
     img {
         text-decoration: none;
         mix-blend-mode: normal;
-        transform: scale(1.1);
+        transform: scale(1);
         margin: 0;
         filter: grayscale(2) contrast(2);
         //width: auto;
