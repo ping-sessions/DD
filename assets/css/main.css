@@ -1332,6 +1332,16 @@ h1, h2, h3, h4, h5 {
   z-index: 1000;
   pointer-events: none;
   width: 100vw;
+  -webkit-transition: opacity .3s ease;
+  transition: opacity .3s ease;
+}
+
+.show-title.load-out {
+  opacity: 0;
+}
+
+.show-title.load-in {
+  opacity: 1;
 }
 
 .instructions {

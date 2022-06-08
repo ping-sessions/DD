@@ -1297,6 +1297,13 @@ height: 90%;
     z-index: 1000;
     pointer-events: none;
     width: 100vw;
+    transition: opacity .3s ease;
+    &.load-out {
+      opacity: 0;
+    }
+    &.load-in {
+      opacity: 1;
+    }
   }
   
   
