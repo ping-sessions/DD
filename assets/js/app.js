@@ -178,8 +178,8 @@ function renderData(content) {
   // empty container
   container.html('')
   for (var i = 0; i < content.length; i++) {
-     let projectUrl = '/dd_kirby/DD/home/projects/' + content[i].project
-   // let projectUrl = '/home/projects/' + content[i].project
+    //  let projectUrl = '/dd_kirby/DD/home/projects/' + content[i].project
+   let projectUrl = '/home/projects/' + content[i].project
     // let fileUrl = content[i].url 
     let fileUrl 
     let el 
@@ -203,7 +203,8 @@ function renderData(content) {
     }
     container.append(el)
     setTimeout(function() {
-      document.querySelector('.projects').classList.remove('load-out');
+      document.querySelector('.projects').classList.remove('load-out')
+      document.querySelector('.show-title').classList.remove('load-out')
     }, 250)
 
     // re init lazyload
@@ -253,7 +254,8 @@ function initHandlers() {
   const randomButton = document.querySelector('.dd-random')
   randomButton.addEventListener('click', function() {
     console.log('random clicked')
-    document.querySelector('.projects').classList.add('load-out');
+    document.querySelector('.projects').classList.add('load-out')
+    document.querySelector('.show-title').classList.add('load-out')
     setTimeout(function() {
       getData(true, false)
     }, 700);
@@ -329,6 +331,8 @@ function initHandlers() {
     let dataTags = $(this).attr('data-tags')
     let tagsArray = dataTags.split(", ")
     document.querySelector('.projects').classList.add('load-out');
+    document.querySelector('.show-title').classList.add('load-out')
+    console.log('show title', document.querySelector('.show-title'))
     getData(false, tagsArray)
     unlockIndex()
     window.removeEventListener('mousemove', updateCoordinates);
