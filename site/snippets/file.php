@@ -4,7 +4,7 @@
   <a <?php if ($fileObj->type != 'image') : ?>  class="circ-grad"   <?php endif ?> data-position="<?= $fileObj->position ?>" href = '<?= $siteurl."/home/projects/".$fileObj->project ?>'>
     <?php if ($fileObj->type == 'image') : ?>
       <div class="lin-grad"></div>
-      <img src = '<?= $fileObj->resize ?>' />
+      <img class='lazy' data-src='<?= $fileObj->resize_url ?>' />
     <?php elseif ($fileObj->type == 'audio') : ?>
       <audio controls>
         <source src="<?= $fileObj->url?>" type="audio/mpeg">

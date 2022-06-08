@@ -12,9 +12,7 @@
         $nameObj->last_word = $name->last_word();
         $namesArr[] = $nameObj;
       }
-      // $random_index = rand(0, (count($namesArr) - 1));
-      // generate random number for index of array
-      // based on the date
+      // generate random number for index of array based on the date
       srand(date('Ymd'));
       $value = rand(0, (count($namesArr) - 1));
       $random_index = $value; 
@@ -37,9 +35,23 @@
           $fileObj->project_title = $file->page()->title()->value();
           $fileObj->project = $file->page()->slug();
           $fileObj->url = $file->url();
+          if ($file->type() == 'image') {
+            // if file is not already small enough
+            if ($file->size() > 300000) {
+              if ($file->width() < 1200) {
+                $fileObj->resize_url = $file->resize($file->width())->url();
+              }
+              else {
+                $fileObj->resize_url = $file->resize(1200)->url();
+              }
+            }
+            else {
+              $fileObj->resize_url = $file->url();
+            }
+          }
+          $fileObj->size = $file->size();
           $fileObj->text = $file->text();
           $fileObj->position = $file->indexOf();
-          $fileObj->resize = $file->resize(1200)->url();
           $fileObj->tags = $file->tags()->split(',');
           $fileObj->text = parse_rtf($file);
           $tagged_files_arr[] = $fileObj;
@@ -58,9 +70,23 @@
         $fileObj->project_title = $file->page()->title()->value();
         $fileObj->project = $file->page()->slug();
         $fileObj->url = $file->url();
+        if ($file->type() == 'image') {
+          // if file is not already small enough
+          if ($file->size() > 300000) {
+            if ($file->width() < 1200) {
+              $fileObj->resize_url = $file->resize($file->width())->url();
+            }
+            else {
+              $fileObj->resize_url = $file->resize(1200)->url();
+            }
+          }
+          else {
+            $fileObj->resize_url = $file->url();
+          }
+        }
+        $fileObj->size = $file->size();
         $fileObj->text = $file->text();
         $fileObj->position = $file->indexOf();
-        $fileObj->resize = $file->resize(1200)->url();
         $fileObj->tags = $file->tags()->split(',');
         $fileObj->text = parse_rtf($file);
         $files_arr[] = $fileObj;

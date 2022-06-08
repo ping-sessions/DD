@@ -2,8 +2,8 @@
 let currentData = {}
 let selectedFile = ''
 //const apiUrl = 'http://localhost:8888/dd_kirby/DD/home.json'
-//const apiUrl = `${window.location.href}home.json`
-const apiUrl = `https://staging.dailydecisions.space/home.json`
+const apiUrl = `${window.location.href}home.json`
+// const apiUrl = `https://staging.dailydecisions.space/home.json`
 
 
 // --- helpers --- 
@@ -161,25 +161,33 @@ function renderData(content) {
   // empty container
   container.html('')
   for (var i = 0; i < content.length; i++) {
-    let projectUrl = '/dd_kirby/DD/home/projects/' + content[i].project
-    let fileUrl = content[i].url 
+    // let projectUrl = '/dd_kirby/DD/home/projects/' + content[i].project
+    let projectUrl = '/home/projects/' + content[i].project
+    // let fileUrl = content[i].url 
+    let fileUrl 
     let el 
     // markup must match file.php snippet
     if (content[i].type == 'image') {
+      fileUrl = content[i].resize_url 
       // json stringy seems to work (keep eye on this)
       let dataNumber = '(' + parseInt(content[i].position + 1) + ')'
       let dataTitle = content[i].project_title
-      el = '<div class="projects__item" data-number=' + JSON.stringify(dataNumber) + '" data-title=' + JSON.stringify(dataTitle) + '><a href=' + projectUrl + ' data-position=' + content[i].position +'><img src =' + fileUrl + '></a></div>'
+      el = '<div class="projects__item" data-number=' + JSON.stringify(dataNumber) + '" data-title=' + JSON.stringify(dataTitle) + '><a href=' + projectUrl + ' data-position=' + content[i].position +'><img data-src =' + fileUrl + ' class="lazy"></a></div>'
     }
     else if (content[i].type == 'audio') {
+      fileUrl = content[i].url
       let dataTitle = '(' + parseInt(content[i].position + 1) + ')' + ' ' + content[i].project_title
       el = '<div class="projects__item" data-number=' + JSON.stringify(2) + '" data-title=' + JSON.stringify(dataTitle) + '><a href=' + projectUrl + ' data-position=' + content[i].position +'><audio controls><source src =' + fileUrl + ' type="audio/mpeg"></audio></a></div>'
     }
     else if (content[i].type == 'document') {
+      fileUrl = content[i].url
       let dataTitle = '(' + parseInt(content[i].position + 1) + ')' + ' ' + content[i].project_title
       el = '<div class="projects__item" data-number=' + JSON.stringify(1) + '" data-title=' + JSON.stringify(dataTitle) + '><a href=' + projectUrl + ' data-position=' + content[i].position +'><div class="projects__text"><div class="projects__text__inner">' + content[i].text + '</div></div></a></div>'
     }
     container.append(el)
+    // re init lazyload
+    // initLazyLoad()
+    lazyLoadInstance.update()
   }
 
   // empty counter 
@@ -627,7 +635,24 @@ function initHooks() {
 
 
 
+// function initLazyLoad() {
+//   const observer = lozad('.lozad', {
+//     rootMargin: '10px 0px', // syntax similar to that of CSS Margin
+//     threshold: .1, // ratio of element convergence
+//     enableAutoReload: true,
+//     load: function() {
+//       console.log('lazy load cb')
+//     }
+//   });
+//   observer.observe();
+// }
 
+var lazyLoadInstance
+function initLazyLoad() {
+  lazyLoadInstance = new LazyLoad({
+  // Your custom settings go here
+  });
+}
 
 
 // --- init ---
@@ -636,7 +661,7 @@ $(document).ready(function() {
   initIntro()
   initHandlers()
   initRoutes()
-
+  initLazyLoad()
   Marquee3k.init()
 })
 

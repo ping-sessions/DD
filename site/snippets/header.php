@@ -5,16 +5,11 @@
   <meta charset="utf-8">
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
   <meta name="viewport" content="width=device-width" />
-
-  <!-- would be nice to update this on every DD generate -->
   <title><?= $page->title() ?></title>
-
   <?= css(['assets/css/slick.css']) ?>
   <?= css(['assets/css/main.css']) ?>
+  <script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.8.2/dist/lazyload.min.js"></script>
 </head>
-
-
-
 
 
 <body class=" <?php if ($page->template() == 'project'):?> project-page <?php endif?> <?= $page->slug() ?>-page" data-barba="wrapper">
@@ -114,10 +109,6 @@
     <?php if ($videoCount > 0) : ?>
       <div><?= $documentCount ?> Videos</div>
     <?php endif ?>
-
-    <!-- Displays in 48 DDs -->
-    <!-- <br> -->
-    <!-- Digests 26 Dispositions -->
   </div>
 
 
