@@ -9,19 +9,23 @@
   <?= $page->title() ?>
 </div>
 
+<?php 
+  $pdf_file = '';
+  foreach ($page->files() as $file) {
+    if ($file->extension() == 'pdf') {
+      $pdf_file = $file->url();
+    }
+  }
+?>
+
 <!-- if text page -->
 <?php if ($page->text_toggle()->toBool() == true) : ?>
+
   <?php 
-    $pdf_file = '';
     $text_files = [];
     foreach ($page->files() as $file) {
-      if ($file->extension() == 'pdf') {
-        $pdf_file = $file->url();
-      }
-      else {
-        if ($file->type() == 'document') {
-          $text_files[] = $file; 
-        }
+      if ($file->type() == 'document') {
+        $text_files[] = $file; 
       }
     }
   ?>
@@ -32,7 +36,9 @@
   <?php foreach($text_files as $text_file) : ?>
     <div class="text__snippet"><span class="text__snippet__number">(<?= $text_file->indexOf() + 1?>)</span><?= parse_rtf($text_file) ?></div>
   <?php endforeach ?>
-  <a class="text__snippets__pdf-button" href = '<?= $pdf_file ?>' target='_blank'>Display PDF</a>
+  <?php if ($pdf_file !== '') : ?>
+    <a class="text__snippets__pdf-button" href = '<?= $pdf_file ?>' target='_blank'>Open PDF</a>
+  <?php endif ?>
   </div>
 
   <!-- $page->files() ?> -->
@@ -80,8 +86,13 @@
 
 <!-- Slider main container -->
     
-  <div class = 'project-info'>
+
+
+<div class = 'project-info'>
   <div class="project__meta">
+    <?php if ($pdf_file !== '') : ?>
+  <a class="project__meta__pdf-button" href = '<?= $pdf_file ?>' target='_blank'>(Open PDF)</a>
+<?php endif ?>
 <div class="project__meta__year"><span>Date<br></span><?= $page->year() ?></div>
 <div class="project__meta__participants"><span>Participants<br></span><?= $page->participants() ?></div>
 </div>

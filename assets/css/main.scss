@@ -456,9 +456,12 @@ html,body {
       margin-bottom: 1rem;
       line-height: 1;
       mix-blend-mode: multiply;
-    color: #a178b7;
+      color: #a178b7;
       font-size: 1.2rem;
       padding-top: 0.5rem;
+      display: flex;
+      flex-flow: column;
+      align-items: flex-start;
      // background: -webkit-linear-gradient(rgb(0, 0, 0), #ae7ecade);
     //  -webkit-background-clip: text;
     //  -webkit-text-fill-color: transparent;
@@ -466,7 +469,18 @@ html,body {
     @media (max-width: $mobile) {
       font-size: $font-size-text-small;
     }
-
+    &__pdf-button {
+      background-color: #a178b7;
+      color: #fff;
+      font-family: 'EB Garamond';
+      padding: 0.5rem;
+      font-variant-ligatures: discretionary-ligatures;
+      border-radius: 1rem;
+      font-size: 1.5rem;
+      mix-blend-mode: lighten;
+      text-decoration: none;
+      margin-bottom: 1rem;
+    }
     &__year {
       margin-bottom: 1rem;
     }
@@ -652,6 +666,20 @@ html,body {
   .project-overlay .project-info {
     color: white;
   }
+
+  // .project__meta__pdf {
+  //   color: #a178b7;
+  //   font-family: 'EB Garamond';
+  //   padding: 0.5rem;
+  //   font-variant-ligatures: discretionary-ligatures;
+  //   border-radius: 1rem;
+  //   background-color: #fff;
+  //   font-size: 1.5rem;
+  //   // margin-left: auto;
+  //   mix-blend-mode: lighten;
+  //   text-decoration: none;
+  //   margin-bottom: 1rem;
+  // }
 
   .slick-prev, .slick-next {
       display: none !important;

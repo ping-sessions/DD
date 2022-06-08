@@ -78,7 +78,8 @@ if ($(window).width() > 1) {
 
 // --- api stuf ---
 function getData(random, tags) {
-
+  const content = document.querySelector('.content')
+  content.classList.add('hidden')
   $.ajax({
     type: "GET",
     url: apiUrl,
@@ -201,6 +202,10 @@ function renderData(content) {
       el = '<div class="projects__item" data-number=' + JSON.stringify(1) + '" data-title=' + JSON.stringify(dataTitle) + '><a class="circ-grad" href=' + projectUrl + ' data-position=' + content[i].position +'><div class="projects__text"><div class="projects__text__inner">' + content[i].text + '</div></div></a></div>'
     }
     container.append(el)
+    setTimeout(function() {
+      document.querySelector('.projects').classList.remove('load-out');
+    }, 250)
+
     // re init lazyload
     lazyLoadInstance.update()
   }
@@ -247,10 +252,11 @@ function renderData(content) {
 function initHandlers() {
   const randomButton = document.querySelector('.dd-random')
   randomButton.addEventListener('click', function() {
-    // document.querySelector('.projects').classList.add('load-out');
-    setTimeout(function(){
+    console.log('random clicked')
+    document.querySelector('.projects').classList.add('load-out');
+    setTimeout(function() {
       getData(true, false)
-    },700);
+    }, 700);
 
     setTimeout(function(){
       // document.querySelector('.projects').classList.remove('load-out');
@@ -322,8 +328,8 @@ function initHandlers() {
     $('.selector').addClass('hidden')
     let dataTags = $(this).attr('data-tags')
     let tagsArray = dataTags.split(", ")
+    document.querySelector('.projects').classList.add('load-out');
     getData(false, tagsArray)
-    console.log('is triggered?')
     unlockIndex()
     window.removeEventListener('mousemove', updateCoordinates);
     document.querySelector('.dday').classList.add('active');
