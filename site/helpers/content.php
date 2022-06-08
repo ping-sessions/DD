@@ -3,6 +3,7 @@
 
   class Content {
     public $current_words = [];
+    public $random_words = [];
     public function return_words($names) {
       $namesArr = [];
       foreach ($names as $name) {
@@ -19,6 +20,23 @@
       $this->current_words[] = $namesArr[$random_index]->first_word->value();
       $this->current_words[] = $namesArr[$random_index]->last_word->value();
       return $this->current_words; 
+    }
+    public function return_random_words($names) {
+      $arr = [];
+      foreach ($names as $name) {
+        // each item in array is object
+        $nameObj = new stdClass();
+        $nameObj->first_word = $name->first_word();
+        $nameObj->last_word = $name->last_word();
+        $arr[] = $nameObj;
+      }
+      // generate random number
+      // seems to work - overwrite seed
+      srand(time());
+      $rand_index = rand(0, (count($arr) - 1));; 
+      $this->random_words[] = $arr[$rand_index]->first_word->value();
+      $this->random_words[] = $arr[$rand_index]->last_word->value();
+      return $this->random_words; 
     }
     public function return_tagged_files($files) {
       // create object representation of each file + create array from them

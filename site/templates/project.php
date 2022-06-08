@@ -43,8 +43,22 @@
     <!-- Slides -->
     <?php foreach ($page->files() as $file) : ?>
       <!-- todo: ensure pdf does not show here -->
-      <?php if ($file->type() == 'image'):?>
-      <div data-url='<?= $file->url() ?>' class='project-slider_slide swiper-slide'><div class="swiper-slide-inner"><img src = "<?= $file->url() ?>" /></div></div>
+      <?php if ($file->type() == 'image') : ?>
+      <?php 
+        $resize_url = '';
+        if ($file->size() > 300000) {
+          if ($file->width() < 1200) {
+             $resize_url = $file->resize($file->width())->url();
+          }
+          else {
+             $resize_url = $file->resize(1200)->url();
+          }
+        }
+        else {
+          $resize_url = $file->url();
+        }
+      ?>
+      <div data-url='<?= $resize_url ?>' class='project-slider_slide swiper-slide'><div class="swiper-slide-inner"><img loading="lazy" src="<?= $resize_url ?>" /></div></div>
       <?php endif ?>
       <?php if ($file->type() == 'audio'):?>
       <div data-url='<?= $file->url() ?>' class='project-slider_slide swiper-slide'>

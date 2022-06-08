@@ -6,6 +6,8 @@ columns:
       files:
         label: Files
         type: files
+        layout: cards
+        size: large
   fields:
     width: 1/2
     type: fields
