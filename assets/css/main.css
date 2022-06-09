@@ -935,7 +935,7 @@ h1, h2, h3, h4, h5 {
 
 .about-page__inner {
   line-height: 2.3rem;
-  margin-top: 5rem;
+  margin-top: 2rem;
   padding-bottom: 7rem;
 }
 
@@ -963,10 +963,6 @@ h1, h2, h3, h4, h5 {
     line-height: 1.9rem;
     padding: 1rem 0.5rem;
   }
-}
-
-.about-page .project-overlay p:first-child {
-  margin-top: 5rem;
 }
 
 .program-page .project-overlay {
@@ -1882,12 +1878,10 @@ h1, h2, h3, h4, h5 {
   border-top-color: transparent;
 }
 
-@media only screen and (max-width: 768px) {
-  .loader.active {
-    opacity: 1;
-    -webkit-animation: swiper-preloader-spin 1s infinite linear;
-            animation: swiper-preloader-spin 1s infinite linear;
-  }
+.loader.active {
+  opacity: 1;
+  -webkit-animation: swiper-preloader-spin 1s infinite linear;
+          animation: swiper-preloader-spin 1s infinite linear;
 }
 
 @-webkit-keyframes swiper-preloader-spin {

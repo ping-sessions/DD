@@ -25,7 +25,7 @@ var contains = function (arr1, arr2) {
 
 if ($(window).width() > 1) {
   if ($(window).width() > 768) {
-  var time = 2000; 
+  var time = 4000; 
   }
   else {
     var time = 15000; 
