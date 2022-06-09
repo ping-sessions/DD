@@ -477,6 +477,7 @@ h1, h2, h3, h4, h5 {
   z-index: 2;
   left: 1rem;
   top: 1rem;
+  max-width: 10rem;
   margin-right: 1rem;
   margin-bottom: 1rem;
   line-height: 1;
@@ -499,6 +500,7 @@ h1, h2, h3, h4, h5 {
 @media (max-width: 768px) {
   .project__meta {
     font-size: 1.7rem;
+    max-width: none;
   }
 }
 
@@ -686,7 +688,7 @@ h1, h2, h3, h4, h5 {
     -webkit-box-direction: reverse;
         -ms-flex-direction: column-reverse;
             flex-direction: column-reverse;
-    padding: 0.5rem 0.5rem 10rem;
+    padding: 1rem 0.5rem 10rem;
   }
 }
 
@@ -1284,8 +1286,8 @@ h1, h2, h3, h4, h5 {
 
 @media (max-width: 768px) {
   .intro {
-    font-size: 2rem;
-    line-height: 2rem;
+    font-size: 1.5rem;
+    line-height: 1.5rem;
   }
 }
 
@@ -1553,6 +1555,9 @@ h1, h2, h3, h4, h5 {
 }
 
 .radio__overlay__headline__inner {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

@@ -54,11 +54,11 @@
       <?php 
         $resize_url = '';
         if ($file->size() > 300000) {
-          if ($file->width() < 1200) {
+          if ($file->width() < 800) {
              $resize_url = $file->resize($file->width())->url();
           }
           else {
-             $resize_url = $file->resize(1200)->url();
+             $resize_url = $file->resize(800)->url();
           }
         }
         else {

@@ -461,6 +461,7 @@ html,body {
       z-index: 2;
       left: 1rem;
       top: 1rem;
+      max-width: 10rem;
       margin-right: 1rem;
       margin-bottom: 1rem;
       line-height: 1;
@@ -477,6 +478,7 @@ html,body {
 
     @media (max-width: $mobile) {
       font-size: $font-size-text-small;
+      max-width: none;
     }
     &__pdf-button {
       background-color: #a178b7;
@@ -651,7 +653,7 @@ html,body {
 
       @media (max-width: $mobile) {
       flex-direction: column-reverse;
-      padding: 0.5rem 0.5rem 10rem;
+      padding: 1rem 0.5rem 10rem;
       }
 
 
@@ -1256,8 +1258,8 @@ height: 90%;
   /*Linear gradient... */
 
   @media (max-width: $mobile) {
-    font-size: 2rem;
-    line-height: 2rem;
+    font-size: 1.5rem;
+    line-height: 1.5rem;
   }
 
      &.active {
@@ -1515,6 +1517,7 @@ height: 90%;
       letter-spacing: 0.1rem;
       
       &__inner {
+        align-items: center;
         display: flex;
     justify-content: space-between;
 
