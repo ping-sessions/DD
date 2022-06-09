@@ -3,8 +3,6 @@ let currentData = {}
 let selectedFile = ''
 //const apiUrl = 'http://localhost:8888/dd_kirby/DD/home.json'
 const apiUrl = `${window.location.href}home.json`
-// const apiUrl = `https://staging.dailydecisions.space/home.json`
-
 
 // --- helpers --- 
 var arraysMatch = function (arr1, arr2) {
@@ -45,7 +43,7 @@ if ($(window).width() > 1) {
       counter++;
 
      
-      var path = 'https://staging.dailydecisions.space/assets/',
+      var path = 'https://dailydecisions.space/assets/',
           imgs = ['dd_new.svg'],
           i = Math.floor(Math.random()*imgs.length);
        function getRandomInt(max) {
@@ -85,7 +83,6 @@ function getData(random, tags) {
     url: apiUrl,
   })
   .done(function(data) {
-    console.log('done', data)
     if (random) {
       if (currentData.hasOwnProperty('random_words')) {
         // if words from new request are not same words currently stored 
@@ -224,19 +221,15 @@ function renderData(content) {
   // $('.fixed__meta').append('<div>' + 'Your decision has' + '</div>')
   if (imageCount > 0) {
     $('.fixed__meta').append('<div>' + imageCount + ' ' + 'Images</div>')
-    console.log('has images', imageCount)
   }
   if (audioCount > 0) {
     $('.fixed__meta').append('<div>' + audioCount + ' ' + 'Audios</div>')
-    console.log('has audio', audioCount)
   }
   if (textCount > 0) {
     $('.fixed__meta').append('<div>' + textCount + ' ' + 'Texts</div>')
-    console.log('has text', textCount)
   }
   if (videoCount > 0) {
     $('.fixed__meta').append('<div>' + videoCount + ' ' + 'Videos</div>')
-    console.log('has video', videoCount)
   }
 
 
@@ -256,18 +249,14 @@ function renderData(content) {
 function initHandlers() {
   const randomButton = document.querySelector('.dd-random')
   randomButton.addEventListener('click', function() {
-    console.log('random clicked')
     document.querySelector('#cursor').classList.add('clicked')
     document.querySelector('.projects').classList.add('load-out')
     document.querySelector('.show-title').classList.add('load-out')
     setTimeout(function() {
       getData(true, false)
       document.querySelector('#cursor').classList.remove('clicked')
+      document.querySelector('.dday').classList.add('active')
     }, 300);
-
-   // setTimeout(function(){
-      // document.querySelector('.projects').classList.remove('load-out');
-   // },1500);
   })
   
   if ($(window).width() > 768) {
@@ -339,7 +328,6 @@ function initHandlers() {
     let tagsArray = dataTags.split(", ")
     document.querySelector('.projects').classList.add('load-out');
     document.querySelector('.title').classList.add('load-out')
-    console.log('show title', document.querySelector('.show-title'))
     getData(false, tagsArray)
     unlockIndex()
     window.removeEventListener('mousemove', updateCoordinates);
@@ -475,7 +463,6 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     };
   }
-  
 });
 
 
@@ -486,7 +473,7 @@ if (document.querySelector('.swiper') !== null) {
     slidesPerView: "auto",
     centeredSlides: true,
     preloadImages: false,
-    allowTouchMove: false,
+    allowTouchMove: true,
     lazy: true,
     watchSlidesVisibility: true,
     // If we need pagination
@@ -531,7 +518,6 @@ function unlockIndex() {
 }
 
 function initRoutes() {
-  console.log('init routes', barba)
    barba.use(barbaCss)
   // barba js
   barba.init({
@@ -588,7 +574,6 @@ function initRoutes() {
       namespace: 'schedule',
         afterEnter(data) {
           // ...
-          console.log('after enter schedule')
         },
         afterLeave(data) {
           // ...
@@ -611,23 +596,17 @@ function initProjectSwiper(data) {
   // i.e. if not a text project
   if (document.querySelector('.swiper') !== null) {
     var position = data.trigger.getAttribute('data-position');
-    console.log('position >', position)
     var swiper = new Swiper('.swiper', {
       // Optional parameters
       loop: false,
       slidesPerView: "auto",
-      allowTouchMove: false,
+      // allowTouchMove: false,
+      allowTouchMove: true,
       centeredSlides: true,
       initialSlide: parseInt(position),
       preloadImages: false,
       lazy: true,
       watchSlidesVisibility: true,
-      // watchSlidesProgress: true,
-      // lazy: true,
-      // lazy: {
-      //   loadPrevNext: true,
-      //   loadPrevNextAmount: 2
-      // },
       // If we need pagination
       pagination: {
         el: ".swiper-pagination",
@@ -654,10 +633,7 @@ function initProjectSwiper(data) {
 }
 
 function initHooks() {
-  // barba.Pjax.start();
-  // barba.use(barbaPrefetch);
   barba.hooks.beforeEnter((data) => {
-    console.log('before enter', data)
     var nextHtml = data.next.html
     var response = nextHtml.replace(/(<\/?)body( .+?)?>/gi, '$1notbody$2>', nextHtml);
     var bodyClasses = $(response).filter('notbody').attr('class');

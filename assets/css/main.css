@@ -1098,13 +1098,14 @@ h1, h2, h3, h4, h5 {
           filter: blur(2px) !important;
 }
 
-.projects__item:hover .projects__item__title {
-  opacity: 1;
-}
-
-.projects__item:hover img {
-  -webkit-filter: grayscale(0) contrast(2);
-          filter: grayscale(0) contrast(2);
+@media (hover: hover) {
+  .projects__item:hover .projects__item__title {
+    opacity: 1;
+  }
+  .projects__item:hover img {
+    -webkit-filter: grayscale(0) contrast(2);
+            filter: grayscale(0) contrast(2);
+  }
 }
 
 .projects__item__title {
@@ -1403,6 +1404,10 @@ h1, h2, h3, h4, h5 {
 .project-page .projects__outer, .about-page .projects__outer, .program-page .projects__outer {
   width: 50vw;
   overflow: scroll;
+}
+
+.project-page .projects__outer::-webkit-scrollbar, .about-page .projects__outer::-webkit-scrollbar, .program-page .projects__outer::-webkit-scrollbar {
+  display: none;
 }
 
 @media (max-width: 768px) {

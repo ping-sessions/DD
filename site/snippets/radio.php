@@ -1,7 +1,7 @@
 <div class="radio__overlay">
 
 
-<audio style="opacity:0; pointer-events:none" id="radio" src="http://pub.sandberg.nl:18000/live" autoplay loop allow="autoplay" preload="auto"></audio>
+<audio style="opacity:0; pointer-events:none" id="radio" src="http://pub.sandberg.nl:18000/live" loop preload="auto"></audio>
 <div class="player">
 
 <div class="radio__overlay__headline"><div class="radio__overlay__headline__inner">Diasbura Delights <span class="live">Live</span></div>
