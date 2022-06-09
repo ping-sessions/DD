@@ -672,6 +672,18 @@ function initHooks() {
     }
   });
 
+
+  barba.hooks.beforeLeave((data) => {
+    document.querySelector('.loader').classList.add('active');
+    document.querySelector('.projects').classList.add('load-out')
+    document.querySelector('.title').classList.add('load-out')
+  });
+
+  barba.hooks.afterEnter((data) => {
+    document.querySelector('.projects').classList.remove('load-out')
+    document.querySelector('.loader').classList.remove('active');
+    document.querySelector('.title').classList.remove('load-out')
+  });
   
 }
 

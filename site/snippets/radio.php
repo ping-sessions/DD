@@ -4,8 +4,8 @@
 <audio style="opacity:0; pointer-events:none" id="radio" src="http://pub.sandberg.nl:18000/live" autoplay loop allow="autoplay" preload="auto"></audio>
 <div class="player">
 
-<div class="radio__overlay__headline">Disapora Delights <span class="live">Live</span>
-    <div class="radio__overlay__headline__subline"><span class="hide-mobile">Radio broadcast</span><span><a href="<?= $site->url()?>/home/program">See full schedule</a></span></div>
+<div class="radio__overlay__headline"><div class="radio__overlay__headline__inner">Diasbura Delights <span class="live">Live</span></div>
+    <div class="radio__overlay__headline__subline"><span class="">Radio broadcast</span><span><a href="<?= $site->url()?>/home/program">See full schedule</a></span></div>
 </div>
 <!--
 <div class="marquee">

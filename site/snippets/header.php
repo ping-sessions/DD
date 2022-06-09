@@ -27,6 +27,8 @@
 
   <div class="fix"></div>
 
+  <div class="loader"></div>
+
   <div class="screensaver"></div>
 
 

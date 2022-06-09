@@ -539,7 +539,19 @@ html,body {
         width: calc(50vw - 1.25rem);
         bottom: 0.5rem;
         right: 0.5rem;
+        transition: all 0.3s ease-in-out;
+        height: 4rem;
         left: inherit;
+
+        
+        .play {
+          height: 100%;
+        }
+
+        .play-wrapper {
+          height: 100%;
+          display: grid;
+        }
         
         &__headline, &__subline {
           display: none;
@@ -1501,7 +1513,12 @@ height: 90%;
       text-align: center;
       margin-bottom: 1rem;
       letter-spacing: 0.1rem;
+      
+      &__inner {
+        display: flex;
+    justify-content: space-between;
 
+      }
       @media (max-width: $mobile) {
         font-size: 2rem;
         letter-spacing: 0.08rem;
@@ -1536,8 +1553,8 @@ height: 90%;
         line-height: 1;
 
         @media (max-width: $mobile) {
-          font-size: 5vw;
-          justify-content: center;
+          font-size: 1.5rem;
+          justify-content: space-between;
         }
   
 
@@ -1672,7 +1689,7 @@ a {
 }
 
 .program .day {
-  margin-top: 5rem;
+  margin-top: 2rem;
   display: block;
   font-family: 'EB Garamond', serif;
 }
@@ -1686,13 +1703,14 @@ a {
 .program {
   font-size: $font-size-text;
   line-height: $line-height-text;
-  margin: 5rem auto 0rem;
+  margin: 3.5rem auto 0rem;
   color: #fff;
   display: block;
   font-family: 'EB Garamond';
   padding: 0 1rem 5rem;
   max-width: 940px;
   @media only screen and (max-width: 768px) {
+    margin-top: 2rem;
     padding: 0 0.5rem 8rem;
     font-size: $font-size-text-small;
   }
@@ -1715,12 +1733,16 @@ a {
 }
 
 .program p {
-  font-size: $font-size-text;
-  line-height: $line-height-text;
+  font-size: 1.9rem;
+  line-height: 1.9rem;
   color: #8b5fa7;
   font-family: 'EB Garamond';
   font-variant-numeric: oldstyle-nums;
-  margin-bottom: 1rem;
+  margin-bottom: 0rem;
+  display: block;
+  margin-top: 0.8rem;
+  letter-spacing: 0;
+  padding-right: 2rem;
   @media only screen and (max-width: 768px) {
     font-size: $font-size-text-small;
   }
@@ -1742,4 +1764,44 @@ a {
 
 .active-item {
   pointer-events: none;
+}
+
+
+.loader {
+  width: 42px;
+	height: 42px;
+	position: fixed;
+	left: 50%;
+	top: 50%;
+	margin-left: -21px;
+	margin-top: -21px;
+	z-index: 10;
+	transform-origin: 50%;
+	box-sizing: border-box;
+	background-size: contain;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-image: url('../dd_new.svg');
+	border-radius: 50%;
+  opacity: 0;
+  pointer-events: none;
+	border-top-color: transparent;
+
+  &.active {
+    @media only screen and (max-width: 768px) {
+    opacity: 1;
+    animation: swiper-preloader-spin 1s infinite linear
+  }
+  }
+
+}
+
+@keyframes swiper-preloader-spin {
+	0% {
+		transform: rotate(0deg)
+	}
+
+	100% {
+		transform: rotate(360deg)
+	}
 }
